@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#10141d">
+    <title>Dalton Election Desk</title>
+    <style>
+      :root {
+        color-scheme: dark;
+        font-family: Inter, "Segoe UI", Arial, sans-serif;
+        background: #10141d;
+        color: #edf2f8;
+      }
+      * { box-sizing: border-box; }
+      body {
+        min-height: 100vh;
+        margin: 0;
+        display: grid;
+        place-items: center;
+        padding: 24px;
+        background:
+          radial-gradient(ellipse at 18% 16%, #24496a66, transparent 42%),
+          radial-gradient(ellipse at 85% 82%, #8a293c44, transparent 38%),
+          linear-gradient(145deg, #10141d, #171f2b 58%, #111722);
+      }
+      main {
+        width: min(100%, 740px);
+        padding: clamp(28px, 7vw, 64px);
+        border: 1px solid #ffffff24;
+        border-radius: 24px;
+        background: #101722df;
+        box-shadow: 0 28px 90px #0008;
+      }
+      .eyebrow {
+        color: #91cbe0;
+        font-size: 12px;
+        font-weight: 800;
+        letter-spacing: .16em;
+      }
+      h1 { margin: 14px 0; font-size: clamp(36px, 8vw, 62px); line-height: 1.04; }
+      p { color: #c3ceda; line-height: 1.65; }
+      .actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 28px; }
+      .actions a {
+        display: inline-flex;
+        min-height: 46px;
+        align-items: center;
+        justify-content: center;
+        padding: 0 18px;
+        border: 1px solid #60748a;
+        border-radius: 9px;
+        color: #eff7fc;
+        font-weight: 750;
+        text-decoration: none;
+      }
+      .actions a:hover { border-color: #a4d8e9; }
+      .actions .primary { border-color: #3984a0; background: #20566b; }
+      .disclosure { margin-top: 28px; color: #99a9ba; font-size: 13px; }
+      a:focus-visible { outline: 3px solid #f4cf72; outline-offset: 3px; }
+    </style>
+  </head>
+  <body>
+    <main>
+      <p class="eyebrow">UNITED STATES · ELECTION NIGHT</p>
+      <h1>Dalton Election Desk</h1>
+      <p>Explore the county-level election-night wall, follow results as they arrive, and see the race-call model in action.</p>
+      <div class="actions">
+        <a class="primary" href="./dashboard/?demo=trickle">Launch the synthetic trickle demo</a>
+        <a href="./dashboard/">Open the dashboard</a>
+      </div>
+      <p class="disclosure">This static site runs a synthetic demonstration. It is not live election reporting, a forecast, or an official source. Live results require a separately hosted collector.</p>
+    </main>
+  </body>
+</html>

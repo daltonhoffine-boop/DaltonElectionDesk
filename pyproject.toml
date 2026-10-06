@@ -1,0 +1,21 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "election-night-watch"
+version = "0.1.0"
+description = "A cautious election-night results watcher with Open America and official state-page adapters."
+requires-python = ">=3.10"
+dependencies = [
+  "requests>=2.31,<3",
+  "beautifulsoup4>=4.12,<5",
+  "openpyxl>=3.1,<4",
+]
+
+[project.scripts]
+election-watch = "election_watch.cli:main"
+election-backtest = "election_watch.backtest:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]

@@ -1,0 +1,379 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#10141d">
+    <title>Election Night Magic Wall</title>
+    <link rel="stylesheet" href="styles.css?v=election-night-model-4">
+    <script src="vendor/d3-array.min.js" defer></script>
+    <script src="vendor/d3-geo.min.js" defer></script>
+    <script src="vendor/topojson-client.min.js" defer></script>
+    <script src="app.js?v=election-night-model-4" defer></script>
+  </head>
+  <body>
+    <header class="topbar">
+      <a class="brand" href="./" aria-label="Election Night Magic Wall home">
+        <span class="brand-mark" aria-hidden="true">EM</span>
+        <span>Election Night <strong>Magic Wall</strong></span>
+      </a>
+      <div class="topbar-actions">
+        <a class="demo-button demo-primary" href="?demo=trickle">Launch trickle demo</a>
+        <label class="theme-selector" for="theme-select">
+          <span>Theme</span>
+          <select id="theme-select" aria-label="Choose a dashboard color theme">
+            <option value="classic">Classic</option>
+            <option value="sakura">Sakura</option>
+            <option value="orchid">Orchid Mode</option>
+            <option value="america">America Mode</option>
+            <option value="mizu">Mizu Mode · 水</option>
+          </select>
+        </label>
+        <div class="call-alert-control">
+          <button class="call-alert-toggle" id="call-alert-toggle" type="button" aria-pressed="false" aria-describedby="call-alert-status" title="Enable or disable browser notifications and race-call sounds">Enable alerts</button>
+          <span class="call-alert-status" id="call-alert-status" role="status" aria-live="polite">Sound and browser notifications</span>
+        </div>
+        <div class="live-indicator" id="connection-status" role="status">
+          <span class="status-dot"></span>
+          <span id="connection-label">Connecting to results…</span>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <section class="intro desk-hero">
+        <div class="desk-hero-copy">
+          <p class="eyebrow">UNITED STATES · GENERAL ELECTION</p>
+          <h1>Welcome to the <span>Dalton Election Desk</span></h1>
+          <p class="intro-copy">Election night, at a glance. Live reported results and source health; missing data is never treated as zero votes.</p>
+          <p class="mascot-roster">Meet Mika, Rory, and Sora—your Dalton Election Desk anchors.</p>
+        </div>
+        <figure class="desk-art">
+          <svg class="desk-mascot-scene" id="mascot-scene" viewBox="0 0 960 330" role="img" aria-labelledby="desk-scene-title desk-scene-description">
+            <title id="desk-scene-title">The Dalton Election Desk anchors</title>
+            <desc id="desk-scene-description">Mika, Rory, and Sora sit together behind a news desk.</desc>
+            <rect class="studio-background" x="0" y="0" width="960" height="330" rx="24"/>
+            <defs>
+              <pattern id="studio-star-pattern" width="33" height="25" patternUnits="userSpaceOnUse">
+                <path class="studio-star" d="M9 1.1 11.5 7.4 18 7.8 13 11.8 14.6 18.5 9 14.8 3.4 18.5 5 11.8 0 7.8 6.5 7.4Z"/>
+              </pattern>
+            </defs>
+            <g class="studio-flag" aria-hidden="true">
+              <path class="studio-stripe-red" d="M24 24H936V38H24ZM24 52H936V66H24ZM24 80H936V94H24ZM24 108H936V122H24ZM24 136H936V150H24ZM24 164H936V178H24ZM24 192H936V206H24Z"/>
+              <path class="studio-stripe-white" d="M24 38H936V52H24ZM24 66H936V80H24ZM24 94H936V108H24ZM24 122H936V136H24ZM24 150H936V164H24ZM24 178H936V192H24Z"/>
+              <rect class="studio-canton" x="24" y="24" width="340" height="98" rx="7"/>
+              <rect class="studio-star-field" x="30" y="29" width="328" height="88" fill="url(#studio-star-pattern)"/>
+            </g>
+            <path class="studio-channel-line" d="M390 48H914M390 57H820"/>
+            <circle class="studio-live-dot" cx="900" cy="52" r="5"/>
+            <path class="studio-light-sweep" d="M28 211Q480 132 932 211"/>
+            <g transform="translate(170 0)">
+              <g class="mascot-anchor mascot-anchor-blue">
+                <path class="mascot-hair-back" d="M-46 112Q-59 54-4 48Q47 49 47 108L34 154H-39Z"/>
+                <path class="mascot-shirt mascot-shirt-blue" d="M-77 244Q-74 191-37 179L0 194L37 179Q74 191 77 244Z"/>
+                <path class="mascot-neck" d="M-14 137H14V171H-14Z"/>
+                <ellipse class="mascot-face" cx="0" cy="105" rx="38" ry="45"/>
+                <path class="mascot-hair-front" d="M-39 99Q-39 52 0 52Q42 52 43 96L27 80Q13 83 2 71Q-12 89-36 83Z"/>
+                <path class="mascot-collar" d="M-19 174L0 197L19 174L9 168L0 180L-9 168Z"/>
+                <circle class="mascot-eye" cx="-14" cy="107" r="3.6"/>
+                <circle class="mascot-eye" cx="14" cy="107" r="3.6"/>
+                <path class="mascot-smile" d="M-8 126Q0 133 8 126"/>
+                <path class="mascot-headset" d="M-40 105V91Q-39 54 0 53Q39 54 40 91V104" fill="none"/>
+                <rect class="mascot-earpiece" x="-43" y="98" width="8" height="20" rx="4"/>
+                <path class="mascot-mic" d="M35 119Q36 139 16 140" fill="none"/>
+                <circle class="mascot-mic" cx="14" cy="140" r="3"/>
+              </g>
+            </g>
+            <g transform="translate(480 0)">
+              <g class="mascot-anchor mascot-anchor-red">
+                <path class="mascot-hair-back" d="M-47 106Q-53 57-7 49Q42 48 48 99L41 151H-46Z"/>
+                <path class="mascot-shirt mascot-shirt-red" d="M-77 244Q-74 191-37 179L0 194L37 179Q74 191 77 244Z"/>
+                <path class="mascot-neck" d="M-14 137H14V171H-14Z"/>
+                <ellipse class="mascot-face" cx="0" cy="105" rx="38" ry="45"/>
+                <path class="mascot-hair-front" d="M-39 95Q-42 53-4 51Q39 48 43 91L24 80Q7 84-3 68Q-15 89-37 84Z"/>
+                <path class="mascot-collar" d="M-19 174L0 197L19 174L9 168L0 180L-9 168Z"/>
+                <circle class="mascot-eye" cx="-14" cy="107" r="3.6"/>
+                <circle class="mascot-eye" cx="14" cy="107" r="3.6"/>
+                <path class="mascot-smile" d="M-8 126Q0 132 8 126"/>
+                <path class="mascot-headset" d="M-40 105V91Q-39 54 0 53Q39 54 40 91V104" fill="none"/>
+                <rect class="mascot-earpiece" x="35" y="98" width="8" height="20" rx="4"/>
+                <path class="mascot-mic" d="M-35 120Q-35 139-15 140" fill="none"/>
+                <circle class="mascot-mic" cx="-13" cy="140" r="3"/>
+              </g>
+            </g>
+            <g transform="translate(790 0)">
+              <g class="mascot-anchor mascot-anchor-beige">
+                <path class="mascot-hair-back" d="M-48 111Q-53 55-5 48Q44 49 48 106L43 156H-45Z"/>
+                <path class="mascot-shirt mascot-shirt-beige" d="M-77 244Q-74 191-37 179L0 194L37 179Q74 191 77 244Z"/>
+                <path class="mascot-neck" d="M-14 137H14V171H-14Z"/>
+                <ellipse class="mascot-face" cx="0" cy="105" rx="38" ry="45"/>
+                <path class="mascot-hair-front" d="M-39 98Q-40 54-4 51Q38 51 42 95L27 81Q10 87-1 70Q-15 87-37 84Z"/>
+                <path class="mascot-collar" d="M-19 174L0 197L19 174L9 168L0 180L-9 168Z"/>
+                <circle class="mascot-eye" cx="-14" cy="107" r="3.6"/>
+                <circle class="mascot-eye" cx="14" cy="107" r="3.6"/>
+                <path class="mascot-smile" d="M-8 126Q0 133 8 126"/>
+                <circle class="mascot-glasses" cx="-14" cy="107" r="9"/>
+                <circle class="mascot-glasses" cx="14" cy="107" r="9"/>
+                <path class="mascot-glasses" d="M-5 107H5"/>
+                <path class="mascot-headset" d="M-40 105V91Q-39 54 0 53Q39 54 40 91V104" fill="none"/>
+                <rect class="mascot-earpiece" x="-43" y="98" width="8" height="20" rx="4"/>
+                <path class="mascot-mic" d="M35 119Q36 139 16 140" fill="none"/>
+                <circle class="mascot-mic" cx="14" cy="140" r="3"/>
+              </g>
+            </g>
+            <path class="desk-foreground" d="M0 226Q480 213 960 226V330H0Z"/>
+            <path class="desk-highlight" d="M0 226Q480 213 960 226V243Q480 230 0 243Z"/>
+            <rect class="desk-nameplate" x="75" y="260" width="190" height="34" rx="10"/>
+            <rect class="desk-nameplate" x="385" y="260" width="190" height="34" rx="10"/>
+            <rect class="desk-nameplate" x="695" y="260" width="190" height="34" rx="10"/>
+            <text class="desk-anchor-name" x="170" y="282" text-anchor="middle">MIKA</text>
+            <text class="desk-anchor-name" x="480" y="282" text-anchor="middle">RORY</text>
+            <text class="desk-anchor-name" x="790" y="282" text-anchor="middle">SORA</text>
+            <text class="desk-branding" x="480" y="319" text-anchor="middle">DALTON ELECTION DESK</text>
+          </svg>
+          <div class="anchor-insight-bubble" id="anchor-insight-bubble" role="status" aria-live="polite" aria-atomic="true" hidden>
+            <strong class="anchor-insight-speaker" id="anchor-insight-speaker"></strong>
+            <p id="anchor-insight-message"></p>
+          </div>
+          <figcaption>Three anchors, one live view of the results.</figcaption>
+        </figure>
+        <div class="updated-card">
+          <span class="eyebrow">LAST SNAPSHOT</span>
+          <strong id="captured-at">Waiting for data</strong>
+          <span id="refresh-note">Refreshes every 30 seconds</span>
+        </div>
+      </section>
+
+      <section class="demo-controls" id="demo-controls" aria-label="Synthetic election-night demo" hidden>
+        <div class="demo-copy">
+          <p class="eyebrow">LOCAL SIMULATION · NO LIVE RESULTS</p>
+          <h2>Election-night trickle test</h2>
+          <p id="demo-stage-label" aria-live="polite">Starting demo…</p>
+          <p id="demo-call-rule" class="demo-call-rule"></p>
+        </div>
+        <div class="demo-county-progress">
+          <div class="demo-progress-heading">
+            <span id="demo-county-progress-title">County-race returns</span>
+            <strong id="demo-county-progress-label">0%</strong>
+          </div>
+          <div class="demo-progress-track" id="demo-county-progress" role="progressbar" aria-labelledby="demo-county-progress-title" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" aria-valuetext="0% of active county-race returns reported">
+            <span class="demo-progress-fill" id="demo-county-progress-fill"></span>
+          </div>
+          <p class="demo-progress-note" id="demo-county-progress-note">Waiting for the county geography and synthetic results.</p>
+        </div>
+        <div class="demo-actions">
+          <button class="demo-button" id="demo-results-view" type="button">Results map</button>
+          <button class="demo-button" id="demo-control-view" type="button">Already controlled</button>
+          <button class="demo-button demo-primary" id="demo-next" type="button">Next update</button>
+          <button class="demo-button" id="demo-auto" type="button" aria-pressed="false">Auto-play</button>
+          <button class="demo-button" id="demo-reset" type="button">Restart</button>
+          <a class="demo-button" href="./">Exit demo</a>
+        </div>
+        <p class="demo-map-key">Use the Race selector to switch among Governor and Senate state/county maps and the House congressional-district map. House districts begin reporting after their own poll close; select a district to inspect its candidates. Smaller counties tend to report earlier, while high-turnout counties arrive later; candidate vote totals only increase. Blue, red, or beige fill = current counted leader.</p>
+        <p class="demo-disclaimer">Candidate outcomes and vote counts are synthetic, not forecasts or election returns. County turnout weights and partisan patterns are based on 2024 presidential county results; unmatched map counties use a labeled state-average baseline. Demo calls use an illustrative model and are separate from live calls. Demo mode never modifies the collector snapshot.</p>
+      </section>
+
+      <section class="projection-announcements" id="projection-announcements" aria-label="Dalton race projections" aria-live="polite" hidden>
+        <div class="projection-heading">
+          <p class="eyebrow">LIVE PROJECTIONS</p>
+          <h2>Dalton says: race over</h2>
+        </div>
+        <p class="projection-summary" id="projection-summary"></p>
+        <div class="projection-list" id="projection-list"></div>
+        <p class="projection-disclaimer">Live call trigger: when a snapshot arrives, Dalton projects only if a documented JSON feed marks the contest final and non-stale, every named candidate has a valid total, there is one vote leader, and any source-declared winner agrees with that leader. This live rule has no statistical probability threshold; county subtotals and unverified state-page rows cannot trigger calls. Demo calls use a separate illustrative 99.5% model after the race's polls close. Projections are not official certifications.</p>
+      </section>
+
+      <section class="seat-tally-section" aria-labelledby="seat-tally-title">
+        <div class="seat-tally-heading">
+          <div>
+            <p class="eyebrow">2026 CONTROL TRACKER</p>
+            <h2 id="seat-tally-title">Seats by party</h2>
+          </div>
+          <p id="seat-tally-note">Uncalled 2026 races are Up for Grabs. Only Dalton-projected races change party totals.</p>
+        </div>
+        <div class="seat-tally-grid" id="seat-tally-grid">
+          <article class="seat-tally-card" aria-label="House seat tally">
+            <h3>House <span>435 seats</span></h3>
+            <div class="seat-tally-counts">
+              <div class="seat-count seat-count-dem"><span>Dem</span><strong id="seat-house-dem">—</strong></div>
+              <div class="seat-count seat-count-rep"><span>Rep</span><strong id="seat-house-rep">—</strong></div>
+              <div class="seat-count seat-count-ind"><span>Ind</span><strong id="seat-house-ind">—</strong></div>
+              <div class="seat-count seat-count-open"><span>Up for Grabs</span><strong id="seat-house-open">—</strong></div>
+            </div>
+            <div class="seat-tally-bar" aria-hidden="true">
+              <span id="seat-house-bar-dem"></span><span id="seat-house-bar-rep"></span><span id="seat-house-bar-ind"></span><span id="seat-house-bar-open"></span>
+            </div>
+          </article>
+          <article class="seat-tally-card" aria-label="Senate seat tally">
+            <h3>Senate <span>100 seats</span></h3>
+            <div class="seat-tally-counts">
+              <div class="seat-count seat-count-dem"><span>Dem</span><strong id="seat-senate-dem">—</strong></div>
+              <div class="seat-count seat-count-rep"><span>Rep</span><strong id="seat-senate-rep">—</strong></div>
+              <div class="seat-count seat-count-ind"><span>Ind</span><strong id="seat-senate-ind">—</strong></div>
+              <div class="seat-count seat-count-open"><span>Up for Grabs</span><strong id="seat-senate-open">—</strong></div>
+            </div>
+            <div class="seat-tally-bar" aria-hidden="true">
+              <span id="seat-senate-bar-dem"></span><span id="seat-senate-bar-rep"></span><span id="seat-senate-bar-ind"></span><span id="seat-senate-bar-open"></span>
+            </div>
+          </article>
+          <article class="seat-tally-card" aria-label="Governor seat tally">
+            <h3>Governors <span>50 seats</span></h3>
+            <div class="seat-tally-counts">
+              <div class="seat-count seat-count-dem"><span>Dem</span><strong id="seat-governor-dem">—</strong></div>
+              <div class="seat-count seat-count-rep"><span>Rep</span><strong id="seat-governor-rep">—</strong></div>
+              <div class="seat-count seat-count-ind"><span>Ind</span><strong id="seat-governor-ind">—</strong></div>
+              <div class="seat-count seat-count-open"><span>Up for Grabs</span><strong id="seat-governor-open">—</strong></div>
+            </div>
+            <div class="seat-tally-bar" aria-hidden="true">
+              <span id="seat-governor-bar-dem"></span><span id="seat-governor-bar-rep"></span><span id="seat-governor-bar-ind"></span><span id="seat-governor-bar-open"></span>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section class="stat-grid" aria-label="Election results summary">
+        <article class="stat-card"><span>States with results</span><strong id="states-count">—</strong><small>of 50 states + DC</small></article>
+        <article class="stat-card"><span>Candidate result rows</span><strong id="results-count">—</strong><small>across all available contests</small></article>
+        <article class="stat-card"><span>Sources reachable</span><strong id="sources-count">—</strong><small id="sources-caption">Waiting for source status</small></article>
+        <article class="stat-card"><span>Needs verification</span><strong id="verify-count">—</strong><small>heuristic state-page rows</small></article>
+      </section>
+
+      <section class="content-grid">
+        <article class="panel map-panel">
+          <div class="panel-heading">
+            <div>
+              <p class="eyebrow">RACE LEADERS</p>
+              <h2 id="map-title">State map</h2>
+            </div>
+            <div class="map-actions">
+              <label class="filter-label" for="map-mode">View
+                <select id="map-mode">
+                  <option value="results">2026 results</option>
+                  <option value="pickups">Holds &amp; pickups</option>
+                  <option value="swing">Overperformance vs. past election</option>
+                  <option value="history">Past results</option>
+                  <option value="control">Current control</option>
+                </select>
+              </label>
+              <label class="filter-label" for="race-view">Race
+                <select id="race-view">
+                  <option value="Governor">Governor races</option>
+                  <option value="Senate">Senate races</option>
+                  <option value="House">House races</option>
+                </select>
+              </label>
+              <label class="filter-label" for="state-filter">Show
+                <select id="state-filter">
+                  <option value="all">All states</option>
+                  <option value="priority">Priority races</option>
+                  <option value="reporting">States with results</option>
+                </select>
+              </label>
+              <button class="text-button" id="map-back" type="button" hidden>← All states</button>
+            </div>
+          </div>
+          <p class="map-hint" id="map-hint">Select a race type. States without reported results stay grey; click a state to see county-level results where available.</p>
+          <section class="swing-summary" id="swing-summary" aria-label="Overperformance compared with prior election" hidden>
+            <div class="swing-summary-heading">
+              <strong>Margin change vs. prior comparable election</strong>
+              <span>Two-party margin swing · percentage points</span>
+            </div>
+            <div class="swing-metrics">
+              <article class="swing-metric" id="swing-national">
+                <span>National</span><strong>Unavailable</strong><small>No comparable reported races yet</small>
+                <div class="swing-track" aria-hidden="true"><i></i></div>
+              </article>
+              <article class="swing-metric" id="swing-state">
+                <span>State</span><strong>Choose a state</strong><small>Click a state on the map</small>
+                <div class="swing-track" aria-hidden="true"><i></i></div>
+              </article>
+              <article class="swing-metric" id="swing-county">
+                <span>County</span><strong>Unavailable</strong><small>County historical returns are required</small>
+                <div class="swing-track" aria-hidden="true"><i></i></div>
+              </article>
+            </div>
+          </section>
+          <div class="state-map-wrap">
+            <svg class="election-map" id="election-map" viewBox="0 0 975 610" role="group" aria-label="United States election results map">
+              <text x="487.5" y="305" text-anchor="middle" class="map-loading">Loading state and county boundaries…</text>
+            </svg>
+            <div class="map-zoom" role="group" aria-label="Map zoom controls">
+              <button id="zoom-in" type="button" aria-label="Zoom in" title="Zoom in">+</button>
+              <button id="zoom-out" type="button" aria-label="Zoom out" title="Zoom out">−</button>
+              <button id="zoom-reset" type="button" aria-label="Reset map zoom" title="Reset map zoom">Reset</button>
+              <span id="zoom-level" aria-live="polite">100%</span>
+            </div>
+          </div>
+          <div class="map-legend" id="map-legend">
+            <span><i class="legend-swatch dem-leading"></i>Democrat leading</span>
+            <span><i class="legend-swatch rep-leading"></i>Republican leading</span>
+            <span><i class="legend-swatch other-party-leading"></i>Independent / third party leading</span>
+            <span><i class="legend-swatch tied-race"></i>Tied</span>
+            <span><i class="legend-swatch no-results"></i>No results / unknown party</span>
+            <span><i class="legend-swatch state-race-active"></i>Active race · source reachable</span>
+            <span><i class="legend-swatch state-no-active-race"></i>No active 2026 Governor race</span>
+            <span><i class="legend-swatch state-race-unavailable"></i>Active race · source unavailable</span>
+          </div>
+          <p class="map-footnote" id="priority-attribution">Shade intensity indicates the reported vote margin. A lead is not a projection or race call.</p>
+        </article>
+
+        <article class="panel detail-panel" aria-live="polite">
+          <div class="panel-heading">
+            <div>
+              <p class="eyebrow" id="detail-eyebrow">STATE DETAILS</p>
+              <h2 id="detail-title">Select a state</h2>
+            </div>
+            <button class="text-button" id="clear-state" type="button" hidden>Clear</button>
+          </div>
+          <div id="state-detail" class="detail-content">
+            <p class="empty-state">Choose an area on the map to see available results, official source links, and source health.</p>
+          </div>
+        </article>
+      </section>
+
+      <section class="panel results-panel">
+        <div class="panel-heading">
+          <div>
+            <p class="eyebrow">CANDIDATE TOTALS</p>
+            <h2 id="results-title">Reported results</h2>
+          </div>
+          <label class="filter-label" for="office-filter">Contest type
+            <select id="office-filter">
+              <option value="all">All available</option>
+              <option value="Senate">Senate</option>
+              <option value="Governor">Governor</option>
+              <option value="House">House</option>
+              <option value="state">State-page contests</option>
+            </select>
+          </label>
+        </div>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th scope="col">State</th><th scope="col">County / District</th><th scope="col">Contest</th><th scope="col">Candidate</th><th scope="col">Party</th><th scope="col" class="numeric">Votes / share</th><th scope="col">Reporting</th><th scope="col">Source</th></tr></thead>
+            <tbody id="results-body"><tr><td colspan="8" class="table-empty">Waiting for results data.</td></tr></tbody>
+          </table>
+        </div>
+        <p class="table-note" id="table-note">State-page rows are marked for verification. Totals from different contests are not combined.</p>
+      </section>
+
+      <section class="panel sources-panel">
+        <div class="panel-heading">
+          <div>
+            <p class="eyebrow">FEED MONITOR</p>
+            <h2>Source status</h2>
+          </div>
+          <span class="source-count" id="source-total">No source data</span>
+        </div>
+        <div class="source-list" id="source-list"><p class="empty-state">Source health will appear when a snapshot is available.</p></div>
+        <div id="notices" class="notices" hidden></div>
+      </section>
+    </main>
+
+    <div class="map-tooltip" id="map-tooltip" role="tooltip" hidden></div>
+
+    <footer>
+      <p>For informational use only. Results may be incomplete or unofficial; consult the linked election office before relying on any total. The collector does not call races.</p>
+      <span>Data refreshes automatically · <a href="https://openamerica.io/elections/api/" target="_blank" rel="noopener noreferrer">Open America API details</a></span>
+    </footer>
+  </body>
+</html>

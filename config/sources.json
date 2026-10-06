@@ -1,0 +1,112 @@
+{
+  "election": {
+    "year": 2026,
+    "date": "2026-11-03"
+  },
+  "open_america": {
+    "enabled": true,
+    "base_url": "https://openamerica.io/elections/results.json",
+    "offices": ["House", "Senate", "Governor"]
+  },
+  "race_priorities": {
+    "rating_source": "https://www.cookpolitical.com/ratings/house-race-ratings",
+    "rating_source_name": "Cook Political Report 2026 House Race Ratings",
+    "rating_as_of": "2026-09-25",
+    "statewide_offices": {
+      "Senate": ["AL", "AK", "AR", "CO", "DE", "GA", "ID", "IL", "IA", "KS", "KY", "LA", "ME", "MA", "MI", "MN", "MS", "MT", "NE", "NH", "NJ", "NM", "NC", "OK", "OR", "RI", "SC", "SD", "TN", "TX", "VA", "WV", "WY"],
+      "Governor": ["AL", "AK", "AZ", "AR", "CA", "CO", "CT", "FL", "GA", "HI", "ID", "IL", "IA", "KS", "ME", "MD", "MA", "MI", "MN", "NE", "NV", "NH", "NM", "NY", "OH", "OK", "OR", "PA", "RI", "SC", "SD", "TN", "TX", "VT", "WI", "WY"]
+    },
+    "house_races": {
+      "Toss Up": ["AZ-06", "CA-22", "CO-08", "FL-14", "FL-22", "FL-25", "IA-01", "IA-03", "MI-07", "MI-10", "NC-11", "NY-17", "OH-09", "OH-07", "PA-07", "PA-08", "PA-10", "TX-34", "TX-15", "VA-02", "WA-03", "WI-03"],
+      "Lean Democrat": ["AZ-01", "CA-13", "CA-48", "NE-02", "NJ-07", "NM-02", "NV-03", "NY-03", "NY-04", "OH-01", "TX-28"],
+      "Lean Republican": ["CO-05", "FL-13", "FL-27", "IA-02", "MI-04", "MT-01", "NC-01", "TX-35", "VA-01", "WI-01"]
+    }
+  },
+  "media": {
+    "enabled": true,
+    "votehub_api_url": "https://api.votehub.com/polls",
+    "refresh_seconds": 1800,
+    "news_refresh_seconds": 3600,
+    "poll_closing_times": {
+      "electionDate": "2026-11-03",
+      "timeZone": "America/New_York",
+      "sourceName": "270toWin 2026 Poll Closing Times",
+      "sourceUrl": "https://www.270towin.com/poll-closing-times/index.php",
+      "latestCloseEt": {
+        "AL": "20:00", "AK": "25:00", "AZ": "21:00", "AR": "20:30", "CA": "23:00",
+        "CO": "21:00", "CT": "20:00", "DE": "20:00", "DC": "20:00", "FL": "20:00",
+        "GA": "19:00", "HI": "24:00", "ID": "23:00", "IL": "20:00", "IN": "19:00",
+        "IA": "21:00", "KS": "21:00", "KY": "19:00", "LA": "21:00", "ME": "20:00",
+        "MD": "20:00", "MA": "20:00", "MI": "21:00", "MN": "21:00", "MS": "20:00",
+        "MO": "20:00", "MT": "22:00", "NE": "21:00", "NV": "23:00", "NH": "20:00",
+        "NJ": "20:00", "NM": "21:00", "NY": "21:00", "NC": "19:30", "ND": "21:00",
+        "OH": "19:30", "OK": "20:00", "OR": "23:00", "PA": "20:00", "RI": "20:00",
+        "SC": "19:00", "SD": "20:00", "TN": "21:00", "TX": "21:00", "UT": "22:00",
+        "VT": "20:00", "VA": "19:00", "WA": "23:00", "WV": "20:30", "WI": "21:00",
+        "WY": "21:00"
+      },
+      "districtOverrides": {
+        "FL": {"default": "19:00", "specific": {"01": "20:00", "02": "20:00"}},
+        "ID": {"default": "22:00", "specific": {"01": "23:00"}},
+        "IN": {"default": "18:00", "specific": {"01": "19:00", "08": "19:00"}},
+        "KS": {"default": "20:00", "specific": {"01": "21:00"}},
+        "KY": {"default": "18:00", "specific": {"01": "19:00", "02": "19:00"}},
+        "MI": {"default": "20:00", "specific": {"01": "21:00"}},
+        "TX": {"default": "20:00", "specific": {"16": "21:00", "23": "21:00"}}
+      }
+    }
+  },
+  "state_pages": [
+    {"state": "AL", "name": "Alabama", "priority": false, "results_page": "https://www.sos.alabama.gov/alabama-votes"},
+    {"state": "AR", "name": "Arkansas", "priority": false, "results_page": "https://www.sos.arkansas.gov/elections"},
+    {"state": "AZ", "name": "Arizona", "priority": false, "results_page": "https://azsos.gov/elections"},
+    {"state": "AK", "name": "Alaska", "priority": true, "results_page": "https://www.elections.alaska.gov/election-results/"},
+    {"state": "CA", "name": "California", "priority": false, "results_page": "https://www.sos.ca.gov/elections"},
+    {"state": "CO", "name": "Colorado", "priority": false, "results_page": "https://www.sos.state.co.us/pubs/elections/main.html"},
+    {"state": "CT", "name": "Connecticut", "priority": false, "results_page": "https://portal.ct.gov/sots/election-services"},
+    {"state": "DE", "name": "Delaware", "priority": false, "results_page": "https://elections.delaware.gov/"},
+    {"state": "DC", "name": "District of Columbia", "priority": false, "results_page": "https://www.dcboe.org/"},
+    {"state": "FL", "name": "Florida", "priority": false, "results_page": "https://dos.fl.gov/elections/"},
+    {"state": "GA", "name": "Georgia", "priority": false, "results_page": "https://sos.ga.gov/elections"},
+    {"state": "HI", "name": "Hawaii", "priority": false, "results_page": "https://elections.hawaii.gov/"},
+    {"state": "ID", "name": "Idaho", "priority": false, "results_page": "https://voteidaho.gov/"},
+    {"state": "IL", "name": "Illinois", "priority": false, "results_page": "https://www.elections.il.gov/"},
+    {"state": "IN", "name": "Indiana", "priority": false, "results_page": "https://www.in.gov/sos/elections/"},
+    {"state": "IA", "name": "Iowa", "priority": false, "results_page": "https://electionresults.iowa.gov/IA/"},
+    {"state": "KS", "name": "Kansas", "priority": false, "results_page": "https://www.sos.ks.gov/"},
+    {"state": "KY", "name": "Kentucky", "priority": false, "results_page": "https://elect.ky.gov/Pages/default.aspx"},
+    {"state": "LA", "name": "Louisiana", "priority": false, "results_page": "https://www.sos.la.gov/elections-voting/election-results-statistics"},
+    {"state": "ME", "name": "Maine", "priority": true, "results_page": "https://www.maine.gov/sos/cec/elec/results/index.html"},
+    {"state": "MD", "name": "Maryland", "priority": false, "results_page": "https://www.elections.maryland.gov/"},
+    {"state": "MA", "name": "Massachusetts", "priority": false, "results_page": "https://www.sec.state.ma.us/ele/eleidx.htm"},
+    {"state": "MI", "name": "Michigan", "priority": false, "results_page": "https://www.michigan.gov/sos/elections"},
+    {"state": "MN", "name": "Minnesota", "priority": false, "results_page": "https://www.sos.mn.gov/elections-voting/"},
+    {"state": "MS", "name": "Mississippi", "priority": false, "results_page": "https://www.sos.ms.gov/elections-voting"},
+    {"state": "MO", "name": "Missouri", "priority": false, "results_page": "https://www.sos.mo.gov/elections/"},
+    {"state": "MT", "name": "Montana", "priority": false, "results_page": "https://sosmt.gov/elections/"},
+    {"state": "NE", "name": "Nebraska", "priority": false, "results_page": "https://sos.nebraska.gov/elections"},
+    {"state": "NV", "name": "Nevada", "priority": false, "results_page": "https://www.nvsos.gov/sos/elections"},
+    {"state": "NH", "name": "New Hampshire", "priority": true, "results_page": "https://www.sos.nh.gov/2026-election-results"},
+    {"state": "NJ", "name": "New Jersey", "priority": false, "results_page": "https://www.nj.gov/state/elections/"},
+    {"state": "NM", "name": "New Mexico", "priority": false, "results_page": "https://www.sos.nm.gov/voting-and-elections/"},
+    {"state": "NY", "name": "New York", "priority": false, "results_page": "https://elections.ny.gov/"},
+    {"state": "NC", "name": "North Carolina", "priority": false, "results_page": "https://www.ncsbe.gov/results-data"},
+    {"state": "ND", "name": "North Dakota", "priority": false, "results_page": "https://www.sos.nd.gov/elections"},
+    {"state": "OH", "name": "Ohio", "priority": true, "results_page": "https://liveresults.ohiosos.gov/"},
+    {"state": "OK", "name": "Oklahoma", "priority": false, "results_page": "https://oklahoma.gov/elections.html"},
+    {"state": "OR", "name": "Oregon", "priority": false, "results_page": "https://sos.oregon.gov/voting-elections/Pages/default.aspx"},
+    {"state": "PA", "name": "Pennsylvania", "priority": false, "results_page": "https://www.pa.gov/agencies/vote/elections"},
+    {"state": "RI", "name": "Rhode Island", "priority": false, "results_page": "https://elections.ri.gov/"},
+    {"state": "SC", "name": "South Carolina", "priority": false, "results_page": "https://scvotes.gov/"},
+    {"state": "SD", "name": "South Dakota", "priority": false, "results_page": "https://sdsos.gov/elections-voting/default.aspx"},
+    {"state": "TN", "name": "Tennessee", "priority": false, "results_page": "https://sos.tn.gov/elections"},
+    {"state": "TX", "name": "Texas", "priority": false, "results_page": "https://www.sos.state.tx.us/elections/index.shtml"},
+    {"state": "UT", "name": "Utah", "priority": false, "results_page": "https://vote.utah.gov/"},
+    {"state": "VT", "name": "Vermont", "priority": false, "results_page": "https://sos.vermont.gov/elections"},
+    {"state": "VA", "name": "Virginia", "priority": false, "results_page": "https://www.elections.virginia.gov/"},
+    {"state": "WA", "name": "Washington", "priority": false, "results_page": "https://www.sos.wa.gov/elections"},
+    {"state": "WV", "name": "West Virginia", "priority": false, "results_page": "https://sos.wv.gov/elections/Pages/default.aspx"},
+    {"state": "WI", "name": "Wisconsin", "priority": false, "results_page": "https://myvote.wi.gov/en-us/Election-Results", "source_note": "Wisconsin has no statewide election-night results site; unofficial results are published by county clerks."},
+    {"state": "WY", "name": "Wyoming", "priority": false, "results_page": "https://sos.wyo.gov/Elections/Default.aspx"}
+  ]
+}

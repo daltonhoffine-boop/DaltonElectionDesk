@@ -1,0 +1,8215 @@
+{
+  "schemaVersion": 1,
+  "electionYear": 2026,
+  "asOf": "2026-10-04",
+  "house": {
+    "TX-18": [
+      {
+        "candidate": "Christian Menefee",
+        "party": "Democratic",
+        "partyCode": "D"
+      },
+      {
+        "candidate": "Ronald Whitfield",
+        "party": "Republican",
+        "partyCode": "R"
+      }
+    ],
+    "GA-14": [
+      {
+        "candidate": "Clay Fuller",
+        "party": "Republican",
+        "partyCode": "R"
+      },
+      {
+        "candidate": "Shawn Harris",
+        "party": "Democratic",
+        "partyCode": "D"
+      }
+    ],
+    "NJ-11": [
+      {
+        "candidate": "Alan Bond",
+        "party": "Independent",
+        "partyCode": "O"
+      },
+      {
+        "candidate": "Joe Hathaway",
+        "party": "Republican",
+        "partyCode": "R"
+      },
+      {
+        "candidate": "Analilia Mejia",
+        "party": "Democratic",
+        "partyCode": "D"
+      }
+    ],
+    "CA-01": [
+      {
+        "candidate": "James Gallagher",
+        "party": "Republican",
+        "partyCode": "R"
+      },
+      {
+        "candidate": "Mike McGuire",
+        "party": "Democratic",
+        "partyCode": "D"
+      }
+    ],
+    "CA-14": [
+      {
+        "candidate": "Melissa Hernandez",
+        "party": "Democratic",
+        "partyCode": "D"
+      },
+      {
+        "candidate": "Aisha Wahab",
+        "party": "Democratic",
+        "partyCode": "D"
+      }
+    ],
+    "GA-13": [
+      {
+        "candidate": "Jonathan Chavez",
+        "party": "Republican",
+        "partyCode": "R"
+      },
+      {
+        "candidate": "Jasmine Clark",
+        "party": "Democratic",
+        "partyCode": "D"
+      }
+    ],
+    "AL-01": [
+      {
+        "candidate": "Jerry Carl",
+        "party": "Republican",
+        "partyCode": "R"
+      },
+      {
+        "candidate": "Clyde Jones Jr.",
+        "party": "Democratic",
+        "partyCode": "D"
+      }
+    ],
+    "AL-02": [
+      {
+        "candidate": "Shomari Figures",
+        "party": "Democratic",
+        "partyCode": "D"
+      },
+      {
+        "candidate": "Rhett Marques",
+        "party": "Republican",
+        "partyCode": "R"
+      }
+    ],
+    "AL-03": [
+      {
+        "candidate": "Lee McInnis",
+        "party": "Democratic",
+        "partyCode": "D"
+      },
+      {
+        "candidate": "Mike Rogers",
+        "party": "Republican",
+        "partyCode": "R"
+      }
+    ],
+    "AL-04": [
+      {
+        "candidate": "Robert Aderholt",
+        "party": "Republican",
+        "partyCode": "R"
+      },
+      {
+        "candidate": "Amanda Pusczek",
+        "party": "Democratic",
+        "partyCode": "D"
+      }
+    ],
+    "AL-05": [
+      {
+        "candidate": "Andrew Sneed",
+        "party": "Democratic",
+        "partyCode": "D"
+      },
+      {
+        "candidate": "Dale Strong",
+        "party": "Republican",
+        "partyCode": "R"
+      }
+    ],
+    "AL-06": [
+      {
+        "candidate": "Maurice Mercer",
+        "party": "Democratic",
+        "partyCode": "D"
+      },
+      {
+        "candidate": "Gary Palmer",
+        "party": "Republican",
+        "partyCode": "R"
+      }
+    ],
+    "AL-07": [
+      {
+        "candidate": "Ammie Akin",
+        "party": "Republican",
+        "partyCode": "R"
+      },
+      {
+        "candidate": "Terri Sewell",
+        "party": "Democratic",
+        "partyCode": "D"
+      }
+    ],
+    "AK-AL": [
+      {
+        "candidate": "Nick Begich III",
+        "party": "Republican",
+        "partyCode": "R"
+      },
+      {
+        "candidate": "Eric Hafner",
+        "party": "Democratic",
+        "partyCode": "D"
+      },
+      {
+        "candidate": "Bill Hill",
+        "party": "Independent",
+        "partyCode": "O"
+      },
+      {
+        "candidate": "Jim McDermott",
+        "party": "Libertarian",
+        "partyCode": "O"
+      }
+    ],
+    "AZ-01": [
+      {
+        "candidate": "Monica Alponte",
+        "party": "Libertarian",
+        "partyCode": "O"
+      },
+      {
+        "candidate": "Jay Feely",
+        "party": "Republican",
+        "partyCode": "R"
+      },
+      {
+        "candidate": "Amish Shah",
+        "party": "Democratic",
+        "partyCode": "D"
+      }
+    ],
+    "AZ-02": [
+      {
+        "candidate": "Eli Crane",
+        "party": "Republican",
+        "partyCode": "R"
+      },
+      {
+        "candidate": "Curtis Goodwin",
+        "party": "Libertarian",
+        "partyCode": "O"
+      },
+      {
+        "candidate": "Jonathan Nez",
+        "party": "Democratic",
+        "partyCode": "D"
+      }
+    ],
+    "AZ-03": [
+      {
+        "candidate": "Yassamin Ansari",
+        "party": "Democratic",
+        "partyCode": "D"
+      },
+      {
+        "candidate": "Alan Aversa",
+        "party": "No Labels",
+        "partyCode": "O"
+      },
+      {
+        "candidate": "David Redkey",
+        "party": "Green",
+        "partyCode": "O"
+      }
+    ],
+    "AZ-04": [
+      {
+        "candidate": "Tisha Benoit",
+        "party": "No Labels",
+        "partyCode": "O"
+      },
+      {
+        "candidate": "Zuhdi Jasser",
+        "party": "Republican",
+        "partyCode": "R"
+      },
+      {
+        "candidate": "Greg Stanton",
+        "party": "Democratic",
+        "partyCode": "D"
+      }
+    ],
+    "AZ-05": [
+      {
+        "candidate": "Mark Lamb",
+        "party": "Republican",
+        "partyCode": "R"
+      },
+      {
+        "candidate": "Elizabeth Lee",
+        "party": "Democratic",
+        "partyCode": "D"
+      }
+    ],
+    "AZ-06": [
+      {
+        "candidate": "Juan Ciscomani",
+        "party": "Republican",
+        "partyCode": "R"
+      },
+      {
+        "candidate": "JoAnna Mendoza",
+        "party": "Democratic",
+        "partyCode": "D"
+      },
+      {
+        "candidate": "Jereme Peters",
+        "party": "Libertarian",
+        "partyCode": "O"
+      },
+      {
+        "candidate": "Gary Swing",
+        "party": "Green",
+        "partyCode": "O"
+      }
+    ],
+    "AZ-07": [
+      {
+        "candidate": "Daniel Butierez",
+        "party": "Republican",
+        "partyCode": "R"
+      },
+      {
+        "candidate": "Adelita Grijalva",
+        "party": "Democratic",
+        "partyCode": "D"
+      }
+    ],
+    "AZ-08": [
+      {
+        "candidate": "Bernadette Greene-Placentia",
+        "party": "Democratic",
+        "partyCode": "D"
+      },
+      {
+        "candidate": "Abraham Hamadeh",
+        "party": "Republican",
+        "partyCode": "R"
+      }
+    ],
+    "AZ-09": [
+      {
+        "candidate": "Paul Gosar",
+        "party": "Republican",
+        "partyCode": "R"
+      },
+      {
+        "candidate": "Dani Sterbinsky",
+        "party": "Democratic",
+        "partyCode": "D"
+      }
+    ],
+    "AR-01": [
+      {
+        "candidate": "Rick Crawford",
+        "party": "Republican",
+        "partyCode": "R"
+      },
+      {
+        "candidate": "Terri Green",
+        "party": "Democratic",
+        "partyCode": "D"
+      },
+      {
+        "candidate": "Steve Parsons",
+        "party": "Libertarian",
+        "partyCode": "O"
+      }
+    ],
+    "AR-02": [
+      {
+        "candidate": "French Hill",
+        "party": "Republican",
+        "partyCode": "R"
+      },
+      {
+        "candidate": "Chris Jones",
+        "party": "Democratic",
+        "partyCode": "D"
+      }
+    ],
+    "AR-03": [
+      {
+        "candidate": "Robb Ryerse",
+        "party": "Democratic",
+        "partyCode": "D"
+      },
+      {
+        "candidate": "Bobby Wilson",
+        "party": "Libertarian",
+        "partyCode": "O"
+      },
+      {
+        "candidate": "Steve Womack",
+        "party": "Republican",
+        "partyCode": "R"
+      }
+    ],
+    "AR-04": [
+      {
+        "candidate": "James Russell",
+        "party": "Democratic",
+        "partyCode": "D"
+      },
+      {
+        "candidate": "Bruce Westerman",
+        "party": "Republican",
+        "partyCode": "R"
+      }
+    ],
+    "CA-02": [
+      {
+        "candidate": "Jared Huffman",
+        "party": "Democratic",
+        "partyCode": "D"
+      },
+      {
+        "candidate": "Robin Littau",
+        "party": "Republican",
+        "partyCode": "R"
+      }
+    ],
+    "CA-03": [
+      {
+        "candidate": "Ami Bera",
+        "party": "Democratic",
+        "partyCode": "D"
+      },
+      {
+        "candidate": "Robb Tucker",
+        "party": "Republican",
+        "partyCode": "R"
+      }
+    ],
+    "CA-04": [
+      {
+        "candidate": "Eric Jones",
+        "party": "Democratic",
+        "partyCode": "D"
+      },
+      {
+        "candidate": "Mike Thompson",
+        "party": "Democratic",
+        "partyCode": "D"
+      }
+    ],
+    "CA-05": [
+      {
+        "candidate": "Michael Masuda",
+        "party": "Democratic",
+        "partyCode": "D"
+      },
+      {
+        "candidate": "Tom McClintock",
+        "party": "Republican",
+        "partyCode": "R"
+      }
+    ],
+    "CA-06": [
+      {
+        "candidate": "Kevin Kiley",
+        "party": "Independent",
+        "partyCode": "O"
+      },
+      {
+        "candidate": "Richard Pan",
+        "party": "Democratic",
+        "partyCode": "D"
+      }
+    ],
+    "CA-07": [
+      {
+        "candidate": "Doris Matsui",
+        "party": "Democratic",
+        "partyCode": "D"
+      },
+      {
+        "candidate": "Mai Vang",
+        "party": "Democratic",
+        "partyCode": "D"
+      }
+    ],
+    "CA-08": [
+      {
+        "candidate": "John Garamendi",
+        "party": "Democratic",
+        "partyCode": "D"
+      },
+      {
+        "candidate": "Rudy Recile",
+        "party": "Republican",
+        "partyCode": "R"
+      }
+    ],
+    "CA-09": [
+      {
+        "candidate": "Josh Harder",
+        "party": "Democratic",
+        "partyCode": "D"
+      },
+      {
+        "candidate": "John McBride",
+        "party": "Republican",
+        "partyCode": "R"
+      }
+    ],
+    "CA-10": [
+      {
+        "candidate": "Mark DeSaulnier",
+        "party": "Democratic",
+        "partyCode": "D"
+      },
+      {
+        "candidate": "Jeff Frese",
+        "party": "Republican",
+        "partyCode": "R"
+      }
+    ],
+    "CA-11": [
+      {
+        "candidate": "Connie Chan",
+        "party": "Democratic",
+        "partyCode": "D"
+      },
+      {
+        "candidate": "Scott Wiener",
+        "party": "Democratic",
+        "partyCode": "D"
+      }
+    ],
+    "CA-12": [
+      {
+        "candidate": "Jamie Joyce",
+        "party": "Democratic",
+        "partyCode": "D"
+      },
+      {
+        "candidate": "Lateefah Simon",
+        "party": "Democratic",
+        "partyCode": "D"
+      }
+    ],
+    "CA-13": [
+      {
+        "candidate": "Adam Gray",
+        "party": "Democratic",
+        "partyCode": "D"
+      },
+      {
+        "candidate": "Kevin Lincoln",
+        "party": "Republican",
+        "partyCode": "R"
+      }
+    ],
+    "CA-15": [
+      {
+        "candidate": "Charles Hoelter",
+        "party": "Republican",
+        "partyCode": "R"
+      },
+      {
+        "candidate": "Kevin Mullin",
+        "party": "Democratic",
+        "partyCode": "D"
+      }
+    ],
+    "CA-16": [
+      {
+        "candidate": "Sam Liccardo",
+        "party": "Democratic",
+        "partyCode": "D"
+      },
+      {
+        "candidate": "Peter Soulé",
+        "party": "Republican",
+        "partyCode": "R"
+      }
+    ],
+    "CA-17": [
+      {
+        "candidate": "Ro Khanna",
+        "party": "Democratic",
+        "partyCode": "D"
+      },
+      {
+        "candidate": "Ritesh Tandon",
+        "party": "Republican",
+        "partyCode": "R"
+      }
+    ],
+    "CA-18": [
+      {
+        "candidate": "Shane Lewis",
+        "party": "Republican",
+        "partyCode": "R"
+      },
+      {
+        "candidate": "Zoe Lofgren",
+        "party": "Democratic",
+        "partyCode": "D"
+      }
+    ],
+    "CA-19": [
+      {
+        "candidate": "Jimmy Panetta",
+        "party": "Democratic",
+        "partyCode": "D"
+      },
+      {
+        "candidate": "Peter Coe Verbica",
+        "party": "Republican",
+        "partyCode": "R"
+      }
+    ],
+    "CA-20": [
+      {
+        "candidate": "Vince Fong",
+        "party": "Republican",
+        "partyCode": "R"
+      },
+      {
+        "candidate": "Sandra Van Scotter",
+        "party": "Democratic",
+        "partyCode": "D"
+      }
+    ],
+    "CA-21": [
+      {
+        "candidate": "Jim Costa",
+        "party": "Democratic",
+        "partyCode": "D"
+      },
+      {
+        "candidate": "Kyle Kirkland",
+        "party": "Republican",
+        "partyCode": "R"
+      }
+    ],
+    "CA-22": [
+      {
+        "candidate": "David Valadao",
+        "party": "Republican",
+        "partyCode": "R"
+      },
+      {
+        "candidate": "Randy Villegas",
+        "party": "Democratic",
+        "partyCode": "D"
+      }
+    ],
+    "CA-23": [
+      {
+        "candidate": "Tessa Lynn Hodge",
+        "party": "Democratic",
+        "partyCode": "D"
+      },
+      {
+        "candidate": "Jay Obernolte",
+        "party": "Republican",
+        "partyCode": "R"
+      }
+    ],
+    "CA-24": [
+      {
+        "candidate": "Salud Carbajal",
+        "party": "Democratic",
+        "partyCode": "D"
+      },
+      {
+        "candidate": "Bob Smith",
+        "party": "Republican",
+        "partyCode": "R"
+      }
+    ],
+    "CA-25": [
+      {
+        "candidate": "Joe Males",
+        "party": "Republican",
+        "partyCode": "R"
+      },
+      {
+        "candidate": "Raul Ruiz",
+        "party": "Democratic",
+        "partyCode": "D"
+      }
+    ],
+    "CA-26": [
+      {
+        "candidate": "Sam Gallucci",
+        "party": "Republican",
+        "partyCode": "R"
+      },
+      {
+        "candidate": "Jacqui Irwin",
+        "party": "Democratic",
+        "partyCode": "D"
+      }
+    ],
+    "CA-27": [
+      {
+        "candidate": "Jason Gibbs",
+        "party": "Republican",
+        "partyCode": "R"
+      },
+      {
+        "candidate": "George Whitesides",
+        "party": "Democratic",
+        "partyCode": "D"
+      }
+    ],
+    "CA-28": [
+      {
+        "candidate": "Judy Chu",
+        "party": "Democratic",
+        "partyCode": "D"
+      },
+      {
+        "candidate": "April Verlato",
+        "party": "Republican",
+        "partyCode": "R"
+      }
+    ],
+    "CA-29": [
+      {
+        "candidate": "Angelica Dueñas",
+        "party": "Democratic",
+        "partyCode": "D"
+      },
+      {
+        "candidate": "Luz Rivas",
+        "party": "Democratic",
+        "partyCode": "D"
+      }
+    ],
+    "CA-30": [
+      {
+        "candidate": "Laura Friedman",
+        "party": "Democratic",
+        "partyCode": "D"
+      },
+      {
+        "candidate": "Scott Meyers",
+        "party": "Republican",
+        "partyCode": "R"
+      }
+    ],
+    "CA-31": [
+      {
+        "candidate": "Eric Ching",
+        "party": "Republican",
+        "partyCode": "R"
+      },
+      {
+        "candidate": "Gil Cisneros",
+        "party": "Democratic",
+        "partyCode": "D"
+      }
+    ],
+    "CA-32": [
+      {
+        "candidate": "Brad Sherman",
+        "party": "Democratic",
+        "partyCode": "D"
+      },
+      {
+        "candidate": "Larry Thompson",
+        "party": "Republican",
+        "partyCode": "R"
+      }
+    ],
+    "CA-33": [
+      {
+        "candidate": "Pete Aguilar",
+        "party": "Democratic",
+        "partyCode": "D"
+      },
+      {
+        "candidate": "Stephanie Vargas",
+        "party": "Republican",
+        "partyCode": "R"
+      }
+    ],
+    "CA-34": [
+      {
+        "candidate": "Jimmy Gomez",
+        "party": "Democratic",
+        "partyCode": "D"
+      },
+      {
+        "candidate": "Angela Gonzales-Torres",
+        "party": "Democratic",
+        "partyCode": "D"
+      }
+    ],
+    "CA-35": [
+      {
+        "candidate": "Mike Cargile",
+        "party": "Republican",
+        "partyCode": "R"
+      },
+      {
+        "candidate": "Norma Torres",
+        "party": "Democratic",
+        "partyCode": "D"
+      }
+    ],
+    "CA-36": [
+      {
+        "candidate": "Houston Brignano",
+        "party": "Republican",
+        "partyCode": "R"
+      },
+      {
+        "candidate": "Ted Lieu",
+        "party": "Democratic",
+        "partyCode": "D"
+      }
+    ],
+    "CA-37": [
+      {
+        "candidate": "Sydney Kamlager-Dove",
+        "party": "Democratic",
+        "partyCode": "D"
+      },
+      {
+        "candidate": "Samantha Mota",
+        "party": "Democratic",
+        "partyCode": "D"
+      }
+    ],
+    "CA-38": [
+      {
+        "candidate": "Pedro Casas",
+        "party": "Republican",
+        "partyCode": "R"
+      },
+      {
+        "candidate": "Hilda Solis",
+        "party": "Democratic",
+        "partyCode": "D"
+      }
+    ],
+    "CA-39": [
+      {
+        "candidate": "Steve Manos",
+        "party": "Republican",
+        "partyCode": "R"
+      },
+      {
+        "candidate": "Mark Takano",
+        "party": "Democratic",
+        "partyCode": "D"
+      }
+    ],
+    "CA-40": [
+      {
+        "candidate": "Ken Calvert",
+        "party": "Republican",
+        "partyCode": "R"
+      },
+      {
+        "candidate": "Young Kim",
+        "party": "Republican",
+        "partyCode": "R"
+      }
+    ],
+    "CA-41": [
+      {
+        "candidate": "Mitch Clemmons",
+        "party": "Republican",
+        "partyCode": "R"
+      },
+      {
+        "candidate": "Linda Sánchez",
+        "party": "Democratic",
+        "partyCode": "D"
+      }
+    ],
+    "CA-42": [
+      {
+        "candidate": "Brian Burley",
+        "party": "Republican",
+        "partyCode": "R"
+      },
+      {
+        "candidate": "Robert Garcia",
+        "party": "Democratic",
+        "partyCode": "D"
+      }
+    ],
+    "CA-43": [
+      {
+        "candidate": "Cristian Morales",
+        "party": "Republican",
+        "partyCode": "R"
+      },
+      {
+        "candidate": "Maxine Waters",
+        "party": "Democratic",
+        "partyCode": "D"
+      }
+    ],
+    "CA-44": [
+      {
+        "candidate": "Genevieve Angel",
+        "party": "Republican",
+        "partyCode": "R"
+      },
+      {
+        "candidate": "Nanette Barragán",
+        "party": "Democratic",
+        "partyCode": "D"
+      }
+    ],
+    "CA-45": [
+      {
+        "candidate": "Derek Tran",
+        "party": "Democratic",
+        "partyCode": "D"
+      },
+      {
+        "candidate": "Chuong Vo",
+        "party": "Republican",
+        "partyCode": "R"
+      }
+    ],
+    "CA-46": [
+      {
+        "candidate": "Lou Correa",
+        "party": "Democratic",
+        "partyCode": "D"
+      },
+      {
+        "candidate": "David Pan",
+        "party": "Republican",
+        "partyCode": "R"
+      }
+    ],
+    "CA-47": [
+      {
+        "candidate": "Jenny Le Roux",
+        "party": "Republican",
+        "partyCode": "R"
+      },
+      {
+        "candidate": "Dave Min",
+        "party": "Democratic",
+        "partyCode": "D"
+      }
+    ],
+    "CA-48": [
+      {
+        "candidate": "Jim Desmond",
+        "party": "Republican",
+        "partyCode": "R"
+      },
+      {
+        "candidate": "Marni von Wilpert",
+        "party": "Democratic",
+        "partyCode": "D"
+      }
+    ],
+    "CA-49": [
+      {
+        "candidate": "Armen Kurdian",
+        "party": "Republican",
+        "partyCode": "R"
+      },
+      {
+        "candidate": "Mike Levin",
+        "party": "Democratic",
+        "partyCode": "D"
+      }
+    ],
+    "CA-50": [
+      {
+        "candidate": "Steve Cohen",
+        "party": "Republican",
+        "partyCode": "R"
+      },
+      {
+        "candidate": "Scott Peters",
+        "party": "Democratic",
+        "partyCode": "D"
+      }
+    ],
+    "CA-51": [
+      {
+        "candidate": "Ricardo Cabrera",
+        "party": "Republican",
+        "partyCode": "R"
+      },
+      {
+        "candidate": "Sara Jacobs",
+        "party": "Democratic",
+        "partyCode": "D"
+      }
+    ],
+    "CA-52": [
+      {
+        "candidate": "Jeff Belle",
+        "party": "Republican",
+        "partyCode": "R"
+      },
+      {
+        "candidate": "Juan Vargas",
+        "party": "Democratic",
+        "partyCode": "D"
+      }
+    ],
+    "CO-01": [
+      {
+        "candidate": "Shimon Blau",
+        "party": "Independent",
+        "partyCode": "O"
+      },
+      {
+        "candidate": "Shimon Blau",
+        "party": "Independent",
+        "partyCode": "O"
+      },
+      {
+        "candidate": "Chad Humphrey",
+        "party": "Libertarian",
+        "partyCode": "O"
+      },
+      {
+        "candidate": "Melat Kiros",
+        "party": "Democratic",
+        "partyCode": "D"
+      },
+      {
+        "candidate": "Critter Milton",
+        "party": "Unity",
+        "partyCode": "O"
+      },
+      {
+        "candidate": "Christy Peterson",
+        "party": "Republican",
+        "partyCode": "R"
+      }
+    ],
+    "CO-02": [
+      {
+        "candidate": "Kelley Dennison",
+        "party": "Republican",
+        "partyCode": "R"
+      },
+      {
+        "candidate": "Gaylon Kent",
+        "party": "Libertarian",
+        "partyCode": "O"
+      },
+      {
+        "candidate": "Joe Neguse",
+        "party": "Democratic",
+        "partyCode": "D"
+      }
+    ],
+    "CO-03": [
+      {
+        "candidate": "Clifton Brown",
+        "party": "Independent",
+        "partyCode": "O"
+      },
+      {
+        "candidate": "Jeff Hurd",
+        "party": "Republican",
+        "partyCode": "R"
+      },
+      {
+        "candidate": "Cory Robertson",
+        "party": "Libertarian",
+        "partyCode": "O"
+      },
+      {
+        "candidate": "Dwayne Romero",
+        "party": "Democratic",
+        "partyCode": "D"
+      }
+    ],
+    "CO-04": [
+      {
+        "candidate": "Lauren Boebert",
+        "party": "Republican",
+        "partyCode": "R"
+      },
+      {
+        "candidate": "Eileen Laubacher",
+        "party": "Democratic",
+        "partyCode": "D"
+      },
+      {
+        "candidate": "Douglas Mangeris",
+        "party": "Libertarian",
+        "partyCode": "O"
+      }
+    ],
+    "CO-05": [
+      {
+        "candidate": "Jeff Crank",
+        "party": "Republican",
+        "partyCode": "R"
+      },
+      {
+        "candidate": "Mark Elworth",
+        "party": "Libertarian",
+        "partyCode": "O"
+      },
+      {
+        "candidate": "Jessica Killin",
+        "party": "Democratic",
+        "partyCode": "D"
+      },
+      {
+        "candidate": "Christopher Mitchell",
+        "party": "Constitution",
+        "partyCode": "O"
+      }
+    ],
+    "CO-06": [
+      {
+        "candidate": "Jason Clark",
+        "party": "Republican",
+        "partyCode": "R"
+      },
+      {
+        "candidate": "Jason Crow",
+        "party": "Democratic",
+        "partyCode": "D"
+      },
+      {
+        "candidate": "Patty McMahon",
+        "party": "Libertarian",
+        "partyCode": "O"
+      },
+      {
+        "candidate": "Meredith Ryan",
+        "party": "Unity",
+        "partyCode": "O"
+      },
+      {
+        "candidate": "Samir Ezzeldin Witta",
+        "party": "Independent",
+        "partyCode": "O"
+      }
+    ],
+    "CO-07": [
+      {
+        "candidate": "Tim Bennett",
+        "party": "Republican",
+        "partyCode": "R"
+      },
+      {
+        "candidate": "Lawrence Clark",
+        "party": "Constitution",
+        "partyCode": "O"
+      },
+      {
+        "candidate": "Susan Hall",
+        "party": "Unity",
+        "partyCode": "O"
+      },
+      {
+        "candidate": "Joe Krzeczkowski",
+        "party": "Independent",
+        "partyCode": "O"
+      },
+      {
+        "candidate": "Brittany Pettersen",
+        "party": "Democratic",
+        "partyCode": "D"
+      },
+      {
+        "candidate": "Dan Sallis",
+        "party": "Libertarian",
+        "partyCode": "O"
+      }
+    ],
+    "CO-08": [
+      {
+        "candidate": "Gabe Evans",
+        "party": "Republican",
+        "partyCode": "R"
+      },
+      {
+        "candidate": "Manny Rutinel",
+        "party": "Democratic",
+        "partyCode": "D"
+      },
+      {
+        "candidate": "Dan Wood",
+        "party": "Libertarian",
+        "partyCode": "O"
+      }
+    ],
+    "CT-01": [
+      {
+        "candidate": "Luke Bronin",
+        "party": "Democratic",
+        "partyCode": "D"
+      },
+      {
+        "candidate": "Amy Chai",
+        "party": "Republican",
+        "partyCode": "R"
+      },
+      {
+        "candidate": "Mary Sanders",
+        "party": "Green",
+        "partyCode": "O"
+      }
+    ],
+    "CT-02": [
+      {
+        "candidate": "George Austin",
+        "party": "Republican",
+        "partyCode": "R"
+      },
+      {
+        "candidate": "Joe Courtney",
+        "party": "Democratic",
+        "partyCode": "D"
+      }
+    ],
+    "CT-03": [
+      {
+        "candidate": "Rosa DeLauro",
+        "party": "Democratic",
+        "partyCode": "D"
+      },
+      {
+        "candidate": "Thomas Egan",
+        "party": "Independent",
+        "partyCode": "O"
+      },
+      {
+        "candidate": "Chris Lancia",
+        "party": "Republican",
+        "partyCode": "R"
+      }
+    ],
+    "CT-04": [
+      {
+        "candidate": "Michael Goldstein",
+        "party": "Republican",
+        "partyCode": "R"
+      },
+      {
+        "candidate": "Jim Himes",
+        "party": "Democratic",
+        "partyCode": "D"
+      },
+      {
+        "candidate": "Benjamin Wesley",
+        "party": "Independent",
+        "partyCode": "O"
+      }
+    ],
+    "CT-05": [
+      {
+        "candidate": "Jahana Hayes",
+        "party": "Democratic",
+        "partyCode": "D"
+      },
+      {
+        "candidate": "Chris Shea",
+        "party": "Republican",
+        "partyCode": "R"
+      }
+    ],
+    "DE-AL": [
+      {
+        "candidate": "Joseph Arminio",
+        "party": "Republican",
+        "partyCode": "R"
+      },
+      {
+        "candidate": "Sarah McBride",
+        "party": "Democratic",
+        "partyCode": "D"
+      }
+    ],
+    "FL-01": [
+      {
+        "candidate": "Tyler Davis",
+        "party": "Independent",
+        "partyCode": "O"
+      },
+      {
+        "candidate": "Jimmy Patronis",
+        "party": "Republican",
+        "partyCode": "R"
+      },
+      {
+        "candidate": "Gay Valimont",
+        "party": "Democratic",
+        "partyCode": "D"
+      }
+    ],
+    "FL-02": [
+      {
+        "candidate": "Amanda Green",
+        "party": "Democratic",
+        "partyCode": "D"
+      },
+      {
+        "candidate": "Austin Rogers",
+        "party": "Republican",
+        "partyCode": "R"
+      }
+    ],
+    "FL-03": [
+      {
+        "candidate": "Kat Cammack",
+        "party": "Republican",
+        "partyCode": "R"
+      },
+      {
+        "candidate": "Seth Harp",
+        "party": "Democratic",
+        "partyCode": "D"
+      },
+      {
+        "candidate": "Mike Klein",
+        "party": "Independent",
+        "partyCode": "O"
+      }
+    ],
+    "FL-04": [
+      {
+        "candidate": "Aaron Bean",
+        "party": "Republican",
+        "partyCode": "R"
+      },
+      {
+        "candidate": "LaShonda Holloway",
+        "party": "Democratic",
+        "partyCode": "D"
+      },
+      {
+        "candidate": "Todd Schaefer",
+        "party": "Independent",
+        "partyCode": "O"
+      },
+      {
+        "candidate": "Mike Sell",
+        "party": "Florida Forward",
+        "partyCode": "O"
+      }
+    ],
+    "FL-05": [
+      {
+        "candidate": "Rachel Grage",
+        "party": "Democratic",
+        "partyCode": "D"
+      },
+      {
+        "candidate": "John Rutherford",
+        "party": "Republican",
+        "partyCode": "R"
+      }
+    ],
+    "FL-06": [
+      {
+        "candidate": "Randy Fine",
+        "party": "Republican",
+        "partyCode": "R"
+      },
+      {
+        "candidate": "Michael Gist",
+        "party": "Independent",
+        "partyCode": "O"
+      },
+      {
+        "candidate": "Andrew Parrott",
+        "party": "Libertarian",
+        "partyCode": "O"
+      },
+      {
+        "candidate": "Eric Yonce",
+        "party": "Democratic",
+        "partyCode": "D"
+      }
+    ],
+    "FL-07": [
+      {
+        "candidate": "Bale Dalton",
+        "party": "Democratic",
+        "partyCode": "D"
+      },
+      {
+        "candidate": "Christopher Dennison",
+        "party": "Libertarian",
+        "partyCode": "O"
+      },
+      {
+        "candidate": "Ryan Elijah",
+        "party": "Republican",
+        "partyCode": "R"
+      }
+    ],
+    "FL-08": [
+      {
+        "candidate": "Mike Haridopolos",
+        "party": "Republican",
+        "partyCode": "R"
+      },
+      {
+        "candidate": "Jennifer Jenkins",
+        "party": "Democratic",
+        "partyCode": "D"
+      }
+    ],
+    "FL-09": [
+      {
+        "candidate": "Dan Green",
+        "party": "Republican",
+        "partyCode": "R"
+      },
+      {
+        "candidate": "Darren Soto",
+        "party": "Democratic",
+        "partyCode": "D"
+      }
+    ],
+    "FL-10": [
+      {
+        "candidate": "Maxwell Frost",
+        "party": "Democratic",
+        "partyCode": "D"
+      }
+    ],
+    "FL-11": [
+      {
+        "candidate": "Ralph Groves",
+        "party": "Libertarian",
+        "partyCode": "O"
+      },
+      {
+        "candidate": "James Pericola",
+        "party": "Democratic",
+        "partyCode": "D"
+      },
+      {
+        "candidate": "Joe Strada",
+        "party": "Republican",
+        "partyCode": "R"
+      }
+    ],
+    "FL-12": [
+      {
+        "candidate": "Gus Bilirakis",
+        "party": "Republican",
+        "partyCode": "R"
+      },
+      {
+        "candidate": "Kimberly Overman",
+        "party": "Democratic",
+        "partyCode": "D"
+      },
+      {
+        "candidate": "Branden Scrivener",
+        "party": "Independent",
+        "partyCode": "O"
+      }
+    ],
+    "FL-13": [
+      {
+        "candidate": "Tony D'Arrigo",
+        "party": "Independent",
+        "partyCode": "O"
+      },
+      {
+        "candidate": "Leela Gray",
+        "party": "Democratic",
+        "partyCode": "D"
+      },
+      {
+        "candidate": "Anna Paulina Luna",
+        "party": "Republican",
+        "partyCode": "R"
+      }
+    ],
+    "FL-14": [
+      {
+        "candidate": "Mike Beltran",
+        "party": "Republican",
+        "partyCode": "R"
+      },
+      {
+        "candidate": "Kathy Castor",
+        "party": "Democratic",
+        "partyCode": "D"
+      },
+      {
+        "candidate": "Brian Lambert",
+        "party": "Libertarian",
+        "partyCode": "O"
+      }
+    ],
+    "FL-15": [
+      {
+        "candidate": "Laurel Lee",
+        "party": "Republican",
+        "partyCode": "R"
+      },
+      {
+        "candidate": "Robert People",
+        "party": "Democratic",
+        "partyCode": "D"
+      }
+    ],
+    "FL-16": [
+      {
+        "candidate": "Mark Davis",
+        "party": "Independent",
+        "partyCode": "O"
+      },
+      {
+        "candidate": "Sydney Gruters",
+        "party": "Republican",
+        "partyCode": "R"
+      },
+      {
+        "candidate": "Kelly Kirschner",
+        "party": "Democratic",
+        "partyCode": "D"
+      }
+    ],
+    "FL-17": [
+      {
+        "candidate": "Matthew Montavon",
+        "party": "Democratic",
+        "partyCode": "D"
+      },
+      {
+        "candidate": "Michael Quirk",
+        "party": "Independent",
+        "partyCode": "O"
+      },
+      {
+        "candidate": "Greg Steube",
+        "party": "Republican",
+        "partyCode": "R"
+      }
+    ],
+    "FL-18": [
+      {
+        "candidate": "Scott Franklin",
+        "party": "Republican",
+        "partyCode": "R"
+      },
+      {
+        "candidate": "Curtis Gibson",
+        "party": "Democratic",
+        "partyCode": "D"
+      },
+      {
+        "candidate": "Deva Simmons",
+        "party": "Independent",
+        "partyCode": "O"
+      }
+    ],
+    "FL-19": [
+      {
+        "candidate": "Victor Arias",
+        "party": "Democratic",
+        "partyCode": "D"
+      },
+      {
+        "candidate": "Seth Haskin",
+        "party": "Independent",
+        "partyCode": "O"
+      },
+      {
+        "candidate": "Jim Schwartzel",
+        "party": "Republican",
+        "partyCode": "R"
+      }
+    ],
+    "FL-20": [
+      {
+        "candidate": "Brent Andersen",
+        "party": "Republican",
+        "partyCode": "R"
+      },
+      {
+        "candidate": "Kedner Maxime",
+        "party": "Independent Party of Florida",
+        "partyCode": "O"
+      },
+      {
+        "candidate": "Debbie Wasserman Schultz",
+        "party": "Democratic",
+        "partyCode": "D"
+      }
+    ],
+    "FL-21": [
+      {
+        "candidate": "Alexander Cooke",
+        "party": "Independent",
+        "partyCode": "O"
+      },
+      {
+        "candidate": "James Martin",
+        "party": "Democratic",
+        "partyCode": "D"
+      },
+      {
+        "candidate": "Brian Mast",
+        "party": "Republican",
+        "partyCode": "R"
+      }
+    ],
+    "FL-22": [
+      {
+        "candidate": "Casey Askar",
+        "party": "Republican",
+        "partyCode": "R"
+      },
+      {
+        "candidate": "Pia Dandiya",
+        "party": "Democratic",
+        "partyCode": "D"
+      }
+    ],
+    "FL-23": [
+      {
+        "candidate": "Deborah Adeimy",
+        "party": "Republican",
+        "partyCode": "R"
+      },
+      {
+        "candidate": "Lois Frankel",
+        "party": "Democratic",
+        "partyCode": "D"
+      }
+    ],
+    "FL-24": [
+      {
+        "candidate": "Te Mayonna Brown",
+        "party": "Republican",
+        "partyCode": "R"
+      },
+      {
+        "candidate": "Oliver Gilbert",
+        "party": "Democratic",
+        "partyCode": "D"
+      }
+    ],
+    "FL-25": [
+      {
+        "candidate": "Peter Jassenoff",
+        "party": "Libertarian",
+        "partyCode": "O"
+      },
+      {
+        "candidate": "Jared Moskowitz",
+        "party": "Democratic",
+        "partyCode": "D"
+      },
+      {
+        "candidate": "Scott Singer",
+        "party": "Republican",
+        "partyCode": "R"
+      }
+    ],
+    "FL-26": [
+      {
+        "candidate": "Mario Díaz-Balart",
+        "party": "Republican",
+        "partyCode": "R"
+      },
+      {
+        "candidate": "Nicole Locklin",
+        "party": "Democratic",
+        "partyCode": "D"
+      },
+      {
+        "candidate": "Deborah Ann Meidinger Hosey",
+        "party": "Independent",
+        "partyCode": "O"
+      }
+    ],
+    "FL-27": [
+      {
+        "candidate": "Eliott Rodriguez",
+        "party": "Democratic",
+        "partyCode": "D"
+      },
+      {
+        "candidate": "María Elvira Salazar",
+        "party": "Republican",
+        "partyCode": "R"
+      }
+    ],
+    "FL-28": [
+      {
+        "candidate": "Phil Ehr",
+        "party": "Democratic",
+        "partyCode": "D"
+      },
+      {
+        "candidate": "Carlos Giménez",
+        "party": "Republican",
+        "partyCode": "R"
+      },
+      {
+        "candidate": "Eddy Rojas",
+        "party": "Independent",
+        "partyCode": "O"
+      }
+    ],
+    "GA-01": [
+      {
+        "candidate": "Amanda Hollowell",
+        "party": "Democratic",
+        "partyCode": "D"
+      },
+      {
+        "candidate": "Jim Kingston",
+        "party": "Republican",
+        "partyCode": "R"
+      }
+    ],
+    "GA-02": [
+      {
+        "candidate": "Sanford Bishop",
+        "party": "Democratic",
+        "partyCode": "D"
+      },
+      {
+        "candidate": "Matt Day",
+        "party": "Republican",
+        "partyCode": "R"
+      }
+    ],
+    "GA-03": [
+      {
+        "candidate": "Brian Jack",
+        "party": "Republican",
+        "partyCode": "R"
+      },
+      {
+        "candidate": "Maura Keller",
+        "party": "Democratic",
+        "partyCode": "D"
+      }
+    ],
+    "GA-04": [
+      {
+        "candidate": "James Duffie",
+        "party": "Republican",
+        "partyCode": "R"
+      },
+      {
+        "candidate": "Hank Johnson",
+        "party": "Democratic",
+        "partyCode": "D"
+      }
+    ],
+    "GA-05": [
+      {
+        "candidate": "John Oscar Salvesen",
+        "party": "Republican",
+        "partyCode": "R"
+      },
+      {
+        "candidate": "Nikema Williams",
+        "party": "Democratic",
+        "partyCode": "D"
+      }
+    ],
+    "GA-06": [
+      {
+        "candidate": "Kevin Martin",
+        "party": "Republican",
+        "partyCode": "R"
+      },
+      {
+        "candidate": "Lucy McBath",
+        "party": "Democratic",
+        "partyCode": "D"
+      }
+    ],
+    "GA-07": [
+      {
+        "candidate": "Tony Kozycki",
+        "party": "Democratic",
+        "partyCode": "D"
+      },
+      {
+        "candidate": "Rich McCormick",
+        "party": "Republican",
+        "partyCode": "R"
+      }
+    ],
+    "GA-08": [
+      {
+        "candidate": "Kelly Esti",
+        "party": "Democratic",
+        "partyCode": "D"
+      },
+      {
+        "candidate": "Austin Scott",
+        "party": "Republican",
+        "partyCode": "R"
+      }
+    ],
+    "GA-09": [
+      {
+        "candidate": "Andrew Clyde",
+        "party": "Republican",
+        "partyCode": "R"
+      },
+      {
+        "candidate": "Caitlyn Gegen",
+        "party": "Democratic",
+        "partyCode": "D"
+      }
+    ],
+    "GA-10": [
+      {
+        "candidate": "Pam Delancy",
+        "party": "Democratic",
+        "partyCode": "D"
+      },
+      {
+        "candidate": "Houston Gaines",
+        "party": "Republican",
+        "partyCode": "R"
+      }
+    ],
+    "GA-11": [
+      {
+        "candidate": "John Cowan",
+        "party": "Republican",
+        "partyCode": "R"
+      },
+      {
+        "candidate": "Chris Harden",
+        "party": "Democratic",
+        "partyCode": "D"
+      }
+    ],
+    "GA-12": [
+      {
+        "candidate": "Rick Allen",
+        "party": "Republican",
+        "partyCode": "R"
+      },
+      {
+        "candidate": "Ceretta Smith",
+        "party": "Democratic",
+        "partyCode": "D"
+      }
+    ],
+    "HI-01": [
+      {
+        "candidate": "Nathan Berning",
+        "party": "Independent",
+        "partyCode": "O"
+      },
+      {
+        "candidate": "Ed Case",
+        "party": "Democratic",
+        "partyCode": "D"
+      },
+      {
+        "candidate": "Jordan Conley",
+        "party": "Green",
+        "partyCode": "O"
+      },
+      {
+        "candidate": "Adriel Lam",
+        "party": "Republican",
+        "partyCode": "R"
+      }
+    ],
+    "HI-02": [
+      {
+        "candidate": "Brenton Awa",
+        "party": "Republican",
+        "partyCode": "R"
+      },
+      {
+        "candidate": "Jill Tokuda",
+        "party": "Democratic",
+        "partyCode": "D"
+      }
+    ],
+    "ID-01": [
+      {
+        "candidate": "Russ Fulcher",
+        "party": "Republican",
+        "partyCode": "R"
+      },
+      {
+        "candidate": "Brendan Gomez",
+        "party": "Constitution",
+        "partyCode": "O"
+      },
+      {
+        "candidate": "Kaylee Peterson",
+        "party": "Democratic",
+        "partyCode": "D"
+      },
+      {
+        "candidate": "Sarah Zabel",
+        "party": "Independent",
+        "partyCode": "O"
+      }
+    ],
+    "ID-02": [
+      {
+        "candidate": "Ellie Gilbreath",
+        "party": "Democratic",
+        "partyCode": "D"
+      },
+      {
+        "candidate": "Emre Houser",
+        "party": "Independent",
+        "partyCode": "O"
+      },
+      {
+        "candidate": "Tripp Hutchinson",
+        "party": "Independent",
+        "partyCode": "O"
+      },
+      {
+        "candidate": "Will Johanson",
+        "party": "Libertarian",
+        "partyCode": "O"
+      },
+      {
+        "candidate": "Mike Simpson",
+        "party": "Republican",
+        "partyCode": "R"
+      }
+    ],
+    "IL-01": [
+      {
+        "candidate": "Jonathan Jackson",
+        "party": "Democratic",
+        "partyCode": "D"
+      },
+      {
+        "candidate": "Christian Maxwell",
+        "party": "Republican",
+        "partyCode": "R"
+      }
+    ],
+    "IL-02": [
+      {
+        "candidate": "Donna Miller",
+        "party": "Democratic",
+        "partyCode": "D"
+      },
+      {
+        "candidate": "Michael Noack",
+        "party": "Republican",
+        "partyCode": "R"
+      }
+    ],
+    "IL-03": [
+      {
+        "candidate": "Angel Oakley",
+        "party": "Republican",
+        "partyCode": "R"
+      },
+      {
+        "candidate": "Delia Ramirez",
+        "party": "Democratic",
+        "partyCode": "D"
+      }
+    ],
+    "IL-04": [
+      {
+        "candidate": "Lupe Castillo",
+        "party": "Republican",
+        "partyCode": "R"
+      },
+      {
+        "candidate": "Patty Garcia",
+        "party": "Democratic",
+        "partyCode": "D"
+      },
+      {
+        "candidate": "Chris Getty",
+        "party": "Independent",
+        "partyCode": "O"
+      },
+      {
+        "candidate": "Ed Hershey",
+        "party": "Working Class",
+        "partyCode": "O"
+      }
+    ],
+    "IL-05": [
+      {
+        "candidate": "Tommy Hanson",
+        "party": "Republican",
+        "partyCode": "R"
+      },
+      {
+        "candidate": "Mike Quigley",
+        "party": "Democratic",
+        "partyCode": "D"
+      }
+    ],
+    "IL-06": [
+      {
+        "candidate": "Sean Casten",
+        "party": "Democratic",
+        "partyCode": "D"
+      },
+      {
+        "candidate": "Niki Conforti",
+        "party": "Republican",
+        "partyCode": "R"
+      }
+    ],
+    "IL-07": [
+      {
+        "candidate": "La Shawn Ford",
+        "party": "Democratic",
+        "partyCode": "D"
+      },
+      {
+        "candidate": "Chad Koppie",
+        "party": "Republican",
+        "partyCode": "R"
+      }
+    ],
+    "IL-08": [
+      {
+        "candidate": "Melissa Bean",
+        "party": "Democratic",
+        "partyCode": "D"
+      },
+      {
+        "candidate": "Jennifer Davis",
+        "party": "Republican",
+        "partyCode": "R"
+      }
+    ],
+    "IL-09": [
+      {
+        "candidate": "Daniel Biss",
+        "party": "Democratic",
+        "partyCode": "D"
+      },
+      {
+        "candidate": "John Elleson",
+        "party": "Republican",
+        "partyCode": "R"
+      }
+    ],
+    "IL-10": [
+      {
+        "candidate": "Carl Lambrecht",
+        "party": "Republican",
+        "partyCode": "R"
+      },
+      {
+        "candidate": "Brad Schneider",
+        "party": "Democratic",
+        "partyCode": "D"
+      }
+    ],
+    "IL-11": [
+      {
+        "candidate": "Bill Foster",
+        "party": "Democratic",
+        "partyCode": "D"
+      },
+      {
+        "candidate": "Jeff Walter",
+        "party": "Republican",
+        "partyCode": "R"
+      }
+    ],
+    "IL-12": [
+      {
+        "candidate": "Mike Bost",
+        "party": "Republican",
+        "partyCode": "R"
+      },
+      {
+        "candidate": "Julie Fortier",
+        "party": "Democratic",
+        "partyCode": "D"
+      }
+    ],
+    "IL-13": [
+      {
+        "candidate": "Nikki Budzinski",
+        "party": "Democratic",
+        "partyCode": "D"
+      },
+      {
+        "candidate": "Jeff Wilson",
+        "party": "Republican",
+        "partyCode": "R"
+      }
+    ],
+    "IL-14": [
+      {
+        "candidate": "James Marter",
+        "party": "Republican",
+        "partyCode": "R"
+      },
+      {
+        "candidate": "Lauren Underwood",
+        "party": "Democratic",
+        "partyCode": "D"
+      }
+    ],
+    "IL-15": [
+      {
+        "candidate": "Mary Miller",
+        "party": "Republican",
+        "partyCode": "R"
+      },
+      {
+        "candidate": "Jennifer Todd",
+        "party": "Democratic",
+        "partyCode": "D"
+      }
+    ],
+    "IL-16": [
+      {
+        "candidate": "Darin LaHood",
+        "party": "Republican",
+        "partyCode": "R"
+      },
+      {
+        "candidate": "Paul Nolley",
+        "party": "Democratic",
+        "partyCode": "D"
+      }
+    ],
+    "IL-17": [
+      {
+        "candidate": "Eric Sorensen",
+        "party": "Democratic",
+        "partyCode": "D"
+      },
+      {
+        "candidate": "Dillan Vancil",
+        "party": "Republican",
+        "partyCode": "R"
+      }
+    ],
+    "IN-01": [
+      {
+        "candidate": "Frank Mrvan",
+        "party": "Democratic",
+        "partyCode": "D"
+      },
+      {
+        "candidate": "Barb Regnitz",
+        "party": "Republican",
+        "partyCode": "R"
+      }
+    ],
+    "IN-02": [
+      {
+        "candidate": "Jamee Decio",
+        "party": "Democratic",
+        "partyCode": "D"
+      },
+      {
+        "candidate": "William Henry",
+        "party": "Libertarian",
+        "partyCode": "O"
+      },
+      {
+        "candidate": "Rudy Yakym",
+        "party": "Republican",
+        "partyCode": "R"
+      }
+    ],
+    "IN-03": [
+      {
+        "candidate": "Marlin Stutzman",
+        "party": "Republican",
+        "partyCode": "R"
+      },
+      {
+        "candidate": "Kelly Thompson",
+        "party": "Democratic",
+        "partyCode": "D"
+      }
+    ],
+    "IN-04": [
+      {
+        "candidate": "Jim Baird",
+        "party": "Republican",
+        "partyCode": "R"
+      },
+      {
+        "candidate": "Drew Cox",
+        "party": "Democratic",
+        "partyCode": "D"
+      }
+    ],
+    "IN-05": [
+      {
+        "candidate": "J. D. Ford",
+        "party": "Democratic",
+        "partyCode": "D"
+      },
+      {
+        "candidate": "Victoria Spartz",
+        "party": "Republican",
+        "partyCode": "R"
+      }
+    ],
+    "IN-06": [
+      {
+        "candidate": "Jefferson Shreve",
+        "party": "Republican",
+        "partyCode": "R"
+      },
+      {
+        "candidate": "Cinde Wirth",
+        "party": "Democratic",
+        "partyCode": "D"
+      }
+    ],
+    "IN-07": [
+      {
+        "candidate": "André Carson",
+        "party": "Democratic",
+        "partyCode": "D"
+      },
+      {
+        "candidate": "Patrick McAuley",
+        "party": "Republican",
+        "partyCode": "R"
+      },
+      {
+        "candidate": "James Sceniak",
+        "party": "Libertarian",
+        "partyCode": "O"
+      }
+    ],
+    "IN-08": [
+      {
+        "candidate": "Mary Allen",
+        "party": "Democratic",
+        "partyCode": "D"
+      },
+      {
+        "candidate": "Mark Messmer",
+        "party": "Republican",
+        "partyCode": "R"
+      }
+    ],
+    "IN-09": [
+      {
+        "candidate": "Erin Houchin",
+        "party": "Republican",
+        "partyCode": "R"
+      },
+      {
+        "candidate": "Tonya Hudson",
+        "party": "Libertarian",
+        "partyCode": "O"
+      },
+      {
+        "candidate": "Brad Meyer",
+        "party": "Democratic",
+        "partyCode": "D"
+      }
+    ],
+    "IA-01": [
+      {
+        "candidate": "Christina Bohannan",
+        "party": "Democratic",
+        "partyCode": "D"
+      },
+      {
+        "candidate": "Michael Bridgford",
+        "party": "Independent",
+        "partyCode": "O"
+      },
+      {
+        "candidate": "Mariannette Miller-Meeks",
+        "party": "Republican",
+        "partyCode": "R"
+      }
+    ],
+    "IA-02": [
+      {
+        "candidate": "Dave Bushaw",
+        "party": "Independent",
+        "partyCode": "O"
+      },
+      {
+        "candidate": "Lindsay James",
+        "party": "Democratic",
+        "partyCode": "D"
+      },
+      {
+        "candidate": "Joe Mitchell",
+        "party": "Republican",
+        "partyCode": "R"
+      },
+      {
+        "candidate": "Rick Stewart",
+        "party": "Libertarian",
+        "partyCode": "O"
+      }
+    ],
+    "IA-03": [
+      {
+        "candidate": "Zach Nunn",
+        "party": "Republican",
+        "partyCode": "R"
+      },
+      {
+        "candidate": "Sarah Trone Garriott",
+        "party": "Democratic",
+        "partyCode": "D"
+      }
+    ],
+    "IA-04": [
+      {
+        "candidate": "David Dawson",
+        "party": "Democratic",
+        "partyCode": "D"
+      },
+      {
+        "candidate": "Chris McGowan",
+        "party": "Republican",
+        "partyCode": "R"
+      }
+    ],
+    "KS-01": [
+      {
+        "candidate": "Steven Jacob",
+        "party": "Libertarian",
+        "partyCode": "O"
+      },
+      {
+        "candidate": "Tracey Mann",
+        "party": "Republican",
+        "partyCode": "R"
+      },
+      {
+        "candidate": "Lauren Reinhold",
+        "party": "Democratic",
+        "partyCode": "D"
+      }
+    ],
+    "KS-02": [
+      {
+        "candidate": "Don Coover",
+        "party": "Democratic",
+        "partyCode": "D"
+      },
+      {
+        "candidate": "John Hauer",
+        "party": "Libertarian",
+        "partyCode": "O"
+      },
+      {
+        "candidate": "Derek Schmidt",
+        "party": "Republican",
+        "partyCode": "R"
+      }
+    ],
+    "KS-03": [
+      {
+        "candidate": "Sharice Davids",
+        "party": "Democratic",
+        "partyCode": "D"
+      },
+      {
+        "candidate": "Steven Hohe",
+        "party": "Libertarian",
+        "partyCode": "O"
+      },
+      {
+        "candidate": "Eric Jenkins",
+        "party": "Republican",
+        "partyCode": "R"
+      }
+    ],
+    "KS-04": [
+      {
+        "candidate": "Drew Cranmer",
+        "party": "Libertarian",
+        "partyCode": "O"
+      },
+      {
+        "candidate": "Ron Estes",
+        "party": "Republican",
+        "partyCode": "R"
+      },
+      {
+        "candidate": "Katy Tyndell",
+        "party": "Democratic",
+        "partyCode": "D"
+      }
+    ],
+    "KY-01": [
+      {
+        "candidate": "James Comer",
+        "party": "Republican",
+        "partyCode": "R"
+      },
+      {
+        "candidate": "Drew Williams",
+        "party": "Democratic",
+        "partyCode": "D"
+      }
+    ],
+    "KY-02": [
+      {
+        "candidate": "Brett Guthrie",
+        "party": "Republican",
+        "partyCode": "R"
+      },
+      {
+        "candidate": "Thomas Loecken",
+        "party": "Independent",
+        "partyCode": "O"
+      },
+      {
+        "candidate": "Megan Wingfield",
+        "party": "Democratic",
+        "partyCode": "D"
+      }
+    ],
+    "KY-03": [
+      {
+        "candidate": "Morgan McGarvey",
+        "party": "Democratic",
+        "partyCode": "D"
+      },
+      {
+        "candidate": "Maria Rodriquez",
+        "party": "Republican",
+        "partyCode": "R"
+      }
+    ],
+    "KY-04": [
+      {
+        "candidate": "Ed Gallrein",
+        "party": "Republican",
+        "partyCode": "R"
+      },
+      {
+        "candidate": "Melissa Strange",
+        "party": "Democratic",
+        "partyCode": "D"
+      },
+      {
+        "candidate": "Jeremy Todd",
+        "party": "Libertarian",
+        "partyCode": "O"
+      }
+    ],
+    "KY-05": [
+      {
+        "candidate": "Ned Pillersdorf",
+        "party": "Democratic",
+        "partyCode": "D"
+      },
+      {
+        "candidate": "Hal Rogers",
+        "party": "Republican",
+        "partyCode": "R"
+      },
+      {
+        "candidate": "Gerardo Serrano",
+        "party": "Independent",
+        "partyCode": "O"
+      },
+      {
+        "candidate": "Mikel Wein",
+        "party": "Independent",
+        "partyCode": "O"
+      }
+    ],
+    "KY-06": [
+      {
+        "candidate": "Ralph Alvarado",
+        "party": "Republican",
+        "partyCode": "R"
+      },
+      {
+        "candidate": "Jay Bowman",
+        "party": "Independent",
+        "partyCode": "O"
+      },
+      {
+        "candidate": "Zach Dembo",
+        "party": "Democratic",
+        "partyCode": "D"
+      },
+      {
+        "candidate": "Pete Lynch",
+        "party": "Kentucky",
+        "partyCode": "O"
+      }
+    ],
+    "LA-01": [
+      {
+        "candidate": "Randall Arrington",
+        "party": "Republican",
+        "partyCode": "R"
+      },
+      {
+        "candidate": "Liddy Glass",
+        "party": "Independent",
+        "partyCode": "O"
+      },
+      {
+        "candidate": "Lauren Jewett",
+        "party": "Democratic",
+        "partyCode": "D"
+      },
+      {
+        "candidate": "Steve Scalise",
+        "party": "Republican",
+        "partyCode": "R"
+      }
+    ],
+    "LA-02": [
+      {
+        "candidate": "Lisa Ballay",
+        "party": "Libertarian",
+        "partyCode": "O"
+      },
+      {
+        "candidate": "Walter Beach",
+        "party": "Independent",
+        "partyCode": "O"
+      },
+      {
+        "candidate": "Troy Carter",
+        "party": "Democratic",
+        "partyCode": "D"
+      },
+      {
+        "candidate": "Renada Collins",
+        "party": "Democratic",
+        "partyCode": "D"
+      },
+      {
+        "candidate": "Peter Williams",
+        "party": "Republican",
+        "partyCode": "R"
+      }
+    ],
+    "LA-03": [
+      {
+        "candidate": "Kate Cotten",
+        "party": "Republican",
+        "partyCode": "R"
+      },
+      {
+        "candidate": "John Day",
+        "party": "Democratic",
+        "partyCode": "D"
+      },
+      {
+        "candidate": "Priscilla Gonzalez",
+        "party": "Democratic",
+        "partyCode": "D"
+      },
+      {
+        "candidate": "Clay Higgins",
+        "party": "Republican",
+        "partyCode": "R"
+      },
+      {
+        "candidate": "Tia LeBrun",
+        "party": "Democratic",
+        "partyCode": "D"
+      },
+      {
+        "candidate": "Caleb Walker",
+        "party": "Democratic",
+        "partyCode": "D"
+      }
+    ],
+    "LA-04": [
+      {
+        "candidate": "Conrad Cable",
+        "party": "Democratic",
+        "partyCode": "D"
+      },
+      {
+        "candidate": "Matt Gromlich",
+        "party": "Democratic",
+        "partyCode": "D"
+      },
+      {
+        "candidate": "Gordon Heslop",
+        "party": "Republican",
+        "partyCode": "R"
+      },
+      {
+        "candidate": "Mike Johnson",
+        "party": "Republican",
+        "partyCode": "R"
+      },
+      {
+        "candidate": "Mike Nichols",
+        "party": "Republican",
+        "partyCode": "R"
+      }
+    ],
+    "LA-05": [
+      {
+        "candidate": "Stewart Cathey Jr.",
+        "party": "Republican",
+        "partyCode": "R"
+      },
+      {
+        "candidate": "Misti Cordell",
+        "party": "Republican",
+        "partyCode": "R"
+      },
+      {
+        "candidate": "Omar Dantzler",
+        "party": "Republican",
+        "partyCode": "R"
+      },
+      {
+        "candidate": "Michael Echols",
+        "party": "Republican",
+        "partyCode": "R"
+      },
+      {
+        "candidate": "Gabe Firment",
+        "party": "Republican",
+        "partyCode": "R"
+      },
+      {
+        "candidate": "Austin Magee",
+        "party": "Republican",
+        "partyCode": "R"
+      },
+      {
+        "candidate": "Dan McKay",
+        "party": "Democratic",
+        "partyCode": "D"
+      },
+      {
+        "candidate": "Patricia Moore",
+        "party": "Democratic",
+        "partyCode": "D"
+      },
+      {
+        "candidate": "Antonio Wilson",
+        "party": "Democratic",
+        "partyCode": "D"
+      }
+    ],
+    "LA-06": [
+      {
+        "candidate": "Monique Appeaning",
+        "party": "Republican",
+        "partyCode": "R"
+      },
+      {
+        "candidate": "Rufus Craig",
+        "party": "Libertarian",
+        "partyCode": "O"
+      },
+      {
+        "candidate": "Larry Davis",
+        "party": "Republican",
+        "partyCode": "R"
+      },
+      {
+        "candidate": "Rick Edmonds",
+        "party": "Republican",
+        "partyCode": "R"
+      },
+      {
+        "candidate": "Pat Forbes",
+        "party": "Democratic",
+        "partyCode": "D"
+      },
+      {
+        "candidate": "Lindsay Garcia",
+        "party": "Democratic",
+        "partyCode": "D"
+      },
+      {
+        "candidate": "Chris Johnson",
+        "party": "Republican",
+        "partyCode": "R"
+      },
+      {
+        "candidate": "Michael Mebruer",
+        "party": "Republican",
+        "partyCode": "R"
+      },
+      {
+        "candidate": "Blake Miguez",
+        "party": "Republican",
+        "partyCode": "R"
+      },
+      {
+        "candidate": "Stephen Wagley",
+        "party": "Republican",
+        "partyCode": "R"
+      }
+    ],
+    "ME-01": [
+      {
+        "candidate": "Chellie Pingree",
+        "party": "Democratic",
+        "partyCode": "D"
+      },
+      {
+        "candidate": "Ronald Russell",
+        "party": "Republican",
+        "partyCode": "R"
+      }
+    ],
+    "ME-02": [
+      {
+        "candidate": "Matthew Dunlap",
+        "party": "Democratic",
+        "partyCode": "D"
+      },
+      {
+        "candidate": "Paul LePage",
+        "party": "Republican",
+        "partyCode": "R"
+      }
+    ],
+    "MD-01": [
+      {
+        "candidate": "Andy Harris",
+        "party": "Republican",
+        "partyCode": "R"
+      },
+      {
+        "candidate": "Dan Schwartz",
+        "party": "Democratic",
+        "partyCode": "D"
+      }
+    ],
+    "MD-02": [
+      {
+        "candidate": "Johnny Olszewski",
+        "party": "Democratic",
+        "partyCode": "D"
+      },
+      {
+        "candidate": "Dave Wallace",
+        "party": "Republican",
+        "partyCode": "R"
+      }
+    ],
+    "MD-03": [
+      {
+        "candidate": "Sarah Elfreth",
+        "party": "Democratic",
+        "partyCode": "D"
+      },
+      {
+        "candidate": "Berney Flowers",
+        "party": "Republican",
+        "partyCode": "R"
+      }
+    ],
+    "MD-04": [
+      {
+        "candidate": "Sam Husseini",
+        "party": "Green",
+        "partyCode": "O"
+      },
+      {
+        "candidate": "Glenn Ivey",
+        "party": "Democratic",
+        "partyCode": "D"
+      },
+      {
+        "candidate": "George McDermott",
+        "party": "Republican",
+        "partyCode": "R"
+      }
+    ],
+    "MD-05": [
+      {
+        "candidate": "Adrian Boafo",
+        "party": "Democratic",
+        "partyCode": "D"
+      },
+      {
+        "candidate": "Chris Chaffee",
+        "party": "Republican",
+        "partyCode": "R"
+      }
+    ],
+    "MD-06": [
+      {
+        "candidate": "Robin Ficker",
+        "party": "Republican",
+        "partyCode": "R"
+      },
+      {
+        "candidate": "Moshe Landman",
+        "party": "Green",
+        "partyCode": "O"
+      },
+      {
+        "candidate": "April McClain Delaney",
+        "party": "Democratic",
+        "partyCode": "D"
+      }
+    ],
+    "MD-07": [
+      {
+        "candidate": "Scott Collier",
+        "party": "Republican",
+        "partyCode": "R"
+      },
+      {
+        "candidate": "Kweisi Mfume",
+        "party": "Democratic",
+        "partyCode": "D"
+      }
+    ],
+    "MD-08": [
+      {
+        "candidate": "Jamie Raskin",
+        "party": "Democratic",
+        "partyCode": "D"
+      },
+      {
+        "candidate": "Cheryl Riley",
+        "party": "Republican",
+        "partyCode": "R"
+      },
+      {
+        "candidate": "Nancy Wallace",
+        "party": "Green",
+        "partyCode": "O"
+      }
+    ],
+    "MA-01": [
+      {
+        "candidate": "Nadia Milleron",
+        "party": "Independent",
+        "partyCode": "O"
+      },
+      {
+        "candidate": "Richard Neal",
+        "party": "Democratic",
+        "partyCode": "D"
+      }
+    ],
+    "MA-02": [
+      {
+        "candidate": "Jim McGovern",
+        "party": "Democratic",
+        "partyCode": "D"
+      }
+    ],
+    "MA-03": [
+      {
+        "candidate": "Dennis Conlon",
+        "party": "Independent",
+        "partyCode": "O"
+      },
+      {
+        "candidate": "Gary Grossi",
+        "party": "Republican",
+        "partyCode": "R"
+      },
+      {
+        "candidate": "Lori Trahan",
+        "party": "Democratic",
+        "partyCode": "D"
+      }
+    ],
+    "MA-04": [
+      {
+        "candidate": "Jake Auchincloss",
+        "party": "Democratic",
+        "partyCode": "D"
+      },
+      {
+        "candidate": "Thomas Stalcup",
+        "party": "Republican",
+        "partyCode": "R"
+      }
+    ],
+    "MA-05": [
+      {
+        "candidate": "Katherine Clark",
+        "party": "Democratic",
+        "partyCode": "D"
+      }
+    ],
+    "MA-06": [
+      {
+        "candidate": "Micah Jones",
+        "party": "Republican",
+        "partyCode": "R"
+      },
+      {
+        "candidate": "Dan Koh",
+        "party": "Democratic",
+        "partyCode": "D"
+      }
+    ],
+    "MA-07": [
+      {
+        "candidate": "Ayanna Pressley",
+        "party": "Democratic",
+        "partyCode": "D"
+      }
+    ],
+    "MA-08": [
+      {
+        "candidate": "Robert Burke",
+        "party": "Republican",
+        "partyCode": "R"
+      },
+      {
+        "candidate": "Stephen Lynch",
+        "party": "Democratic",
+        "partyCode": "D"
+      },
+      {
+        "candidate": "Rasheed Walters",
+        "party": "Independent",
+        "partyCode": "O"
+      }
+    ],
+    "MA-09": [
+      {
+        "candidate": "Bill Keating",
+        "party": "Democratic",
+        "partyCode": "D"
+      },
+      {
+        "candidate": "Tyler MacAllister",
+        "party": "Republican",
+        "partyCode": "R"
+      }
+    ],
+    "MI-01": [
+      {
+        "candidate": "Callie Barr",
+        "party": "Democratic",
+        "partyCode": "D"
+      },
+      {
+        "candidate": "Jack Bergman",
+        "party": "Republican",
+        "partyCode": "R"
+      },
+      {
+        "candidate": "LaVeta Davenport",
+        "party": "Green",
+        "partyCode": "O"
+      },
+      {
+        "candidate": "Zebulon Featherly",
+        "party": "Independent",
+        "partyCode": "O"
+      },
+      {
+        "candidate": "Liz Hakola",
+        "party": "Working Class",
+        "partyCode": "O"
+      },
+      {
+        "candidate": "Doc Kovaly",
+        "party": "U.S. Taxpayers",
+        "partyCode": "O"
+      },
+      {
+        "candidate": "Arnett Satterla",
+        "party": "Libertarian",
+        "partyCode": "O"
+      }
+    ],
+    "MI-02": [
+      {
+        "candidate": "Ben Ambrose",
+        "party": "Democratic",
+        "partyCode": "D"
+      },
+      {
+        "candidate": "Charlotte Magoon",
+        "party": "Green",
+        "partyCode": "O"
+      },
+      {
+        "candidate": "John Moolenaar",
+        "party": "Republican",
+        "partyCode": "R"
+      },
+      {
+        "candidate": "Richard Sills",
+        "party": "Natural Law",
+        "partyCode": "O"
+      }
+    ],
+    "MI-03": [
+      {
+        "candidate": "Terri DeBoer",
+        "party": "Republican",
+        "partyCode": "R"
+      },
+      {
+        "candidate": "Joe Jock",
+        "party": "Green",
+        "partyCode": "O"
+      },
+      {
+        "candidate": "Hillary Scholten",
+        "party": "Democratic",
+        "partyCode": "D"
+      }
+    ],
+    "MI-04": [
+      {
+        "candidate": "Shafina Che Barnett",
+        "party": "Green",
+        "partyCode": "O"
+      },
+      {
+        "candidate": "Bill Huizenga",
+        "party": "Republican",
+        "partyCode": "R"
+      },
+      {
+        "candidate": "Sean McCann",
+        "party": "Democratic",
+        "partyCode": "D"
+      }
+    ],
+    "MI-05": [
+      {
+        "candidate": "Jim Bronke",
+        "party": "Green",
+        "partyCode": "O"
+      },
+      {
+        "candidate": "Ronald A. Muszynski",
+        "party": "Libertarian",
+        "partyCode": "O"
+      },
+      {
+        "candidate": "Sharon M. Renier",
+        "party": "U.S. Taxpayers",
+        "partyCode": "O"
+      },
+      {
+        "candidate": "Christian Vukasovich",
+        "party": "Democratic",
+        "partyCode": "D"
+      },
+      {
+        "candidate": "Tim Walberg",
+        "party": "Republican",
+        "partyCode": "R"
+      }
+    ],
+    "MI-06": [
+      {
+        "candidate": "Debbie Dingell",
+        "party": "Democratic",
+        "partyCode": "D"
+      },
+      {
+        "candidate": "Michael Mickevicius",
+        "party": "U.S. Taxpayers",
+        "partyCode": "O"
+      },
+      {
+        "candidate": "Linda Rayburn",
+        "party": "Working Class",
+        "partyCode": "O"
+      },
+      {
+        "candidate": "Clyde Shabazz",
+        "party": "Green",
+        "partyCode": "O"
+      },
+      {
+        "candidate": "Heather Smiley",
+        "party": "Republican",
+        "partyCode": "R"
+      },
+      {
+        "candidate": "Timothy A. Tegan",
+        "party": "Libertarian",
+        "partyCode": "O"
+      }
+    ],
+    "MI-07": [
+      {
+        "candidate": "Tom Barrett",
+        "party": "Republican",
+        "partyCode": "R"
+      },
+      {
+        "candidate": "Shane Dedrick",
+        "party": "Green",
+        "partyCode": "O"
+      },
+      {
+        "candidate": "William Lawrence",
+        "party": "Democratic",
+        "partyCode": "D"
+      }
+    ],
+    "MI-08": [
+      {
+        "candidate": "Jim Casha",
+        "party": "Green",
+        "partyCode": "O"
+      },
+      {
+        "candidate": "Kathy Goodwin",
+        "party": "Working Class",
+        "partyCode": "O"
+      },
+      {
+        "candidate": "Kristen McDonald Rivet",
+        "party": "Democratic",
+        "partyCode": "D"
+      },
+      {
+        "candidate": "Mia C. Pettus",
+        "party": "Libertarian",
+        "partyCode": "O"
+      },
+      {
+        "candidate": "Thomas Smith",
+        "party": "Republican",
+        "partyCode": "R"
+      }
+    ],
+    "MI-09": [
+      {
+        "candidate": "Destiny Clayton",
+        "party": "Green",
+        "partyCode": "O"
+      },
+      {
+        "candidate": "Lisa McClain",
+        "party": "Republican",
+        "partyCode": "R"
+      },
+      {
+        "candidate": "Ray Pooley",
+        "party": "Democratic",
+        "partyCode": "D"
+      },
+      {
+        "candidate": "Kevin Vayko",
+        "party": "Libertarian",
+        "partyCode": "O"
+      },
+      {
+        "candidate": "John Vlahos",
+        "party": "U.S. Taxpayers",
+        "partyCode": "O"
+      },
+      {
+        "candidate": "Jim Walkowicz",
+        "party": "Working Class",
+        "partyCode": "O"
+      }
+    ],
+    "MI-10": [
+      {
+        "candidate": "Mike Bouchard",
+        "party": "Republican",
+        "partyCode": "R"
+      },
+      {
+        "candidate": "Christina Hines",
+        "party": "Democratic",
+        "partyCode": "D"
+      },
+      {
+        "candidate": "Andrea L. Kirby",
+        "party": "Working Class",
+        "partyCode": "O"
+      },
+      {
+        "candidate": "Kwabena Nkromo",
+        "party": "Green",
+        "partyCode": "O"
+      },
+      {
+        "candidate": "Mike Saliba",
+        "party": "Libertarian",
+        "partyCode": "O"
+      }
+    ],
+    "MI-11": [
+      {
+        "candidate": "Ethan Baker",
+        "party": "Republican",
+        "partyCode": "R"
+      },
+      {
+        "candidate": "Farid Ishac",
+        "party": "Libertarian",
+        "partyCode": "O"
+      },
+      {
+        "candidate": "Anil Kumar",
+        "party": "Independent",
+        "partyCode": "O"
+      },
+      {
+        "candidate": "Jeremy Moss",
+        "party": "Democratic",
+        "partyCode": "D"
+      },
+      {
+        "candidate": "Ryan Teasdale",
+        "party": "Green",
+        "partyCode": "O"
+      }
+    ],
+    "MI-12": [
+      {
+        "candidate": "James Hooper",
+        "party": "Republican",
+        "partyCode": "R"
+      },
+      {
+        "candidate": "Brenda K. Sanders",
+        "party": "Green",
+        "partyCode": "O"
+      },
+      {
+        "candidate": "Marc J. Sosnowski",
+        "party": "U.S. Taxpayers",
+        "partyCode": "O"
+      },
+      {
+        "candidate": "Rashida Tlaib",
+        "party": "Democratic",
+        "partyCode": "D"
+      },
+      {
+        "candidate": "Gary Walkowicz",
+        "party": "Working Class",
+        "partyCode": "O"
+      }
+    ],
+    "MI-13": [
+      {
+        "candidate": "Simone R. Coleman",
+        "party": "Working Class",
+        "partyCode": "O"
+      },
+      {
+        "candidate": "Chris Dardzinski",
+        "party": "U.S. Taxpayers",
+        "partyCode": "O"
+      },
+      {
+        "candidate": "Raelyn Light",
+        "party": "Green",
+        "partyCode": "O"
+      },
+      {
+        "candidate": "Donavan McKinney",
+        "party": "Democratic",
+        "partyCode": "D"
+      },
+      {
+        "candidate": "T. P. Nykoriak",
+        "party": "Republican",
+        "partyCode": "R"
+      }
+    ],
+    "MN-01": [
+      {
+        "candidate": "Brad Finstad",
+        "party": "Republican",
+        "partyCode": "R"
+      },
+      {
+        "candidate": "Jake Johnson",
+        "party": "DFL",
+        "partyCode": "D"
+      }
+    ],
+    "MN-02": [
+      {
+        "candidate": "Matt Little",
+        "party": "DFL",
+        "partyCode": "D"
+      },
+      {
+        "candidate": "Eric Pratt",
+        "party": "Republican",
+        "partyCode": "R"
+      }
+    ],
+    "MN-03": [
+      {
+        "candidate": "Tyler Bass",
+        "party": "Republican",
+        "partyCode": "R"
+      },
+      {
+        "candidate": "Kelly Morrison",
+        "party": "DFL",
+        "partyCode": "D"
+      }
+    ],
+    "MN-04": [
+      {
+        "candidate": "Betty McCollum",
+        "party": "DFL",
+        "partyCode": "D"
+      },
+      {
+        "candidate": "Paul Wikstrom",
+        "party": "Republican",
+        "partyCode": "R"
+      }
+    ],
+    "MN-05": [
+      {
+        "candidate": "DeVelle Jackson",
+        "party": "Independent",
+        "partyCode": "O"
+      },
+      {
+        "candidate": "John Nagel",
+        "party": "Republican",
+        "partyCode": "R"
+      },
+      {
+        "candidate": "Ilhan Omar",
+        "party": "DFL",
+        "partyCode": "D"
+      }
+    ],
+    "MN-06": [
+      {
+        "candidate": "Doug Chapin",
+        "party": "DFL",
+        "partyCode": "D"
+      },
+      {
+        "candidate": "Tom Emmer",
+        "party": "Republican",
+        "partyCode": "R"
+      }
+    ],
+    "MN-07": [
+      {
+        "candidate": "Michelle Fischbach",
+        "party": "Republican",
+        "partyCode": "R"
+      },
+      {
+        "candidate": "Erik Osberg",
+        "party": "DFL",
+        "partyCode": "D"
+      }
+    ],
+    "MN-08": [
+      {
+        "candidate": "Pete Stauber",
+        "party": "Republican",
+        "partyCode": "R"
+      },
+      {
+        "candidate": "Trina Swanson",
+        "party": "DFL",
+        "partyCode": "D"
+      }
+    ],
+    "MS-01": [
+      {
+        "candidate": "Johnny Baucom",
+        "party": "Libertarian",
+        "partyCode": "O"
+      },
+      {
+        "candidate": "Cliff Johnson",
+        "party": "Democratic",
+        "partyCode": "D"
+      },
+      {
+        "candidate": "Trent Kelly",
+        "party": "Republican",
+        "partyCode": "R"
+      }
+    ],
+    "MS-02": [
+      {
+        "candidate": "Ron Eller",
+        "party": "Republican",
+        "partyCode": "R"
+      },
+      {
+        "candidate": "Bennie Foster",
+        "party": "Independent",
+        "partyCode": "O"
+      },
+      {
+        "candidate": "Bennie Thompson",
+        "party": "Democratic",
+        "partyCode": "D"
+      }
+    ],
+    "MS-03": [
+      {
+        "candidate": "Michael Chiaradio",
+        "party": "Democratic",
+        "partyCode": "D"
+      },
+      {
+        "candidate": "Michael Guest",
+        "party": "Republican",
+        "partyCode": "R"
+      },
+      {
+        "candidate": "Erik Kiehle",
+        "party": "Libertarian",
+        "partyCode": "O"
+      }
+    ],
+    "MS-04": [
+      {
+        "candidate": "Carl Boyanton",
+        "party": "Independent",
+        "partyCode": "O"
+      },
+      {
+        "candidate": "Mike Ezell",
+        "party": "Republican",
+        "partyCode": "R"
+      },
+      {
+        "candidate": "Jeffrey Hulum III",
+        "party": "Democratic",
+        "partyCode": "D"
+      }
+    ],
+    "MO-01": [
+      {
+        "candidate": "Wesley Bell",
+        "party": "Democratic",
+        "partyCode": "D"
+      },
+      {
+        "candidate": "Paul Berry",
+        "party": "Republican",
+        "partyCode": "R"
+      },
+      {
+        "candidate": "Tom Schmitz",
+        "party": "Libertarian",
+        "partyCode": "O"
+      }
+    ],
+    "MO-02": [
+      {
+        "candidate": "Brandon Daugherty",
+        "party": "Libertarian",
+        "partyCode": "O"
+      },
+      {
+        "candidate": "Ann Wagner",
+        "party": "Republican",
+        "partyCode": "R"
+      },
+      {
+        "candidate": "Fred Wellman",
+        "party": "Democratic",
+        "partyCode": "D"
+      }
+    ],
+    "MO-03": [
+      {
+        "candidate": "Jim Higgins",
+        "party": "Libertarian",
+        "partyCode": "O"
+      },
+      {
+        "candidate": "Bethany Mann",
+        "party": "Democratic",
+        "partyCode": "D"
+      },
+      {
+        "candidate": "Bob Onder",
+        "party": "Republican",
+        "partyCode": "R"
+      }
+    ],
+    "MO-04": [
+      {
+        "candidate": "Mark Alford",
+        "party": "Republican",
+        "partyCode": "R"
+      },
+      {
+        "candidate": "Jordan Herrera",
+        "party": "Democratic",
+        "partyCode": "D"
+      },
+      {
+        "candidate": "Thomas Holbrook",
+        "party": "Libertarian",
+        "partyCode": "O"
+      }
+    ],
+    "MO-05": [
+      {
+        "candidate": "Rick Brattin",
+        "party": "Republican",
+        "partyCode": "R"
+      },
+      {
+        "candidate": "Emanuel Cleaver",
+        "party": "Democratic",
+        "partyCode": "D"
+      },
+      {
+        "candidate": "Randy Langkraehr",
+        "party": "Libertarian",
+        "partyCode": "O"
+      }
+    ],
+    "MO-06": [
+      {
+        "candidate": "Andy Maidment",
+        "party": "Libertarian",
+        "partyCode": "O"
+      },
+      {
+        "candidate": "Josh Smead",
+        "party": "Democratic",
+        "partyCode": "D"
+      },
+      {
+        "candidate": "Chris Stigall",
+        "party": "Republican",
+        "partyCode": "R"
+      }
+    ],
+    "MO-07": [
+      {
+        "candidate": "Eric Burlison",
+        "party": "Republican",
+        "partyCode": "R"
+      },
+      {
+        "candidate": "Kevin Craig",
+        "party": "Libertarian",
+        "partyCode": "O"
+      },
+      {
+        "candidate": "Missi Hesketh",
+        "party": "Democratic",
+        "partyCode": "D"
+      }
+    ],
+    "MO-08": [
+      {
+        "candidate": "Chris Reichard",
+        "party": "Democratic",
+        "partyCode": "D"
+      },
+      {
+        "candidate": "Rebecca Sharpe Lombard",
+        "party": "Libertarian",
+        "partyCode": "O"
+      },
+      {
+        "candidate": "Jason Smith",
+        "party": "Republican",
+        "partyCode": "R"
+      }
+    ],
+    "MT-01": [
+      {
+        "candidate": "Aaron Flint",
+        "party": "Republican",
+        "partyCode": "R"
+      },
+      {
+        "candidate": "Sam Forstag",
+        "party": "Democratic",
+        "partyCode": "D"
+      },
+      {
+        "candidate": "Nick Sheedy",
+        "party": "Libertarian",
+        "partyCode": "O"
+      }
+    ],
+    "MT-02": [
+      {
+        "candidate": "Troy Downing",
+        "party": "Republican",
+        "partyCode": "R"
+      },
+      {
+        "candidate": "Michael Eisenhauer",
+        "party": "Independent",
+        "partyCode": "O"
+      },
+      {
+        "candidate": "Patrick McCracken",
+        "party": "Libertarian",
+        "partyCode": "O"
+      },
+      {
+        "candidate": "Brian Miller",
+        "party": "Democratic",
+        "partyCode": "D"
+      }
+    ],
+    "NE-01": [
+      {
+        "candidate": "Chris Backemeyer",
+        "party": "Democratic",
+        "partyCode": "D"
+      },
+      {
+        "candidate": "Mike Flood",
+        "party": "Republican",
+        "partyCode": "R"
+      },
+      {
+        "candidate": "Daniel Hartong",
+        "party": "America First",
+        "partyCode": "O"
+      },
+      {
+        "candidate": "Nik Sandman",
+        "party": "Libertarian",
+        "partyCode": "O"
+      }
+    ],
+    "NE-02": [
+      {
+        "candidate": "Eric Foreman",
+        "party": "Libertarian",
+        "partyCode": "O"
+      },
+      {
+        "candidate": "Brinker Harding",
+        "party": "Republican",
+        "partyCode": "R"
+      },
+      {
+        "candidate": "Denise Powell",
+        "party": "Democratic",
+        "partyCode": "D"
+      }
+    ],
+    "NE-03": [
+      {
+        "candidate": "Macey Budke",
+        "party": "Working People",
+        "partyCode": "O"
+      },
+      {
+        "candidate": "Mark Cohen",
+        "party": "Independent",
+        "partyCode": "O"
+      },
+      {
+        "candidate": "David Else",
+        "party": "Legal Marijuana Now",
+        "partyCode": "O"
+      },
+      {
+        "candidate": "Adrian Smith",
+        "party": "Republican",
+        "partyCode": "R"
+      },
+      {
+        "candidate": "Becky Stille",
+        "party": "Democratic",
+        "partyCode": "D"
+      }
+    ],
+    "NV-01": [
+      {
+        "candidate": "Carrie Buck",
+        "party": "Republican",
+        "partyCode": "R"
+      },
+      {
+        "candidate": "Bobby Khan",
+        "party": "Independent",
+        "partyCode": "O"
+      },
+      {
+        "candidate": "Steven St. John",
+        "party": "Independent",
+        "partyCode": "O"
+      },
+      {
+        "candidate": "Dina Titus",
+        "party": "Democratic",
+        "partyCode": "D"
+      }
+    ],
+    "NV-02": [
+      {
+        "candidate": "Teresa Benitez-Thompson",
+        "party": "Democratic",
+        "partyCode": "D"
+      },
+      {
+        "candidate": "Lynn Chapman",
+        "party": "Independent American",
+        "partyCode": "O"
+      },
+      {
+        "candidate": "David Flippo",
+        "party": "Republican",
+        "partyCode": "R"
+      }
+    ],
+    "NV-03": [
+      {
+        "candidate": "Jon Kamerath",
+        "party": "Independent American",
+        "partyCode": "O"
+      },
+      {
+        "candidate": "Susie Lee",
+        "party": "Democratic",
+        "partyCode": "D"
+      },
+      {
+        "candidate": "Martin O'Donnell",
+        "party": "Republican",
+        "partyCode": "R"
+      }
+    ],
+    "NV-04": [
+      {
+        "candidate": "Russell Best",
+        "party": "Independent American",
+        "partyCode": "O"
+      },
+      {
+        "candidate": "Steven Horsford",
+        "party": "Democratic",
+        "partyCode": "D"
+      },
+      {
+        "candidate": "William Johnson",
+        "party": "Independent",
+        "partyCode": "O"
+      },
+      {
+        "candidate": "Cody Whipple",
+        "party": "Republican",
+        "partyCode": "R"
+      }
+    ],
+    "NH-01": [
+      {
+        "candidate": "Anthony DiLorenzo",
+        "party": "Republican",
+        "partyCode": "R"
+      },
+      {
+        "candidate": "Stefany Shaheen",
+        "party": "Democratic",
+        "partyCode": "D"
+      }
+    ],
+    "NH-02": [
+      {
+        "candidate": "Maggie Goodlander",
+        "party": "Democratic",
+        "partyCode": "D"
+      },
+      {
+        "candidate": "Robbie Mahrou",
+        "party": "Independent",
+        "partyCode": "O"
+      },
+      {
+        "candidate": "Lily Tang Williams",
+        "party": "Republican",
+        "partyCode": "R"
+      }
+    ],
+    "NJ-01": [
+      {
+        "candidate": "Damon Galdo",
+        "party": "Republican",
+        "partyCode": "R"
+      },
+      {
+        "candidate": "Donald Norcross",
+        "party": "Democratic",
+        "partyCode": "D"
+      }
+    ],
+    "NJ-02": [
+      {
+        "candidate": "Ramon Mora Jr.",
+        "party": "Independent",
+        "partyCode": "O"
+      },
+      {
+        "candidate": "Zack Mullock",
+        "party": "Democratic",
+        "partyCode": "D"
+      },
+      {
+        "candidate": "Jeff Van Drew",
+        "party": "Republican",
+        "partyCode": "R"
+      }
+    ],
+    "NJ-03": [
+      {
+        "candidate": "Herb Conaway",
+        "party": "Democratic",
+        "partyCode": "D"
+      },
+      {
+        "candidate": "Ryan Kelly",
+        "party": "Independent",
+        "partyCode": "O"
+      },
+      {
+        "candidate": "Michael McGuire",
+        "party": "Republican",
+        "partyCode": "R"
+      },
+      {
+        "candidate": "Steven Welzer",
+        "party": "Green",
+        "partyCode": "O"
+      }
+    ],
+    "NJ-04": [
+      {
+        "candidate": "Rachel Peace",
+        "party": "Democratic",
+        "partyCode": "D"
+      },
+      {
+        "candidate": "Chris Smith",
+        "party": "Republican",
+        "partyCode": "R"
+      }
+    ],
+    "NJ-05": [
+      {
+        "candidate": "Josh Gottheimer",
+        "party": "Democratic",
+        "partyCode": "D"
+      },
+      {
+        "candidate": "Sean Kirrane",
+        "party": "Republican",
+        "partyCode": "R"
+      },
+      {
+        "candidate": "Adam Rueda",
+        "party": "Independent",
+        "partyCode": "O"
+      }
+    ],
+    "NJ-06": [
+      {
+        "candidate": "Hillary Herzig",
+        "party": "Republican",
+        "partyCode": "R"
+      },
+      {
+        "candidate": "Frank Pallone",
+        "party": "Democratic",
+        "partyCode": "D"
+      }
+    ],
+    "NJ-07": [
+      {
+        "candidate": "Rebecca Bennett",
+        "party": "Democratic",
+        "partyCode": "D"
+      },
+      {
+        "candidate": "Thomas Kean Jr.",
+        "party": "Republican",
+        "partyCode": "R"
+      },
+      {
+        "candidate": "Seamus O'Toole",
+        "party": "Independent",
+        "partyCode": "O"
+      }
+    ],
+    "NJ-08": [
+      {
+        "candidate": "Aristotle Eliopoulos",
+        "party": "Independent",
+        "partyCode": "O"
+      },
+      {
+        "candidate": "Craig Honts",
+        "party": "Socialist Workers",
+        "partyCode": "O"
+      },
+      {
+        "candidate": "Da'Shone Hughey",
+        "party": "Independent",
+        "partyCode": "O"
+      },
+      {
+        "candidate": "Rob Menendez",
+        "party": "Democratic",
+        "partyCode": "D"
+      }
+    ],
+    "NJ-09": [
+      {
+        "candidate": "Terrisa Bukovinac",
+        "party": "Independent",
+        "partyCode": "O"
+      },
+      {
+        "candidate": "Rosie Pino",
+        "party": "Republican",
+        "partyCode": "R"
+      },
+      {
+        "candidate": "Nellie Pou",
+        "party": "Democratic",
+        "partyCode": "D"
+      }
+    ],
+    "NJ-10": [
+      {
+        "candidate": "Carmen Bucco",
+        "party": "Republican",
+        "partyCode": "R"
+      },
+      {
+        "candidate": "LaMonica McIver",
+        "party": "Democratic",
+        "partyCode": "D"
+      }
+    ],
+    "NJ-12": [
+      {
+        "candidate": "Adam Hamawy",
+        "party": "Democratic",
+        "partyCode": "D"
+      },
+      {
+        "candidate": "Andres Jinete",
+        "party": "Green",
+        "partyCode": "O"
+      },
+      {
+        "candidate": "Winston Jordan",
+        "party": "Independent",
+        "partyCode": "O"
+      },
+      {
+        "candidate": "Gregg Mele",
+        "party": "Republican",
+        "partyCode": "R"
+      }
+    ],
+    "NM-01": [
+      {
+        "candidate": "Didi Okpareke",
+        "party": "Republican",
+        "partyCode": "R"
+      },
+      {
+        "candidate": "Melanie Stansbury",
+        "party": "Democratic",
+        "partyCode": "D"
+      }
+    ],
+    "NM-02": [
+      {
+        "candidate": "Greg Cunningham",
+        "party": "Republican",
+        "partyCode": "R"
+      },
+      {
+        "candidate": "Gabe Vasquez",
+        "party": "Democratic",
+        "partyCode": "D"
+      }
+    ],
+    "NM-03": [
+      {
+        "candidate": "Teresa Leger Fernández",
+        "party": "Democratic",
+        "partyCode": "D"
+      },
+      {
+        "candidate": "Martin Zamora",
+        "party": "Republican",
+        "partyCode": "R"
+      }
+    ],
+    "NY-01": [
+      {
+        "candidate": "Chris Gallant",
+        "party": "Democratic",
+        "partyCode": "D"
+      },
+      {
+        "candidate": "Nick LaLota",
+        "party": "Republican",
+        "partyCode": "R"
+      }
+    ],
+    "NY-02": [
+      {
+        "candidate": "Andrew Garbarino",
+        "party": "Republican",
+        "partyCode": "R"
+      },
+      {
+        "candidate": "Patrick Halpin",
+        "party": "Democratic",
+        "partyCode": "D"
+      }
+    ],
+    "NY-03": [
+      {
+        "candidate": "Mike LiPetri",
+        "party": "Republican",
+        "partyCode": "R"
+      },
+      {
+        "candidate": "Tom Suozzi",
+        "party": "Democratic",
+        "partyCode": "D"
+      }
+    ],
+    "NY-04": [
+      {
+        "candidate": "Jeanine Driscoll",
+        "party": "Republican",
+        "partyCode": "R"
+      },
+      {
+        "candidate": "Laura Gillen",
+        "party": "Democratic",
+        "partyCode": "D"
+      },
+      {
+        "candidate": "Blay Tarnoff",
+        "party": "Libertarian",
+        "partyCode": "O"
+      }
+    ],
+    "NY-05": [
+      {
+        "candidate": "George Marsh",
+        "party": "Republican",
+        "partyCode": "R"
+      },
+      {
+        "candidate": "Gregory Meeks",
+        "party": "Democratic",
+        "partyCode": "D"
+      }
+    ],
+    "NY-06": [
+      {
+        "candidate": "Joseph Chou",
+        "party": "Republican",
+        "partyCode": "R"
+      },
+      {
+        "candidate": "Grace Meng",
+        "party": "Democratic",
+        "partyCode": "D"
+      }
+    ],
+    "NY-07": [
+      {
+        "candidate": "Priscilla Ghaznavi",
+        "party": "Independent",
+        "partyCode": "O"
+      },
+      {
+        "candidate": "Melvin Rivera",
+        "party": "Republican",
+        "partyCode": "R"
+      },
+      {
+        "candidate": "Claire Valdez",
+        "party": "Democratic",
+        "partyCode": "D"
+      }
+    ],
+    "NY-08": [
+      {
+        "candidate": "Hakeem Jeffries",
+        "party": "Democratic",
+        "partyCode": "D"
+      },
+      {
+        "candidate": "Lewis Mizrahi",
+        "party": "Republican",
+        "partyCode": "R"
+      }
+    ],
+    "NY-09": [
+      {
+        "candidate": "Joel Azumah",
+        "party": "Republican",
+        "partyCode": "R"
+      },
+      {
+        "candidate": "Yvette Clarke",
+        "party": "Democratic",
+        "partyCode": "D"
+      }
+    ],
+    "NY-10": [
+      {
+        "candidate": "Brad Lander",
+        "party": "Democratic",
+        "partyCode": "D"
+      },
+      {
+        "candidate": "Jennifer Moore",
+        "party": "Republican",
+        "partyCode": "R"
+      }
+    ],
+    "NY-11": [
+      {
+        "candidate": "Michael DeCillis",
+        "party": "Democratic",
+        "partyCode": "D"
+      },
+      {
+        "candidate": "Nicole Malliotakis",
+        "party": "Republican",
+        "partyCode": "R"
+      }
+    ],
+    "NY-12": [
+      {
+        "candidate": "Micah Lasher",
+        "party": "Democratic",
+        "partyCode": "D"
+      },
+      {
+        "candidate": "Wilneida Negron",
+        "party": "Independent",
+        "partyCode": "O"
+      },
+      {
+        "candidate": "Karen Ortiz",
+        "party": "Independent",
+        "partyCode": "O"
+      },
+      {
+        "candidate": "Caroline Shinkle",
+        "party": "Republican",
+        "partyCode": "R"
+      }
+    ],
+    "NY-13": [
+      {
+        "candidate": "Darializa Avila Chevalier",
+        "party": "Democratic",
+        "partyCode": "D"
+      },
+      {
+        "candidate": "Jomo Williams",
+        "party": "Republican",
+        "partyCode": "R"
+      }
+    ],
+    "NY-14": [
+      {
+        "candidate": "Diamant Hysenaj",
+        "party": "Republican",
+        "partyCode": "R"
+      },
+      {
+        "candidate": "Alexandria Ocasio-Cortez",
+        "party": "Democratic",
+        "partyCode": "D"
+      }
+    ],
+    "NY-15": [
+      {
+        "candidate": "Gonzalo Duran",
+        "party": "Conservative",
+        "partyCode": "O"
+      },
+      {
+        "candidate": "Andre Easton",
+        "party": "Socialism and Liberation",
+        "partyCode": "O"
+      },
+      {
+        "candidate": "Stylo Sapaskis",
+        "party": "Republican",
+        "partyCode": "R"
+      },
+      {
+        "candidate": "Ritchie Torres",
+        "party": "Democratic",
+        "partyCode": "D"
+      },
+      {
+        "candidate": "Jose Vega",
+        "party": "Independent",
+        "partyCode": "O"
+      }
+    ],
+    "NY-16": [
+      {
+        "candidate": "Joseph Cinquemani",
+        "party": "Republican",
+        "partyCode": "R"
+      },
+      {
+        "candidate": "George Latimer",
+        "party": "Democratic",
+        "partyCode": "D"
+      }
+    ],
+    "NY-17": [
+      {
+        "candidate": "Cait Conley",
+        "party": "Democratic",
+        "partyCode": "D"
+      },
+      {
+        "candidate": "Mike Lawler",
+        "party": "Republican",
+        "partyCode": "R"
+      }
+    ],
+    "NY-18": [
+      {
+        "candidate": "Jacqueline Auringer",
+        "party": "Republican",
+        "partyCode": "R"
+      },
+      {
+        "candidate": "Pat Ryan",
+        "party": "Democratic",
+        "partyCode": "D"
+      }
+    ],
+    "NY-19": [
+      {
+        "candidate": "Peter Oberacker",
+        "party": "Republican",
+        "partyCode": "R"
+      },
+      {
+        "candidate": "Josh Riley",
+        "party": "Democratic",
+        "partyCode": "D"
+      }
+    ],
+    "NY-20": [
+      {
+        "candidate": "Ralph Ambrosio",
+        "party": "Republican",
+        "partyCode": "R"
+      },
+      {
+        "candidate": "Paul Tonko",
+        "party": "Democratic",
+        "partyCode": "D"
+      }
+    ],
+    "NY-21": [
+      {
+        "candidate": "Anthony Constantino",
+        "party": "Republican",
+        "partyCode": "R"
+      },
+      {
+        "candidate": "Blake Gendebien",
+        "party": "Democratic",
+        "partyCode": "D"
+      }
+    ],
+    "NY-22": [
+      {
+        "candidate": "Kailee Buller",
+        "party": "Republican",
+        "partyCode": "R"
+      },
+      {
+        "candidate": "John Mannion",
+        "party": "Democratic",
+        "partyCode": "D"
+      }
+    ],
+    "NY-23": [
+      {
+        "candidate": "Aaron Gies",
+        "party": "Democratic",
+        "partyCode": "D"
+      },
+      {
+        "candidate": "Nick Langworthy",
+        "party": "Republican",
+        "partyCode": "R"
+      }
+    ],
+    "NY-24": [
+      {
+        "candidate": "Alissa Ellman",
+        "party": "Democratic",
+        "partyCode": "D"
+      },
+      {
+        "candidate": "Claudia Tenney",
+        "party": "Republican",
+        "partyCode": "R"
+      }
+    ],
+    "NY-25": [
+      {
+        "candidate": "Virginia McIntyre",
+        "party": "Republican",
+        "partyCode": "R"
+      },
+      {
+        "candidate": "Joseph Morelle",
+        "party": "Democratic",
+        "partyCode": "D"
+      }
+    ],
+    "NY-26": [
+      {
+        "candidate": "Dennis Hannon",
+        "party": "Republican",
+        "partyCode": "R"
+      },
+      {
+        "candidate": "Tim Kennedy",
+        "party": "Democratic",
+        "partyCode": "D"
+      }
+    ],
+    "NC-01": [
+      {
+        "candidate": "Tom Bailey",
+        "party": "Libertarian",
+        "partyCode": "O"
+      },
+      {
+        "candidate": "Laurie Buckhout",
+        "party": "Republican",
+        "partyCode": "R"
+      },
+      {
+        "candidate": "Don Davis",
+        "party": "Democratic",
+        "partyCode": "D"
+      }
+    ],
+    "NC-02": [
+      {
+        "candidate": "Eugene Douglass",
+        "party": "Republican",
+        "partyCode": "R"
+      },
+      {
+        "candidate": "Matthew Laszacs",
+        "party": "Libertarian",
+        "partyCode": "O"
+      },
+      {
+        "candidate": "Deborah Ross",
+        "party": "Democratic",
+        "partyCode": "D"
+      }
+    ],
+    "NC-03": [
+      {
+        "candidate": "Daniel Cavender",
+        "party": "Libertarian",
+        "partyCode": "O"
+      },
+      {
+        "candidate": "Greg Murphy",
+        "party": "Republican",
+        "partyCode": "R"
+      },
+      {
+        "candidate": "Raymond Smith Jr.",
+        "party": "Democratic",
+        "partyCode": "D"
+      }
+    ],
+    "NC-04": [
+      {
+        "candidate": "Valerie Foushee",
+        "party": "Democratic",
+        "partyCode": "D"
+      },
+      {
+        "candidate": "Max Ganorkar",
+        "party": "Republican",
+        "partyCode": "R"
+      },
+      {
+        "candidate": "Guy Meilleur",
+        "party": "Libertarian",
+        "partyCode": "O"
+      }
+    ],
+    "NC-05": [
+      {
+        "candidate": "Virginia Foxx",
+        "party": "Republican",
+        "partyCode": "R"
+      },
+      {
+        "candidate": "Chuck Hubbard",
+        "party": "Democratic",
+        "partyCode": "D"
+      },
+      {
+        "candidate": "Robert Luffman",
+        "party": "Libertarian",
+        "partyCode": "O"
+      }
+    ],
+    "NC-06": [
+      {
+        "candidate": "Cyril Jefferson",
+        "party": "Democratic",
+        "partyCode": "D"
+      },
+      {
+        "candidate": "Addison McDowell",
+        "party": "Republican",
+        "partyCode": "R"
+      }
+    ],
+    "NC-07": [
+      {
+        "candidate": "Maad Abu-Ghazalah",
+        "party": "Libertarian",
+        "partyCode": "O"
+      },
+      {
+        "candidate": "Kimberly Hardy",
+        "party": "Democratic",
+        "partyCode": "D"
+      },
+      {
+        "candidate": "David Rouzer",
+        "party": "Republican",
+        "partyCode": "R"
+      }
+    ],
+    "NC-08": [
+      {
+        "candidate": "Mark Harris",
+        "party": "Republican",
+        "partyCode": "R"
+      },
+      {
+        "candidate": "Colby Watson",
+        "party": "Democratic",
+        "partyCode": "D"
+      },
+      {
+        "candidate": "Bo Whitehead",
+        "party": "Green",
+        "partyCode": "O"
+      }
+    ],
+    "NC-09": [
+      {
+        "candidate": "Richard Hudson",
+        "party": "Republican",
+        "partyCode": "R"
+      },
+      {
+        "candidate": "Richard Ojeda",
+        "party": "Democratic",
+        "partyCode": "D"
+      }
+    ],
+    "NC-10": [
+      {
+        "candidate": "Ashley Bell",
+        "party": "Democratic",
+        "partyCode": "D"
+      },
+      {
+        "candidate": "Steve Feldman",
+        "party": "Libertarian",
+        "partyCode": "O"
+      },
+      {
+        "candidate": "Pat Harrigan",
+        "party": "Republican",
+        "partyCode": "R"
+      }
+    ],
+    "NC-11": [
+      {
+        "candidate": "Jamie Ager",
+        "party": "Democratic",
+        "partyCode": "D"
+      },
+      {
+        "candidate": "Jennifer Balkcom",
+        "party": "Republican",
+        "partyCode": "R"
+      },
+      {
+        "candidate": "Travis Groo",
+        "party": "Libertarian",
+        "partyCode": "O"
+      }
+    ],
+    "NC-12": [
+      {
+        "candidate": "Alma Adams",
+        "party": "Democratic",
+        "partyCode": "D"
+      },
+      {
+        "candidate": "Jack Codiga",
+        "party": "Republican",
+        "partyCode": "R"
+      }
+    ],
+    "NC-13": [
+      {
+        "candidate": "Paul Barringer",
+        "party": "Democratic",
+        "partyCode": "D"
+      },
+      {
+        "candidate": "Brad Knott",
+        "party": "Republican",
+        "partyCode": "R"
+      },
+      {
+        "candidate": "Steven Swinton",
+        "party": "Libertarian",
+        "partyCode": "O"
+      }
+    ],
+    "NC-14": [
+      {
+        "candidate": "Tim Moore",
+        "party": "Republican",
+        "partyCode": "R"
+      },
+      {
+        "candidate": "Lakesha Womack",
+        "party": "Democratic",
+        "partyCode": "D"
+      }
+    ],
+    "ND-AL": [
+      {
+        "candidate": "Julie Fedorchak",
+        "party": "Republican",
+        "partyCode": "R"
+      },
+      {
+        "candidate": "Trygve Hammer",
+        "party": "Democratic-NPL",
+        "partyCode": "D"
+      },
+      {
+        "candidate": "Helene Neville",
+        "party": "Independent",
+        "partyCode": "O"
+      },
+      {
+        "candidate": "Charles Tuttle",
+        "party": "Independent",
+        "partyCode": "O"
+      }
+    ],
+    "OH-01": [
+      {
+        "candidate": "Eric Conroy",
+        "party": "Republican",
+        "partyCode": "R"
+      },
+      {
+        "candidate": "Greg Landsman",
+        "party": "Democratic",
+        "partyCode": "D"
+      },
+      {
+        "candidate": "Nathan Weise",
+        "party": "Libertarian",
+        "partyCode": "O"
+      }
+    ],
+    "OH-02": [
+      {
+        "candidate": "Jennifer Mazzuckelli",
+        "party": "Democratic",
+        "partyCode": "D"
+      },
+      {
+        "candidate": "David Taylor",
+        "party": "Republican",
+        "partyCode": "R"
+      }
+    ],
+    "OH-03": [
+      {
+        "candidate": "Joyce Beatty",
+        "party": "Democratic",
+        "partyCode": "D"
+      },
+      {
+        "candidate": "Cleophus Dulaney",
+        "party": "Republican",
+        "partyCode": "R"
+      }
+    ],
+    "OH-04": [
+      {
+        "candidate": "Jim Jordan",
+        "party": "Republican",
+        "partyCode": "R"
+      },
+      {
+        "candidate": "Joshua Kolasinski",
+        "party": "Democratic",
+        "partyCode": "D"
+      },
+      {
+        "candidate": "Tracey Tackett",
+        "party": "Independent",
+        "partyCode": "O"
+      }
+    ],
+    "OH-05": [
+      {
+        "candidate": "Bob Latta",
+        "party": "Republican",
+        "partyCode": "R"
+      },
+      {
+        "candidate": "Brian Shaver",
+        "party": "Democratic",
+        "partyCode": "D"
+      },
+      {
+        "candidate": "Michael Veloff",
+        "party": "Libertarian",
+        "partyCode": "O"
+      }
+    ],
+    "OH-06": [
+      {
+        "candidate": "Elizabeth Kirtley",
+        "party": "Democratic",
+        "partyCode": "D"
+      },
+      {
+        "candidate": "Michael Rulli",
+        "party": "Republican",
+        "partyCode": "R"
+      }
+    ],
+    "OH-07": [
+      {
+        "candidate": "Max Miller",
+        "party": "Republican",
+        "partyCode": "R"
+      },
+      {
+        "candidate": "Brian Poindexter",
+        "party": "Democratic",
+        "partyCode": "D"
+      }
+    ],
+    "OH-08": [
+      {
+        "candidate": "Warren Davidson",
+        "party": "Republican",
+        "partyCode": "R"
+      },
+      {
+        "candidate": "Vanessa Enoch",
+        "party": "Democratic",
+        "partyCode": "D"
+      }
+    ],
+    "OH-09": [
+      {
+        "candidate": "Matthew Althaus",
+        "party": "Libertarian",
+        "partyCode": "O"
+      },
+      {
+        "candidate": "Marcy Kaptur",
+        "party": "Democratic",
+        "partyCode": "D"
+      },
+      {
+        "candidate": "Derek Merrin",
+        "party": "Republican",
+        "partyCode": "R"
+      }
+    ],
+    "OH-10": [
+      {
+        "candidate": "Kristina Knickerbocker",
+        "party": "Democratic",
+        "partyCode": "D"
+      },
+      {
+        "candidate": "Thomas McMasters",
+        "party": "Libertarian",
+        "partyCode": "O"
+      },
+      {
+        "candidate": "Mike Turner",
+        "party": "Republican",
+        "partyCode": "R"
+      }
+    ],
+    "OH-11": [
+      {
+        "candidate": "Shontel Brown",
+        "party": "Democratic",
+        "partyCode": "D"
+      },
+      {
+        "candidate": "Mike Kirchner",
+        "party": "Republican",
+        "partyCode": "R"
+      }
+    ],
+    "OH-12": [
+      {
+        "candidate": "Troy Balderson",
+        "party": "Republican",
+        "partyCode": "R"
+      },
+      {
+        "candidate": "Jerrad Christian",
+        "party": "Democratic",
+        "partyCode": "D"
+      }
+    ],
+    "OH-13": [
+      {
+        "candidate": "Carey Coleman",
+        "party": "Republican",
+        "partyCode": "R"
+      },
+      {
+        "candidate": "Sandeep Dixit",
+        "party": "Independent",
+        "partyCode": "O"
+      },
+      {
+        "candidate": "Emilia Sykes",
+        "party": "Democratic",
+        "partyCode": "D"
+      }
+    ],
+    "OH-14": [
+      {
+        "candidate": "David Joyce",
+        "party": "Republican",
+        "partyCode": "R"
+      },
+      {
+        "candidate": "Maria Jukic",
+        "party": "Democratic",
+        "partyCode": "D"
+      }
+    ],
+    "OH-15": [
+      {
+        "candidate": "Brennan Barrington",
+        "party": "Libertarian",
+        "partyCode": "O"
+      },
+      {
+        "candidate": "Mike Carey",
+        "party": "Republican",
+        "partyCode": "R"
+      },
+      {
+        "candidate": "Don Leonard",
+        "party": "Democratic",
+        "partyCode": "D"
+      }
+    ],
+    "OK-01": [
+      {
+        "candidate": "John Croisant",
+        "party": "Democratic",
+        "partyCode": "D"
+      },
+      {
+        "candidate": "Mark Tedford",
+        "party": "Republican",
+        "partyCode": "R"
+      }
+    ],
+    "OK-02": [
+      {
+        "candidate": "Josh Brecheen",
+        "party": "Republican",
+        "partyCode": "R"
+      },
+      {
+        "candidate": "Ronnie Hopkins",
+        "party": "Independent",
+        "partyCode": "O"
+      },
+      {
+        "candidate": "Brandon Wade",
+        "party": "Democratic",
+        "partyCode": "D"
+      }
+    ],
+    "OK-03": [
+      {
+        "candidate": "Suzie Byrd",
+        "party": "Democratic",
+        "partyCode": "D"
+      },
+      {
+        "candidate": "Frank Lucas",
+        "party": "Republican",
+        "partyCode": "R"
+      }
+    ],
+    "OK-04": [
+      {
+        "candidate": "Rocco Bonacci",
+        "party": "Independent",
+        "partyCode": "O"
+      },
+      {
+        "candidate": "Tom Cole",
+        "party": "Republican",
+        "partyCode": "R"
+      },
+      {
+        "candidate": "Mitchell Jacob",
+        "party": "Democratic",
+        "partyCode": "D"
+      }
+    ],
+    "OK-05": [
+      {
+        "candidate": "Stephanie Bice",
+        "party": "Republican",
+        "partyCode": "R"
+      },
+      {
+        "candidate": "Robert Henri",
+        "party": "Independent",
+        "partyCode": "O"
+      },
+      {
+        "candidate": "Jena Nelson",
+        "party": "Democratic",
+        "partyCode": "D"
+      },
+      {
+        "candidate": "Austin Nieves",
+        "party": "Independent",
+        "partyCode": "O"
+      }
+    ],
+    "OR-01": [
+      {
+        "candidate": "Suzanne Bonamici",
+        "party": "Democratic",
+        "partyCode": "D"
+      },
+      {
+        "candidate": "Barbara Kahl",
+        "party": "Republican",
+        "partyCode": "R"
+      }
+    ],
+    "OR-02": [
+      {
+        "candidate": "Chris Beck",
+        "party": "Democratic",
+        "partyCode": "D"
+      },
+      {
+        "candidate": "Cliff Bentz",
+        "party": "Republican",
+        "partyCode": "R"
+      }
+    ],
+    "OR-03": [
+      {
+        "candidate": "Loran Ayles",
+        "party": "Republican",
+        "partyCode": "R"
+      },
+      {
+        "candidate": "Maxine Dexter",
+        "party": "Democratic",
+        "partyCode": "D"
+      }
+    ],
+    "OR-04": [
+      {
+        "candidate": "Monique DeSpain",
+        "party": "Republican",
+        "partyCode": "R"
+      },
+      {
+        "candidate": "Justin Filip",
+        "party": "Pacific Green",
+        "partyCode": "O"
+      },
+      {
+        "candidate": "Val Hoyle",
+        "party": "Democratic",
+        "partyCode": "D"
+      }
+    ],
+    "OR-05": [
+      {
+        "candidate": "Patti Adair",
+        "party": "Republican",
+        "partyCode": "R"
+      },
+      {
+        "candidate": "Janelle Bynum",
+        "party": "Democratic",
+        "partyCode": "D"
+      },
+      {
+        "candidate": "Andrea Townsend",
+        "party": "Pacific Green",
+        "partyCode": "O"
+      }
+    ],
+    "OR-06": [
+      {
+        "candidate": "David Russ",
+        "party": "Republican",
+        "partyCode": "R"
+      },
+      {
+        "candidate": "Andrea Salinas",
+        "party": "Democratic",
+        "partyCode": "D"
+      }
+    ],
+    "PA-01": [
+      {
+        "candidate": "Brian Fitzpatrick",
+        "party": "Republican",
+        "partyCode": "R"
+      },
+      {
+        "candidate": "Bob Harvie",
+        "party": "Democratic",
+        "partyCode": "D"
+      }
+    ],
+    "PA-02": [
+      {
+        "candidate": "Jessica Arriaga",
+        "party": "Republican",
+        "partyCode": "R"
+      },
+      {
+        "candidate": "Brendan Boyle",
+        "party": "Democratic",
+        "partyCode": "D"
+      }
+    ],
+    "PA-03": [
+      {
+        "candidate": "Dennis Mahoney",
+        "party": "Independent",
+        "partyCode": "O"
+      },
+      {
+        "candidate": "Chris Rabb",
+        "party": "Democratic",
+        "partyCode": "D"
+      }
+    ],
+    "PA-04": [
+      {
+        "candidate": "Madeleine Dean",
+        "party": "Democratic",
+        "partyCode": "D"
+      },
+      {
+        "candidate": "Aurora Stuski",
+        "party": "Republican",
+        "partyCode": "R"
+      }
+    ],
+    "PA-05": [
+      {
+        "candidate": "Nicholas Manganaro",
+        "party": "Republican",
+        "partyCode": "R"
+      },
+      {
+        "candidate": "Mary Gay Scanlon",
+        "party": "Democratic",
+        "partyCode": "D"
+      }
+    ],
+    "PA-06": [
+      {
+        "candidate": "Chrissy Houlahan",
+        "party": "Democratic",
+        "partyCode": "D"
+      },
+      {
+        "candidate": "Marty Young",
+        "party": "Republican",
+        "partyCode": "R"
+      }
+    ],
+    "PA-07": [
+      {
+        "candidate": "Bob Brooks",
+        "party": "Democratic",
+        "partyCode": "D"
+      },
+      {
+        "candidate": "Ryan Mackenzie",
+        "party": "Republican",
+        "partyCode": "R"
+      }
+    ],
+    "PA-08": [
+      {
+        "candidate": "Rob Bresnahan",
+        "party": "Republican",
+        "partyCode": "R"
+      },
+      {
+        "candidate": "Paige Cognetti",
+        "party": "Democratic",
+        "partyCode": "D"
+      }
+    ],
+    "PA-09": [
+      {
+        "candidate": "Dan Meuser",
+        "party": "Republican",
+        "partyCode": "R"
+      },
+      {
+        "candidate": "Rachel Wallace",
+        "party": "Democratic",
+        "partyCode": "D"
+      }
+    ],
+    "PA-10": [
+      {
+        "candidate": "Scott Perry",
+        "party": "Republican",
+        "partyCode": "R"
+      },
+      {
+        "candidate": "Janelle Stelson",
+        "party": "Democratic",
+        "partyCode": "D"
+      }
+    ],
+    "PA-11": [
+      {
+        "candidate": "Nancy Mannion",
+        "party": "Democratic",
+        "partyCode": "D"
+      },
+      {
+        "candidate": "Lloyd Smucker",
+        "party": "Republican",
+        "partyCode": "R"
+      }
+    ],
+    "PA-12": [
+      {
+        "candidate": "James Hayes",
+        "party": "Republican",
+        "partyCode": "R"
+      },
+      {
+        "candidate": "Summer Lee",
+        "party": "Democratic",
+        "partyCode": "D"
+      }
+    ],
+    "PA-13": [
+      {
+        "candidate": "Beth Farnham",
+        "party": "Democratic",
+        "partyCode": "D"
+      },
+      {
+        "candidate": "John Joyce",
+        "party": "Republican",
+        "partyCode": "R"
+      }
+    ],
+    "PA-14": [
+      {
+        "candidate": "Alan Bradstock",
+        "party": "Democratic",
+        "partyCode": "D"
+      },
+      {
+        "candidate": "Guy Reschenthaler",
+        "party": "Republican",
+        "partyCode": "R"
+      }
+    ],
+    "PA-15": [
+      {
+        "candidate": "Ray Bilger",
+        "party": "Democratic",
+        "partyCode": "D"
+      },
+      {
+        "candidate": "Glenn Thompson",
+        "party": "Republican",
+        "partyCode": "R"
+      }
+    ],
+    "PA-16": [
+      {
+        "candidate": "Mike Kelly",
+        "party": "Republican",
+        "partyCode": "R"
+      },
+      {
+        "candidate": "Justin Wagner",
+        "party": "Democratic",
+        "partyCode": "D"
+      }
+    ],
+    "PA-17": [
+      {
+        "candidate": "Chris Deluzio",
+        "party": "Democratic",
+        "partyCode": "D"
+      },
+      {
+        "candidate": "Tony Guy",
+        "party": "Republican",
+        "partyCode": "R"
+      }
+    ],
+    "RI-01": [
+      {
+        "candidate": "Gabe Amo",
+        "party": "Democratic",
+        "partyCode": "D"
+      },
+      {
+        "candidate": "Pedro DeSouza",
+        "party": "Independent",
+        "partyCode": "O"
+      },
+      {
+        "candidate": "Kellie Keenan",
+        "party": "Republican",
+        "partyCode": "R"
+      }
+    ],
+    "RI-02": [
+      {
+        "candidate": "Seth Magaziner",
+        "party": "Democratic",
+        "partyCode": "D"
+      },
+      {
+        "candidate": "Vic Mellor",
+        "party": "Republican",
+        "partyCode": "R"
+      }
+    ],
+    "SC-01": [
+      {
+        "candidate": "Jenny Costa Honeycutt",
+        "party": "Republican",
+        "partyCode": "R"
+      },
+      {
+        "candidate": "Nancy Lacore",
+        "party": "Democratic",
+        "partyCode": "D"
+      },
+      {
+        "candidate": "Bill Reeside",
+        "party": "Libertarian",
+        "partyCode": "O"
+      }
+    ],
+    "SC-02": [
+      {
+        "candidate": "Zyon Khalifa",
+        "party": "Democratic",
+        "partyCode": "D"
+      },
+      {
+        "candidate": "Dayna Alane Smith",
+        "party": "Workers",
+        "partyCode": "O"
+      },
+      {
+        "candidate": "Joe Wilson",
+        "party": "Republican",
+        "partyCode": "R"
+      }
+    ],
+    "SC-03": [
+      {
+        "candidate": "Sheri Biggs",
+        "party": "Republican",
+        "partyCode": "R"
+      },
+      {
+        "candidate": "Brian Corriea",
+        "party": "Libertarian",
+        "partyCode": "O"
+      },
+      {
+        "candidate": "Eunice Lehmacher",
+        "party": "Democratic",
+        "partyCode": "D"
+      }
+    ],
+    "SC-04": [
+      {
+        "candidate": "Jessica Ethridge",
+        "party": "Libertarian",
+        "partyCode": "O"
+      },
+      {
+        "candidate": "Courtney McClain",
+        "party": "Democratic",
+        "partyCode": "D"
+      },
+      {
+        "candidate": "William Timmons",
+        "party": "Republican",
+        "partyCode": "R"
+      }
+    ],
+    "SC-05": [
+      {
+        "candidate": "Wes Climer",
+        "party": "Republican",
+        "partyCode": "R"
+      },
+      {
+        "candidate": "Mallory Dittmer",
+        "party": "Democratic",
+        "partyCode": "D"
+      }
+    ],
+    "SC-06": [
+      {
+        "candidate": "Jim Clyburn",
+        "party": "Democratic",
+        "partyCode": "D"
+      },
+      {
+        "candidate": "John Peterson",
+        "party": "Republican",
+        "partyCode": "R"
+      }
+    ],
+    "SC-07": [
+      {
+        "candidate": "Russell Fry",
+        "party": "Republican",
+        "partyCode": "R"
+      },
+      {
+        "candidate": "John Vincent",
+        "party": "Democratic",
+        "partyCode": "D"
+      }
+    ],
+    "SD-AL": [
+      {
+        "candidate": "Nikki Gronli",
+        "party": "Democratic",
+        "partyCode": "D"
+      },
+      {
+        "candidate": "Marty Jackley",
+        "party": "Republican",
+        "partyCode": "R"
+      }
+    ],
+    "TN-01": [
+      {
+        "candidate": "Joshua Ashburn",
+        "party": "Independent",
+        "partyCode": "O"
+      },
+      {
+        "candidate": "Richard Baker",
+        "party": "Independent",
+        "partyCode": "O"
+      },
+      {
+        "candidate": "Kristi Burke",
+        "party": "Democratic",
+        "partyCode": "D"
+      },
+      {
+        "candidate": "Chris Campbell",
+        "party": "Independent",
+        "partyCode": "O"
+      },
+      {
+        "candidate": "Billy Cody",
+        "party": "Independent",
+        "partyCode": "O"
+      },
+      {
+        "candidate": "Diana Harshbarger",
+        "party": "Republican",
+        "partyCode": "R"
+      },
+      {
+        "candidate": "Tyler McClain",
+        "party": "Independent",
+        "partyCode": "O"
+      }
+    ],
+    "TN-02": [
+      {
+        "candidate": "Michaela Barnett",
+        "party": "Democratic",
+        "partyCode": "D"
+      },
+      {
+        "candidate": "Tim Burchett",
+        "party": "Republican",
+        "partyCode": "R"
+      },
+      {
+        "candidate": "Bruce Fine",
+        "party": "Independent",
+        "partyCode": "O"
+      },
+      {
+        "candidate": "Adam Heimerman",
+        "party": "Independent",
+        "partyCode": "O"
+      }
+    ],
+    "TN-03": [
+      {
+        "candidate": "Dean Arnold",
+        "party": "Independent",
+        "partyCode": "O"
+      },
+      {
+        "candidate": "Chuck Fleischmann",
+        "party": "Republican",
+        "partyCode": "R"
+      },
+      {
+        "candidate": "Anna Golladay",
+        "party": "Democratic",
+        "partyCode": "D"
+      },
+      {
+        "candidate": "Jean Howard-Hill",
+        "party": "Independent",
+        "partyCode": "O"
+      },
+      {
+        "candidate": "Rodney Joe King",
+        "party": "Independent",
+        "partyCode": "O"
+      },
+      {
+        "candidate": "Donnie Ownby",
+        "party": "Independent",
+        "partyCode": "O"
+      },
+      {
+        "candidate": "Edward Roland",
+        "party": "Independent",
+        "partyCode": "O"
+      }
+    ],
+    "TN-04": [
+      {
+        "candidate": "Jacob Anders",
+        "party": "Independent",
+        "partyCode": "O"
+      },
+      {
+        "candidate": "Victoria Broderick",
+        "party": "Democratic",
+        "partyCode": "D"
+      },
+      {
+        "candidate": "Scott DesJarlais",
+        "party": "Republican",
+        "partyCode": "R"
+      }
+    ],
+    "TN-05": [
+      {
+        "candidate": "Charlie Hatcher",
+        "party": "Republican",
+        "partyCode": "R"
+      },
+      {
+        "candidate": "James Johnson",
+        "party": "Independent",
+        "partyCode": "O"
+      },
+      {
+        "candidate": "Chaz Molder",
+        "party": "Democratic",
+        "partyCode": "D"
+      },
+      {
+        "candidate": "Micheál O'Leary",
+        "party": "Independent",
+        "partyCode": "O"
+      }
+    ],
+    "TN-06": [
+      {
+        "candidate": "Mike Croley",
+        "party": "Democratic",
+        "partyCode": "D"
+      },
+      {
+        "candidate": "Johnny Garrett",
+        "party": "Republican",
+        "partyCode": "R"
+      },
+      {
+        "candidate": "Christopher Monday",
+        "party": "Independent",
+        "partyCode": "O"
+      },
+      {
+        "candidate": "Angus Purdy",
+        "party": "Independent",
+        "partyCode": "O"
+      }
+    ],
+    "TN-07": [
+      {
+        "candidate": "Darden Copeland",
+        "party": "Democratic",
+        "partyCode": "D"
+      },
+      {
+        "candidate": "Andrew Koontz",
+        "party": "Independent",
+        "partyCode": "O"
+      },
+      {
+        "candidate": "Lowell Reynolds",
+        "party": "Independent",
+        "partyCode": "O"
+      },
+      {
+        "candidate": "Matt Van Epps",
+        "party": "Republican",
+        "partyCode": "R"
+      }
+    ],
+    "TN-08": [
+      {
+        "candidate": "Adam Austill",
+        "party": "Independent",
+        "partyCode": "O"
+      },
+      {
+        "candidate": "Wells Blankenship",
+        "party": "Independent",
+        "partyCode": "O"
+      },
+      {
+        "candidate": "Antonio Futch",
+        "party": "Independent",
+        "partyCode": "O"
+      },
+      {
+        "candidate": "Heidi Kuhn",
+        "party": "Democratic",
+        "partyCode": "D"
+      },
+      {
+        "candidate": "David Kustoff",
+        "party": "Republican",
+        "partyCode": "R"
+      },
+      {
+        "candidate": "Pamela Moses",
+        "party": "Independent",
+        "partyCode": "O"
+      },
+      {
+        "candidate": "Horace Taylor",
+        "party": "Independent",
+        "partyCode": "O"
+      },
+      {
+        "candidate": "Henry Ward III",
+        "party": "Independent",
+        "partyCode": "O"
+      }
+    ],
+    "TN-09": [
+      {
+        "candidate": "Dennis Clark",
+        "party": "Independent",
+        "partyCode": "O"
+      },
+      {
+        "candidate": "Michelle Head",
+        "party": "Independent",
+        "partyCode": "O"
+      },
+      {
+        "candidate": "Justin Pearson",
+        "party": "Democratic",
+        "partyCode": "D"
+      },
+      {
+        "candidate": "Brent Taylor",
+        "party": "Republican",
+        "partyCode": "R"
+      }
+    ],
+    "TX-01": [
+      {
+        "candidate": "Nathaniel Moran",
+        "party": "Republican",
+        "partyCode": "R"
+      },
+      {
+        "candidate": "Yolanda Prince",
+        "party": "Democratic",
+        "partyCode": "D"
+      }
+    ],
+    "TX-02": [
+      {
+        "candidate": "Shaun Finnie",
+        "party": "Democratic",
+        "partyCode": "D"
+      },
+      {
+        "candidate": "Steve Toth",
+        "party": "Republican",
+        "partyCode": "R"
+      }
+    ],
+    "TX-03": [
+      {
+        "candidate": "Evan Hunt",
+        "party": "Democratic",
+        "partyCode": "D"
+      },
+      {
+        "candidate": "Keith Self",
+        "party": "Republican",
+        "partyCode": "R"
+      }
+    ],
+    "TX-04": [
+      {
+        "candidate": "Pat Fallon",
+        "party": "Republican",
+        "partyCode": "R"
+      },
+      {
+        "candidate": "Jason Pearce",
+        "party": "Democratic",
+        "partyCode": "D"
+      }
+    ],
+    "TX-05": [
+      {
+        "candidate": "Lance Gooden",
+        "party": "Republican",
+        "partyCode": "R"
+      },
+      {
+        "candidate": "Chelsey Hockett",
+        "party": "Democratic",
+        "partyCode": "D"
+      }
+    ],
+    "TX-06": [
+      {
+        "candidate": "Jake Ellzey",
+        "party": "Republican",
+        "partyCode": "R"
+      },
+      {
+        "candidate": "Danny Minton",
+        "party": "Democratic",
+        "partyCode": "D"
+      }
+    ],
+    "TX-07": [
+      {
+        "candidate": "Lizzie Fletcher",
+        "party": "Democratic",
+        "partyCode": "D"
+      },
+      {
+        "candidate": "Alexander Hale",
+        "party": "Republican",
+        "partyCode": "R"
+      },
+      {
+        "candidate": "Espoir Ngabo",
+        "party": "Green",
+        "partyCode": "O"
+      }
+    ],
+    "TX-08": [
+      {
+        "candidate": "Laura Jones",
+        "party": "Democratic",
+        "partyCode": "D"
+      },
+      {
+        "candidate": "Jessica Hart Steinmann",
+        "party": "Republican",
+        "partyCode": "R"
+      }
+    ],
+    "TX-09": [
+      {
+        "candidate": "Leticia Gutierrez",
+        "party": "Democratic",
+        "partyCode": "D"
+      },
+      {
+        "candidate": "Alex Mealer",
+        "party": "Republican",
+        "partyCode": "R"
+      }
+    ],
+    "TX-10": [
+      {
+        "candidate": "Chris Gober",
+        "party": "Republican",
+        "partyCode": "R"
+      },
+      {
+        "candidate": "Caitlin Rourk",
+        "party": "Democratic",
+        "partyCode": "D"
+      }
+    ],
+    "TX-11": [
+      {
+        "candidate": "August Pfluger",
+        "party": "Republican",
+        "partyCode": "R"
+      },
+      {
+        "candidate": "Claire Reynolds",
+        "party": "Democratic",
+        "partyCode": "D"
+      }
+    ],
+    "TX-12": [
+      {
+        "candidate": "Craig Goldman",
+        "party": "Republican",
+        "partyCode": "R"
+      },
+      {
+        "candidate": "Angela Rodriguez Prilliman",
+        "party": "Democratic",
+        "partyCode": "D"
+      }
+    ],
+    "TX-13": [
+      {
+        "candidate": "Ronny Jackson",
+        "party": "Republican",
+        "partyCode": "R"
+      },
+      {
+        "candidate": "Mark Nair",
+        "party": "Democratic",
+        "partyCode": "D"
+      }
+    ],
+    "TX-14": [
+      {
+        "candidate": "Thurman Bartie",
+        "party": "Democratic",
+        "partyCode": "D"
+      },
+      {
+        "candidate": "Randy Weber",
+        "party": "Republican",
+        "partyCode": "R"
+      }
+    ],
+    "TX-15": [
+      {
+        "candidate": "Monica De La Cruz",
+        "party": "Republican",
+        "partyCode": "R"
+      },
+      {
+        "candidate": "Bobby Pulido",
+        "party": "Democratic",
+        "partyCode": "D"
+      }
+    ],
+    "TX-16": [
+      {
+        "candidate": "Adam Bauman",
+        "party": "Republican",
+        "partyCode": "R"
+      },
+      {
+        "candidate": "Veronica Escobar",
+        "party": "Democratic",
+        "partyCode": "D"
+      }
+    ],
+    "TX-17": [
+      {
+        "candidate": "Pete Sessions",
+        "party": "Republican",
+        "partyCode": "R"
+      },
+      {
+        "candidate": "Casey Shepard",
+        "party": "Democratic",
+        "partyCode": "D"
+      }
+    ],
+    "TX-19": [
+      {
+        "candidate": "Kyle Rable",
+        "party": "Democratic",
+        "partyCode": "D"
+      },
+      {
+        "candidate": "Tom Sell",
+        "party": "Republican",
+        "partyCode": "R"
+      }
+    ],
+    "TX-20": [
+      {
+        "candidate": "Joaquin Castro",
+        "party": "Democratic",
+        "partyCode": "D"
+      },
+      {
+        "candidate": "Edgardo Rafael Baez",
+        "party": "Republican",
+        "partyCode": "R"
+      }
+    ],
+    "TX-21": [
+      {
+        "candidate": "Kristin Hook",
+        "party": "Democratic",
+        "partyCode": "D"
+      },
+      {
+        "candidate": "Mark Teixeira",
+        "party": "Republican",
+        "partyCode": "R"
+      }
+    ],
+    "TX-22": [
+      {
+        "candidate": "Marquette Greene-Scott",
+        "party": "Democratic",
+        "partyCode": "D"
+      },
+      {
+        "candidate": "Trever Nehls",
+        "party": "Republican",
+        "partyCode": "R"
+      }
+    ],
+    "TX-23": [
+      {
+        "candidate": "Brandon Herrera",
+        "party": "Republican",
+        "partyCode": "R"
+      },
+      {
+        "candidate": "Ben Mendoza",
+        "party": "Independent",
+        "partyCode": "O"
+      },
+      {
+        "candidate": "Katy Padilla Stout",
+        "party": "Democratic",
+        "partyCode": "D"
+      }
+    ],
+    "TX-24": [
+      {
+        "candidate": "Kevin Burge",
+        "party": "Democratic",
+        "partyCode": "D"
+      },
+      {
+        "candidate": "Beth Van Duyne",
+        "party": "Republican",
+        "partyCode": "R"
+      }
+    ],
+    "TX-25": [
+      {
+        "candidate": "Dione Sims",
+        "party": "Democratic",
+        "partyCode": "D"
+      },
+      {
+        "candidate": "Roger Williams",
+        "party": "Republican",
+        "partyCode": "R"
+      }
+    ],
+    "TX-26": [
+      {
+        "candidate": "Brandon Gill",
+        "party": "Republican",
+        "partyCode": "R"
+      },
+      {
+        "candidate": "Phil Gray",
+        "party": "Libertarian",
+        "partyCode": "O"
+      },
+      {
+        "candidate": "Steven Shook",
+        "party": "Democratic",
+        "partyCode": "D"
+      }
+    ],
+    "TX-27": [
+      {
+        "candidate": "Michael Cloud",
+        "party": "Republican",
+        "partyCode": "R"
+      },
+      {
+        "candidate": "Tanya Lloyd",
+        "party": "Democratic",
+        "partyCode": "D"
+      }
+    ],
+    "TX-28": [
+      {
+        "candidate": "Henry Cuellar",
+        "party": "Democratic",
+        "partyCode": "D"
+      },
+      {
+        "candidate": "Marlón Durán",
+        "party": "Green",
+        "partyCode": "O"
+      },
+      {
+        "candidate": "Tano Tijerina",
+        "party": "Republican",
+        "partyCode": "R"
+      }
+    ],
+    "TX-29": [
+      {
+        "candidate": "Martha Fierro",
+        "party": "Republican",
+        "partyCode": "R"
+      },
+      {
+        "candidate": "Sylvia Garcia",
+        "party": "Democratic",
+        "partyCode": "D"
+      }
+    ],
+    "TX-30": [
+      {
+        "candidate": "Frederick Haynes III",
+        "party": "Democratic",
+        "partyCode": "D"
+      },
+      {
+        "candidate": "Everett Jackson",
+        "party": "Republican",
+        "partyCode": "R"
+      }
+    ],
+    "TX-31": [
+      {
+        "candidate": "John Carter",
+        "party": "Republican",
+        "partyCode": "R"
+      },
+      {
+        "candidate": "Justin Early",
+        "party": "Democratic",
+        "partyCode": "D"
+      },
+      {
+        "candidate": "Greg Stoker",
+        "party": "Green",
+        "partyCode": "O"
+      }
+    ],
+    "TX-32": [
+      {
+        "candidate": "Dan Barrios",
+        "party": "Democratic",
+        "partyCode": "D"
+      },
+      {
+        "candidate": "Jace Yarbrough",
+        "party": "Republican",
+        "partyCode": "R"
+      }
+    ],
+    "TX-33": [
+      {
+        "candidate": "Colin Allred",
+        "party": "Democratic",
+        "partyCode": "D"
+      },
+      {
+        "candidate": "Patrick Gillespie",
+        "party": "Republican",
+        "partyCode": "R"
+      }
+    ],
+    "TX-34": [
+      {
+        "candidate": "Eddie Espinoza",
+        "party": "Green",
+        "partyCode": "O"
+      },
+      {
+        "candidate": "Eric Flores",
+        "party": "Republican",
+        "partyCode": "R"
+      },
+      {
+        "candidate": "Vicente Gonzalez",
+        "party": "Democratic",
+        "partyCode": "D"
+      },
+      {
+        "candidate": "Chris Royal",
+        "party": "Libertarian",
+        "partyCode": "O"
+      }
+    ],
+    "TX-35": [
+      {
+        "candidate": "Carlos De La Cruz",
+        "party": "Republican",
+        "partyCode": "R"
+      },
+      {
+        "candidate": "Johnny Garcia",
+        "party": "Democratic",
+        "partyCode": "D"
+      }
+    ],
+    "TX-36": [
+      {
+        "candidate": "Brian Babin",
+        "party": "Republican",
+        "partyCode": "R"
+      },
+      {
+        "candidate": "Rhonda Hart",
+        "party": "Democratic",
+        "partyCode": "D"
+      }
+    ],
+    "TX-37": [
+      {
+        "candidate": "Greg Casar",
+        "party": "Democratic",
+        "partyCode": "D"
+      },
+      {
+        "candidate": "Lauren Peña",
+        "party": "Republican",
+        "partyCode": "R"
+      }
+    ],
+    "TX-38": [
+      {
+        "candidate": "Jon Bonck",
+        "party": "Republican",
+        "partyCode": "R"
+      },
+      {
+        "candidate": "Melissa McDonough",
+        "party": "Democratic",
+        "partyCode": "D"
+      },
+      {
+        "candidate": "Alex McMenemy",
+        "party": "Green",
+        "partyCode": "O"
+      }
+    ],
+    "UT-01": [
+      {
+        "candidate": "Ben McAdams",
+        "party": "Democratic",
+        "partyCode": "D"
+      },
+      {
+        "candidate": "Elias Montgomery",
+        "party": "Independent",
+        "partyCode": "O"
+      },
+      {
+        "candidate": "Riley Owen",
+        "party": "Republican",
+        "partyCode": "R"
+      },
+      {
+        "candidate": "Jesse West",
+        "party": "Libertarian",
+        "partyCode": "O"
+      }
+    ],
+    "UT-02": [
+      {
+        "candidate": "Carlton Bowen",
+        "party": "Independent American",
+        "partyCode": "O"
+      },
+      {
+        "candidate": "Daniel Cottam",
+        "party": "Libertarian",
+        "partyCode": "O"
+      },
+      {
+        "candidate": "Peter Crosby",
+        "party": "Democratic",
+        "partyCode": "D"
+      },
+      {
+        "candidate": "Robert Moesinger",
+        "party": "Independent",
+        "partyCode": "O"
+      },
+      {
+        "candidate": "Blake Moore",
+        "party": "Republican",
+        "partyCode": "R"
+      }
+    ],
+    "UT-03": [
+      {
+        "candidate": "Cassie Easley",
+        "party": "Constitution",
+        "partyCode": "O"
+      },
+      {
+        "candidate": "Adonis Hooslyn",
+        "party": "Independent",
+        "partyCode": "O"
+      },
+      {
+        "candidate": "Celeste Maloy",
+        "party": "Republican",
+        "partyCode": "R"
+      },
+      {
+        "candidate": "Ayden Scott",
+        "party": "Independent",
+        "partyCode": "O"
+      },
+      {
+        "candidate": "Michael Stoddard",
+        "party": "Libertarian",
+        "partyCode": "O"
+      },
+      {
+        "candidate": "Kent Udell",
+        "party": "Democratic",
+        "partyCode": "D"
+      }
+    ],
+    "UT-04": [
+      {
+        "candidate": "Steven Burt",
+        "party": "Independent",
+        "partyCode": "O"
+      },
+      {
+        "candidate": "Mike Kennedy",
+        "party": "Republican",
+        "partyCode": "R"
+      },
+      {
+        "candidate": "Jonny Larsen",
+        "party": "Democratic",
+        "partyCode": "D"
+      },
+      {
+        "candidate": "Taylor Wright",
+        "party": "Libertarian",
+        "partyCode": "O"
+      }
+    ],
+    "VT-AL": [
+      {
+        "candidate": "Phoenix Altair",
+        "party": "Independent",
+        "partyCode": "O"
+      },
+      {
+        "candidate": "Becca Balint",
+        "party": "Democratic",
+        "partyCode": "D"
+      },
+      {
+        "candidate": "Gerald Malloy",
+        "party": "Republican",
+        "partyCode": "R"
+      },
+      {
+        "candidate": "Adam Ortiz",
+        "party": "Independent",
+        "partyCode": "O"
+      },
+      {
+        "candidate": "Suz Seymour",
+        "party": "Independent",
+        "partyCode": "O"
+      },
+      {
+        "candidate": "Ryan Walton",
+        "party": "Independent",
+        "partyCode": "O"
+      }
+    ],
+    "VA-01": [
+      {
+        "candidate": "Shannon Taylor",
+        "party": "Democratic",
+        "partyCode": "D"
+      },
+      {
+        "candidate": "Rob Wittman",
+        "party": "Republican",
+        "partyCode": "R"
+      }
+    ],
+    "VA-02": [
+      {
+        "candidate": "J. Matt Baker",
+        "party": "Independent",
+        "partyCode": "O"
+      },
+      {
+        "candidate": "Jen Kiggans",
+        "party": "Republican",
+        "partyCode": "R"
+      },
+      {
+        "candidate": "Elaine Luria",
+        "party": "Democratic",
+        "partyCode": "D"
+      },
+      {
+        "candidate": "Geral Staten",
+        "party": "Independent",
+        "partyCode": "O"
+      }
+    ],
+    "VA-03": [
+      {
+        "candidate": "Makiba Gaines",
+        "party": "Independent",
+        "partyCode": "O"
+      },
+      {
+        "candidate": "Edwin Rivera",
+        "party": "Republican",
+        "partyCode": "R"
+      },
+      {
+        "candidate": "Bobby Scott",
+        "party": "Democratic",
+        "partyCode": "D"
+      },
+      {
+        "candidate": "Stephen Woll",
+        "party": "Independent",
+        "partyCode": "O"
+      }
+    ],
+    "VA-04": [
+      {
+        "candidate": "Joan Bell",
+        "party": "Independent",
+        "partyCode": "O"
+      },
+      {
+        "candidate": "Jennifer McClellan",
+        "party": "Democratic",
+        "partyCode": "D"
+      },
+      {
+        "candidate": "Robert Murray",
+        "party": "Republican",
+        "partyCode": "R"
+      }
+    ],
+    "VA-05": [
+      {
+        "candidate": "Cooke Harvey",
+        "party": "Independent",
+        "partyCode": "O"
+      },
+      {
+        "candidate": "John McGuire",
+        "party": "Republican",
+        "partyCode": "R"
+      },
+      {
+        "candidate": "Tom Perriello",
+        "party": "Democratic",
+        "partyCode": "D"
+      }
+    ],
+    "VA-06": [
+      {
+        "candidate": "Ben Cline",
+        "party": "Republican",
+        "partyCode": "R"
+      },
+      {
+        "candidate": "Beth Macy",
+        "party": "Democratic",
+        "partyCode": "D"
+      }
+    ],
+    "VA-07": [
+      {
+        "candidate": "Alaha Ahrar",
+        "party": "Independent",
+        "partyCode": "O"
+      },
+      {
+        "candidate": "Taner Demirci Lopez",
+        "party": "Libertarian",
+        "partyCode": "O"
+      },
+      {
+        "candidate": "Joshua Ertle",
+        "party": "Independent",
+        "partyCode": "O"
+      },
+      {
+        "candidate": "Doug Ollivant",
+        "party": "Republican",
+        "partyCode": "R"
+      },
+      {
+        "candidate": "Randall Terry",
+        "party": "Independent",
+        "partyCode": "O"
+      },
+      {
+        "candidate": "Eugene Vindman",
+        "party": "Democratic",
+        "partyCode": "D"
+      }
+    ],
+    "VA-08": [
+      {
+        "candidate": "Shelly Arnoldi",
+        "party": "Libertarian",
+        "partyCode": "O"
+      },
+      {
+        "candidate": "Don Beyer",
+        "party": "Democratic",
+        "partyCode": "D"
+      },
+      {
+        "candidate": "Tony Sabio",
+        "party": "Republican",
+        "partyCode": "R"
+      },
+      {
+        "candidate": "Tim Sharman",
+        "party": "Independent",
+        "partyCode": "O"
+      }
+    ],
+    "VA-09": [
+      {
+        "candidate": "Morgan Griffith",
+        "party": "Republican",
+        "partyCode": "R"
+      },
+      {
+        "candidate": "Joy Powers",
+        "party": "Democratic",
+        "partyCode": "D"
+      }
+    ],
+    "VA-10": [
+      {
+        "candidate": "Dave Beckwith",
+        "party": "Republican",
+        "partyCode": "R"
+      },
+      {
+        "candidate": "Ahsen Malik",
+        "party": "Independent",
+        "partyCode": "O"
+      },
+      {
+        "candidate": "Suhas Subramanyam",
+        "party": "Democratic",
+        "partyCode": "D"
+      }
+    ],
+    "VA-11": [
+      {
+        "candidate": "Dianne Blais",
+        "party": "Green",
+        "partyCode": "O"
+      },
+      {
+        "candidate": "Arthur Purves",
+        "party": "Republican",
+        "partyCode": "R"
+      },
+      {
+        "candidate": "James Walkinshaw",
+        "party": "Democratic",
+        "partyCode": "D"
+      }
+    ],
+    "WA-01": [
+      {
+        "candidate": "Suzan DelBene",
+        "party": "Democratic",
+        "partyCode": "D"
+      },
+      {
+        "candidate": "Mary Silva",
+        "party": "Republican",
+        "partyCode": "R"
+      }
+    ],
+    "WA-02": [
+      {
+        "candidate": "Edwin Feller",
+        "party": "Republican",
+        "partyCode": "R"
+      },
+      {
+        "candidate": "Rick Larsen",
+        "party": "Democratic",
+        "partyCode": "D"
+      }
+    ],
+    "WA-03": [
+      {
+        "candidate": "John Braun",
+        "party": "Republican",
+        "partyCode": "R"
+      },
+      {
+        "candidate": "Marie Gluesenkamp Perez",
+        "party": "Democratic",
+        "partyCode": "D"
+      }
+    ],
+    "WA-04": [
+      {
+        "candidate": "John Duresky",
+        "party": "Democratic",
+        "partyCode": "D"
+      },
+      {
+        "candidate": "Amanda McKinney",
+        "party": "Republican",
+        "partyCode": "R"
+      }
+    ],
+    "WA-05": [
+      {
+        "candidate": "Michael Baumgartner",
+        "party": "Republican",
+        "partyCode": "R"
+      },
+      {
+        "candidate": "Carmela Conroy",
+        "party": "Democratic",
+        "partyCode": "D"
+      }
+    ],
+    "WA-06": [
+      {
+        "candidate": "Teresa Fox",
+        "party": "Republican",
+        "partyCode": "R"
+      },
+      {
+        "candidate": "Emily Randall",
+        "party": "Democratic",
+        "partyCode": "D"
+      }
+    ],
+    "WA-07": [
+      {
+        "candidate": "Pramila Jayapal",
+        "party": "Democratic",
+        "partyCode": "D"
+      },
+      {
+        "candidate": "Nirav Sheth",
+        "party": "Republican",
+        "partyCode": "R"
+      }
+    ],
+    "WA-08": [
+      {
+        "candidate": "Spencer Meline",
+        "party": "Republican",
+        "partyCode": "R"
+      },
+      {
+        "candidate": "Kim Schrier",
+        "party": "Democratic",
+        "partyCode": "D"
+      }
+    ],
+    "WA-09": [
+      {
+        "candidate": "Doug Basler",
+        "party": "Republican",
+        "partyCode": "R"
+      },
+      {
+        "candidate": "Adam Smith",
+        "party": "Democratic",
+        "partyCode": "D"
+      }
+    ],
+    "WA-10": [
+      {
+        "candidate": "Chris Chung",
+        "party": "Republican",
+        "partyCode": "R"
+      },
+      {
+        "candidate": "Marilyn Strickland",
+        "party": "Democratic",
+        "partyCode": "D"
+      }
+    ],
+    "WV-01": [
+      {
+        "candidate": "Belinda Fox-Spencer",
+        "party": "Constitution",
+        "partyCode": "O"
+      },
+      {
+        "candidate": "Vince George",
+        "party": "Democratic",
+        "partyCode": "D"
+      },
+      {
+        "candidate": "Carol Miller",
+        "party": "Republican",
+        "partyCode": "R"
+      }
+    ],
+    "WV-02": [
+      {
+        "candidate": "Riley Moore",
+        "party": "Republican",
+        "partyCode": "R"
+      },
+      {
+        "candidate": "Ace Parsi",
+        "party": "Democratic",
+        "partyCode": "D"
+      }
+    ],
+    "WI-01": [
+      {
+        "candidate": "Mitchell Berman",
+        "party": "Democratic",
+        "partyCode": "D"
+      },
+      {
+        "candidate": "Bryan Steil",
+        "party": "Republican",
+        "partyCode": "R"
+      }
+    ],
+    "WI-02": [
+      {
+        "candidate": "Mark Pocan",
+        "party": "Democratic",
+        "partyCode": "D"
+      }
+    ],
+    "WI-03": [
+      {
+        "candidate": "Rebecca Cooke",
+        "party": "Democratic",
+        "partyCode": "D"
+      },
+      {
+        "candidate": "Alexander Kent",
+        "party": "Independent",
+        "partyCode": "O"
+      },
+      {
+        "candidate": "Rustin Provance",
+        "party": "Independent",
+        "partyCode": "O"
+      },
+      {
+        "candidate": "Derrick Van Orden",
+        "party": "Republican",
+        "partyCode": "R"
+      }
+    ],
+    "WI-04": [
+      {
+        "candidate": "Arthur Burks",
+        "party": "Independent",
+        "partyCode": "O"
+      },
+      {
+        "candidate": "Gwen Moore",
+        "party": "Democratic",
+        "partyCode": "D"
+      },
+      {
+        "candidate": "Tim Rogers",
+        "party": "Republican",
+        "partyCode": "R"
+      }
+    ],
+    "WI-05": [
+      {
+        "candidate": "Andrew Beck",
+        "party": "Democratic",
+        "partyCode": "D"
+      },
+      {
+        "candidate": "Scott Fitzgerald",
+        "party": "Republican",
+        "partyCode": "R"
+      }
+    ],
+    "WI-06": [
+      {
+        "candidate": "Matthew Arndt",
+        "party": "Green",
+        "partyCode": "O"
+      },
+      {
+        "candidate": "Elizabeth Fitzgibbon",
+        "party": "Independent",
+        "partyCode": "O"
+      },
+      {
+        "candidate": "Glenn Grothman",
+        "party": "Republican",
+        "partyCode": "R"
+      },
+      {
+        "candidate": "Brad Smith",
+        "party": "Democratic",
+        "partyCode": "D"
+      },
+      {
+        "candidate": "Michael Thurow",
+        "party": "Independent",
+        "partyCode": "O"
+      }
+    ],
+    "WI-07": [
+      {
+        "candidate": "Michael Alfonso",
+        "party": "Republican",
+        "partyCode": "R"
+      },
+      {
+        "candidate": "Fred Clark",
+        "party": "Democratic",
+        "partyCode": "D"
+      }
+    ],
+    "WI-08": [
+      {
+        "candidate": "Rick Crosson",
+        "party": "Democratic",
+        "partyCode": "D"
+      },
+      {
+        "candidate": "Tony Wied",
+        "party": "Republican",
+        "partyCode": "R"
+      }
+    ],
+    "WY-AL": [
+      {
+        "candidate": "Chuck Gray",
+        "party": "Republican",
+        "partyCode": "R"
+      },
+      {
+        "candidate": "Jeffrey Haggit",
+        "party": "Constitution",
+        "partyCode": "O"
+      },
+      {
+        "candidate": "Shawn Johnson",
+        "party": "Libertarian",
+        "partyCode": "O"
+      },
+      {
+        "candidate": "Lisa Kinney",
+        "party": "Democratic",
+        "partyCode": "D"
+      }
+    ]
+  },
+  "senate": {
+    "FL": {
+      "class": 3,
+      "candidates": [
+        {
+          "candidate": "Neil Gillespie",
+          "party": "Independent",
+          "partyCode": "O"
+        },
+        {
+          "candidate": "Ashley Moody",
+          "party": "Republican",
+          "partyCode": "R"
+        },
+        {
+          "candidate": "Angie Nixon",
+          "party": "Democratic",
+          "partyCode": "D"
+        }
+      ]
+    },
+    "OH": {
+      "class": 3,
+      "candidates": [
+        {
+          "candidate": "Sherrod Brown",
+          "party": "Democratic",
+          "partyCode": "D"
+        },
+        {
+          "candidate": "Jon Husted",
+          "party": "Republican",
+          "partyCode": "R"
+        },
+        {
+          "candidate": "Greg Levy",
+          "party": "Independent",
+          "partyCode": "O"
+        },
+        {
+          "candidate": "William Redpath",
+          "party": "Libertarian",
+          "partyCode": "O"
+        }
+      ]
+    },
+    "AL": {
+      "class": 2,
+      "candidates": [
+        {
+          "candidate": "Barry Moore",
+          "party": "Republican",
+          "partyCode": "R"
+        },
+        {
+          "candidate": "Everett Wess",
+          "party": "Democratic",
+          "partyCode": "D"
+        }
+      ]
+    },
+    "AK": {
+      "class": 2,
+      "candidates": [
+        {
+          "candidate": "Gerald Heikes",
+          "party": "Republican",
+          "partyCode": "R"
+        },
+        {
+          "candidate": "Mary Peltola",
+          "party": "Democratic",
+          "partyCode": "D"
+        },
+        {
+          "candidate": "Dan J. Sullivan",
+          "party": "Republican",
+          "partyCode": "R"
+        },
+        {
+          "candidate": "Dan S. Sullivan",
+          "party": "Republican",
+          "partyCode": "R"
+        }
+      ]
+    },
+    "AR": {
+      "class": 2,
+      "candidates": [
+        {
+          "candidate": "Tom Cotton",
+          "party": "Republican",
+          "partyCode": "R"
+        },
+        {
+          "candidate": "Hallie Shoffner",
+          "party": "Democratic",
+          "partyCode": "D"
+        },
+        {
+          "candidate": "Jeff Wadlin",
+          "party": "Libertarian",
+          "partyCode": "O"
+        }
+      ]
+    },
+    "CO": {
+      "class": 2,
+      "candidates": [
+        {
+          "candidate": "Mark Baisley",
+          "party": "Republican",
+          "partyCode": "R"
+        },
+        {
+          "candidate": "Christopher Baum",
+          "party": "Approval Voting",
+          "partyCode": "O"
+        },
+        {
+          "candidate": "Bob Chew",
+          "party": "Forward",
+          "partyCode": "O"
+        },
+        {
+          "candidate": "John Hickenlooper",
+          "party": "Democratic",
+          "partyCode": "D"
+        },
+        {
+          "candidate": "Blake Huber",
+          "party": "Libertarian",
+          "partyCode": "O"
+        },
+        {
+          "candidate": "Adam Withrow",
+          "party": "Unity",
+          "partyCode": "O"
+        }
+      ]
+    },
+    "DE": {
+      "class": 2,
+      "candidates": [
+        {
+          "candidate": "Chris Coons",
+          "party": "Democratic",
+          "partyCode": "D"
+        },
+        {
+          "candidate": "Michael Katz",
+          "party": "Republican",
+          "partyCode": "R"
+        }
+      ]
+    },
+    "GA": {
+      "class": 2,
+      "candidates": [
+        {
+          "candidate": "Mike Collins",
+          "party": "Republican",
+          "partyCode": "R"
+        },
+        {
+          "candidate": "Jon Ossoff",
+          "party": "Democratic",
+          "partyCode": "D"
+        }
+      ]
+    },
+    "ID": {
+      "class": 2,
+      "candidates": [
+        {
+          "candidate": "Todd Achilles",
+          "party": "Independent",
+          "partyCode": "O"
+        },
+        {
+          "candidate": "Natalie Fleming",
+          "party": "Independent",
+          "partyCode": "O"
+        },
+        {
+          "candidate": "Matt Loesby",
+          "party": "Libertarian",
+          "partyCode": "O"
+        },
+        {
+          "candidate": "Jim Risch",
+          "party": "Republican",
+          "partyCode": "R"
+        }
+      ]
+    },
+    "IL": {
+      "class": 2,
+      "candidates": [
+        {
+          "candidate": "Whitfield Harrington Jr.",
+          "party": "Independent",
+          "partyCode": "O"
+        },
+        {
+          "candidate": "Juliana Stratton",
+          "party": "Democratic",
+          "partyCode": "D"
+        },
+        {
+          "candidate": "Don Tracy",
+          "party": "Republican",
+          "partyCode": "R"
+        }
+      ]
+    },
+    "IA": {
+      "class": 2,
+      "candidates": [
+        {
+          "candidate": "Ashley Hinson",
+          "party": "Republican",
+          "partyCode": "R"
+        },
+        {
+          "candidate": "Thomas Laehn",
+          "party": "Libertarian",
+          "partyCode": "O"
+        },
+        {
+          "candidate": "Josh Turek",
+          "party": "Democratic",
+          "partyCode": "D"
+        }
+      ]
+    },
+    "KS": {
+      "class": 2,
+      "candidates": [
+        {
+          "candidate": "David Graham",
+          "party": "Libertarian",
+          "partyCode": "O"
+        },
+        {
+          "candidate": "Adam Hamilton",
+          "party": "Democratic",
+          "partyCode": "D"
+        },
+        {
+          "candidate": "Roger Marshall",
+          "party": "Republican",
+          "partyCode": "R"
+        }
+      ]
+    },
+    "KY": {
+      "class": 2,
+      "candidates": [
+        {
+          "candidate": "Andy Barr",
+          "party": "Republican",
+          "partyCode": "R"
+        },
+        {
+          "candidate": "Charles Booker",
+          "party": "Democratic",
+          "partyCode": "D"
+        },
+        {
+          "candidate": "Christopher Campbell",
+          "party": "Independent",
+          "partyCode": "O"
+        }
+      ]
+    },
+    "LA": {
+      "class": 2,
+      "candidates": [
+        {
+          "candidate": "Jamie Davis",
+          "party": "Democratic",
+          "partyCode": "D"
+        },
+        {
+          "candidate": "Julia Letlow",
+          "party": "Republican",
+          "partyCode": "R"
+        }
+      ]
+    },
+    "ME": {
+      "class": 2,
+      "candidates": [
+        {
+          "candidate": "Susan Collins",
+          "party": "Republican",
+          "partyCode": "R"
+        },
+        {
+          "candidate": "Troy Jackson",
+          "party": "Democratic",
+          "partyCode": "D"
+        }
+      ]
+    },
+    "MA": {
+      "class": 2,
+      "candidates": [
+        {
+          "candidate": "Shiva Ayyadurai",
+          "party": "Independent",
+          "partyCode": "O"
+        },
+        {
+          "candidate": "John Deaton",
+          "party": "Republican",
+          "partyCode": "R"
+        },
+        {
+          "candidate": "Ed Markey",
+          "party": "Democratic",
+          "partyCode": "D"
+        },
+        {
+          "candidate": "Joe Tache",
+          "party": "Socialism and Liberation",
+          "partyCode": "O"
+        }
+      ]
+    },
+    "MI": {
+      "class": 2,
+      "candidates": [
+        {
+          "candidate": "Lydia Christensen",
+          "party": "Libertarian",
+          "partyCode": "O"
+        },
+        {
+          "candidate": "Abdul El-Sayed",
+          "party": "Democratic",
+          "partyCode": "D"
+        },
+        {
+          "candidate": "Walter P. Kristy",
+          "party": "Natural Law",
+          "partyCode": "O"
+        },
+        {
+          "candidate": "Tim Long",
+          "party": "U.S. Taxpayers",
+          "partyCode": "O"
+        },
+        {
+          "candidate": "Douglas P. Marsh",
+          "party": "Green",
+          "partyCode": "O"
+        },
+        {
+          "candidate": "Mike Rogers",
+          "party": "Republican",
+          "partyCode": "R"
+        }
+      ]
+    },
+    "MN": {
+      "class": 2,
+      "candidates": [
+        {
+          "candidate": "Peggy Flanagan",
+          "party": "DFL",
+          "partyCode": "D"
+        },
+        {
+          "candidate": "Marisa Simonetti",
+          "party": "Independent",
+          "partyCode": "O"
+        },
+        {
+          "candidate": "Michele Tafoya",
+          "party": "Republican",
+          "partyCode": "R"
+        },
+        {
+          "candidate": "Rebecca Whiting",
+          "party": "Libertarian",
+          "partyCode": "O"
+        }
+      ]
+    },
+    "MS": {
+      "class": 2,
+      "candidates": [
+        {
+          "candidate": "Scott Colom",
+          "party": "Democratic",
+          "partyCode": "D"
+        },
+        {
+          "candidate": "Cindy Hyde-Smith",
+          "party": "Republican",
+          "partyCode": "R"
+        },
+        {
+          "candidate": "Ty Pinkins",
+          "party": "Independent",
+          "partyCode": "O"
+        }
+      ]
+    },
+    "MT": {
+      "class": 2,
+      "candidates": [
+        {
+          "candidate": "Kurt Alme",
+          "party": "Republican",
+          "partyCode": "R"
+        },
+        {
+          "candidate": "Kyle Austin",
+          "party": "Libertarian",
+          "partyCode": "O"
+        },
+        {
+          "candidate": "Alani Bankhead",
+          "party": "Democratic",
+          "partyCode": "D"
+        },
+        {
+          "candidate": "Seth Bodnar",
+          "party": "Independent",
+          "partyCode": "O"
+        }
+      ]
+    },
+    "NE": {
+      "class": 2,
+      "candidates": [
+        {
+          "candidate": "Chuck Conboy",
+          "party": "America First",
+          "partyCode": "O"
+        },
+        {
+          "candidate": "Mike Marvin",
+          "party": "Legal Marijuana Now",
+          "partyCode": "O"
+        },
+        {
+          "candidate": "Dan Osborn",
+          "party": "Independent",
+          "partyCode": "O"
+        },
+        {
+          "candidate": "Robin Richards",
+          "party": "Working People",
+          "partyCode": "O"
+        },
+        {
+          "candidate": "Pete Ricketts",
+          "party": "Republican",
+          "partyCode": "R"
+        }
+      ]
+    },
+    "NH": {
+      "class": 2,
+      "candidates": [
+        {
+          "candidate": "Edmond LaPlante",
+          "party": "Constitution",
+          "partyCode": "O"
+        },
+        {
+          "candidate": "Chris Pappas",
+          "party": "Democratic",
+          "partyCode": "D"
+        },
+        {
+          "candidate": "John E. Sununu",
+          "party": "Republican",
+          "partyCode": "R"
+        }
+      ]
+    },
+    "NJ": {
+      "class": 2,
+      "candidates": [
+        {
+          "candidate": "Cory Booker",
+          "party": "Democratic",
+          "partyCode": "D"
+        },
+        {
+          "candidate": "Veronica Fernandez",
+          "party": "Independent",
+          "partyCode": "O"
+        },
+        {
+          "candidate": "Joanne Kuniansky",
+          "party": "Socialist Workers",
+          "partyCode": "O"
+        },
+        {
+          "candidate": "Justin Murphy",
+          "party": "Republican",
+          "partyCode": "R"
+        }
+      ]
+    },
+    "NM": {
+      "class": 2,
+      "candidates": [
+        {
+          "candidate": "Ben Ray Luján",
+          "party": "Democratic",
+          "partyCode": "D"
+        },
+        {
+          "candidate": "Larry Marker",
+          "party": "Republican",
+          "partyCode": "R"
+        }
+      ]
+    },
+    "NC": {
+      "class": 2,
+      "candidates": [
+        {
+          "candidate": "Shannon Bray",
+          "party": "Libertarian",
+          "partyCode": "O"
+        },
+        {
+          "candidate": "Roy Cooper",
+          "party": "Democratic",
+          "partyCode": "D"
+        },
+        {
+          "candidate": "Michael Dublin",
+          "party": "Green",
+          "partyCode": "O"
+        },
+        {
+          "candidate": "Michael Whatley",
+          "party": "Republican",
+          "partyCode": "R"
+        }
+      ]
+    },
+    "OK": {
+      "class": 2,
+      "candidates": [
+        {
+          "candidate": "Kevin Hern",
+          "party": "Republican",
+          "partyCode": "R"
+        },
+        {
+          "candidate": "Ron Meinhardt",
+          "party": "Independent",
+          "partyCode": "O"
+        },
+        {
+          "candidate": "Curtis Stinnett",
+          "party": "Independent",
+          "partyCode": "O"
+        },
+        {
+          "candidate": "N'Kiyla Jasmine Thomas",
+          "party": "Democratic",
+          "partyCode": "D"
+        },
+        {
+          "candidate": "Sevier White",
+          "party": "Libertarian",
+          "partyCode": "O"
+        }
+      ]
+    },
+    "OR": {
+      "class": 2,
+      "candidates": [
+        {
+          "candidate": "Gary Lyndon Dye",
+          "party": "Libertarian",
+          "partyCode": "O"
+        },
+        {
+          "candidate": "Brett Smith",
+          "party": "Pacific Green",
+          "partyCode": "O"
+        },
+        {
+          "candidate": "Jeff Merkley",
+          "party": "Democratic",
+          "partyCode": "D"
+        },
+        {
+          "candidate": "David Brock Smith",
+          "party": "Republican",
+          "partyCode": "R"
+        }
+      ]
+    },
+    "RI": {
+      "class": 2,
+      "candidates": [
+        {
+          "candidate": "Michael Bahry",
+          "party": "Independent",
+          "partyCode": "O"
+        },
+        {
+          "candidate": "Raymond McKay",
+          "party": "Republican",
+          "partyCode": "R"
+        },
+        {
+          "candidate": "Jack Reed",
+          "party": "Democratic",
+          "partyCode": "D"
+        }
+      ]
+    },
+    "SC": {
+      "class": 2,
+      "candidates": [
+        {
+          "candidate": "Annie Andrews",
+          "party": "Democratic",
+          "partyCode": "D"
+        },
+        {
+          "candidate": "Darline Graham",
+          "party": "Republican",
+          "partyCode": "R"
+        },
+        {
+          "candidate": "Mark Hackett",
+          "party": "Constitution",
+          "partyCode": "O"
+        },
+        {
+          "candidate": "Kasie Whitener",
+          "party": "Libertarian",
+          "partyCode": "O"
+        }
+      ]
+    },
+    "SD": {
+      "class": 2,
+      "candidates": [
+        {
+          "candidate": "Brian Bengs",
+          "party": "Independent",
+          "partyCode": "O"
+        },
+        {
+          "candidate": "Mike Rounds",
+          "party": "Republican",
+          "partyCode": "R"
+        }
+      ]
+    },
+    "TN": {
+      "class": 2,
+      "candidates": [
+        {
+          "candidate": "Marquita Bradshaw",
+          "party": "Democratic",
+          "partyCode": "D"
+        },
+        {
+          "candidate": "Tharon Chandler",
+          "party": "Independent",
+          "partyCode": "O"
+        },
+        {
+          "candidate": "Andrew Gerena",
+          "party": "Independent",
+          "partyCode": "O"
+        },
+        {
+          "candidate": "Bill Hagerty",
+          "party": "Republican",
+          "partyCode": "R"
+        },
+        {
+          "candidate": "Jeremy Hearn",
+          "party": "Independent",
+          "partyCode": "O"
+        },
+        {
+          "candidate": "Robert Jones",
+          "party": "Independent",
+          "partyCode": "O"
+        },
+        {
+          "candidate": "James Macon III",
+          "party": "Independent",
+          "partyCode": "O"
+        },
+        {
+          "candidate": "Yoshi Matthews",
+          "party": "Independent",
+          "partyCode": "O"
+        },
+        {
+          "candidate": "David Sutman Jr.",
+          "party": "Independent",
+          "partyCode": "O"
+        },
+        {
+          "candidate": "Catherine Whitson",
+          "party": "Independent",
+          "partyCode": "O"
+        }
+      ]
+    },
+    "TX": {
+      "class": 2,
+      "candidates": [
+        {
+          "candidate": "Ted Brown",
+          "party": "Libertarian",
+          "partyCode": "O"
+        },
+        {
+          "candidate": "Ken Paxton",
+          "party": "Republican",
+          "partyCode": "R"
+        },
+        {
+          "candidate": "James Talarico",
+          "party": "Democratic",
+          "partyCode": "D"
+        }
+      ]
+    },
+    "VA": {
+      "class": 2,
+      "candidates": [
+        {
+          "candidate": "Bert Mizusawa",
+          "party": "Republican",
+          "partyCode": "R"
+        },
+        {
+          "candidate": "Mark Warner",
+          "party": "Democratic",
+          "partyCode": "D"
+        }
+      ]
+    },
+    "WV": {
+      "class": 2,
+      "candidates": [
+        {
+          "candidate": "Rachel Fetty Anderson",
+          "party": "Democratic",
+          "partyCode": "D"
+        },
+        {
+          "candidate": "Shelley Moore Capito",
+          "party": "Republican",
+          "partyCode": "R"
+        },
+        {
+          "candidate": "S. Marshall Wilson",
+          "party": "Constitution",
+          "partyCode": "O"
+        }
+      ]
+    },
+    "WY": {
+      "class": 2,
+      "candidates": [
+        {
+          "candidate": "James W. Byrd",
+          "party": "Democratic",
+          "partyCode": "D"
+        },
+        {
+          "candidate": "Harriet Hageman",
+          "party": "Republican",
+          "partyCode": "R"
+        }
+      ]
+    }
+  },
+  "governor": {
+    "AL": [
+      {
+        "candidate": "Doug Jones",
+        "party": "Democratic",
+        "partyCode": "D"
+      },
+      {
+        "candidate": "Tommy Tuberville",
+        "party": "Republican",
+        "partyCode": "R"
+      }
+    ],
+    "AK": [
+      {
+        "candidate": "Dave Bronson",
+        "party": "Republican",
+        "partyCode": "R"
+      },
+      {
+        "candidate": "Jonathan Kreiss-Tomkins",
+        "party": "Democratic",
+        "partyCode": "D"
+      },
+      {
+        "candidate": "Treg Taylor",
+        "party": "Republican",
+        "partyCode": "R"
+      },
+      {
+        "candidate": "Bernadette Wilson",
+        "party": "Republican",
+        "partyCode": "R"
+      }
+    ],
+    "AZ": [
+      {
+        "candidate": "Andy Biggs",
+        "party": "Republican",
+        "partyCode": "R"
+      },
+      {
+        "candidate": "Katie Hobbs",
+        "party": "Democratic",
+        "partyCode": "D"
+      },
+      {
+        "candidate": "Teri Hourihan",
+        "party": "No Labels",
+        "partyCode": "O"
+      },
+      {
+        "candidate": "Risa Lombardo",
+        "party": "Green",
+        "partyCode": "O"
+      }
+    ],
+    "AR": [
+      {
+        "candidate": "Fredrick Love",
+        "party": "Democratic",
+        "partyCode": "D"
+      },
+      {
+        "candidate": "Sarah Huckabee Sanders",
+        "party": "Republican",
+        "partyCode": "R"
+      },
+      {
+        "candidate": "Colt Shelby",
+        "party": "Libertarian",
+        "partyCode": "O"
+      }
+    ],
+    "CA": [
+      {
+        "candidate": "Xavier Becerra",
+        "party": "Democratic",
+        "partyCode": "D"
+      },
+      {
+        "candidate": "Steve Hilton",
+        "party": "Republican",
+        "partyCode": "R"
+      }
+    ],
+    "CO": [
+      {
+        "candidate": "Stephen Hamilton",
+        "party": "American Constitution",
+        "partyCode": "O"
+      },
+      {
+        "candidate": "Greg Lopez",
+        "party": "Independent",
+        "partyCode": "O"
+      },
+      {
+        "candidate": "Victor Marx",
+        "party": "Republican",
+        "partyCode": "R"
+      },
+      {
+        "candidate": "Eric Mulder",
+        "party": "Libertarian",
+        "partyCode": "O"
+      },
+      {
+        "candidate": "Jeff Peckman",
+        "party": "Unity",
+        "partyCode": "O"
+      },
+      {
+        "candidate": "Erik Underwood",
+        "party": "Approval Voting",
+        "partyCode": "O"
+      },
+      {
+        "candidate": "Phil Weiser",
+        "party": "Democratic",
+        "partyCode": "D"
+      }
+    ],
+    "CT": [
+      {
+        "candidate": "Ryan Fazio",
+        "party": "Republican",
+        "partyCode": "R"
+      },
+      {
+        "candidate": "Ned Lamont",
+        "party": "Democratic",
+        "partyCode": "D"
+      }
+    ],
+    "FL": [
+      {
+        "candidate": "Dean Abrams",
+        "party": "Independent",
+        "partyCode": "O"
+      },
+      {
+        "candidate": "Charles Burkett",
+        "party": "Independent",
+        "partyCode": "O"
+      },
+      {
+        "candidate": "Jeffrey Datto",
+        "party": "Independent",
+        "partyCode": "O"
+      },
+      {
+        "candidate": "Moe Dimanche",
+        "party": "Independent",
+        "partyCode": "O"
+      },
+      {
+        "candidate": "Byron Donalds",
+        "party": "Republican",
+        "partyCode": "R"
+      },
+      {
+        "candidate": "Scott Jewett",
+        "party": "Libertarian",
+        "partyCode": "O"
+      },
+      {
+        "candidate": "David Jolly",
+        "party": "Democratic",
+        "partyCode": "D"
+      },
+      {
+        "candidate": "Frank Russo",
+        "party": "Independent",
+        "partyCode": "O"
+      }
+    ],
+    "GA": [
+      {
+        "candidate": "Keisha Lance Bottoms",
+        "party": "Democratic",
+        "partyCode": "D"
+      },
+      {
+        "candidate": "Rick Jackson",
+        "party": "Republican",
+        "partyCode": "R"
+      }
+    ],
+    "HI": [
+      {
+        "candidate": "Gary Cordery",
+        "party": "Republican",
+        "partyCode": "R"
+      },
+      {
+        "candidate": "Josh Green",
+        "party": "Democratic",
+        "partyCode": "D"
+      }
+    ],
+    "ID": [
+      {
+        "candidate": "Brad Little",
+        "party": "Republican",
+        "partyCode": "R"
+      },
+      {
+        "candidate": "Terri Pickens",
+        "party": "Democratic",
+        "partyCode": "D"
+      },
+      {
+        "candidate": "Pro-Life",
+        "party": "Constitution",
+        "partyCode": "O"
+      },
+      {
+        "candidate": "Paul Sand",
+        "party": "Libertarian",
+        "partyCode": "O"
+      },
+      {
+        "candidate": "John Stegner",
+        "party": "Independent",
+        "partyCode": "O"
+      }
+    ],
+    "IL": [
+      {
+        "candidate": "Darren Bailey",
+        "party": "Republican",
+        "partyCode": "R"
+      },
+      {
+        "candidate": "Collin Corbett",
+        "party": "Independent",
+        "partyCode": "O"
+      },
+      {
+        "candidate": "JB Pritzker",
+        "party": "Democratic",
+        "partyCode": "D"
+      }
+    ],
+    "IA": [
+      {
+        "candidate": "Zach Lahn",
+        "party": "Republican",
+        "partyCode": "R"
+      },
+      {
+        "candidate": "Rob Sand",
+        "party": "Democratic",
+        "partyCode": "D"
+      },
+      {
+        "candidate": "Sondra Wilson",
+        "party": "Independent",
+        "partyCode": "O"
+      }
+    ],
+    "KS": [
+      {
+        "candidate": "Cindy Holscher",
+        "party": "Democratic",
+        "partyCode": "D"
+      },
+      {
+        "candidate": "Ty Masterson",
+        "party": "Republican",
+        "partyCode": "R"
+      }
+    ],
+    "ME": [
+      {
+        "candidate": "Rick Bennett",
+        "party": "Independent",
+        "partyCode": "O"
+      },
+      {
+        "candidate": "Robert B. Charles",
+        "party": "Republican",
+        "partyCode": "R"
+      },
+      {
+        "candidate": "Hannah Pingree",
+        "party": "Democratic",
+        "partyCode": "D"
+      }
+    ],
+    "MD": [
+      {
+        "candidate": "Dan Cox",
+        "party": "Republican",
+        "partyCode": "R"
+      },
+      {
+        "candidate": "Andy Ellis",
+        "party": "Green",
+        "partyCode": "O"
+      },
+      {
+        "candidate": "Wes Moore",
+        "party": "Democratic",
+        "partyCode": "D"
+      },
+      {
+        "candidate": "Cathy White",
+        "party": "Working Class",
+        "partyCode": "O"
+      }
+    ],
+    "MA": [
+      {
+        "candidate": "Maura Healey",
+        "party": "Democratic",
+        "partyCode": "D"
+      },
+      {
+        "candidate": "Andrea James",
+        "party": "Independent",
+        "partyCode": "O"
+      },
+      {
+        "candidate": "Mike Minogue",
+        "party": "Republican",
+        "partyCode": "R"
+      }
+    ],
+    "MI": [
+      {
+        "candidate": "Jocelyn Benson",
+        "party": "Democratic",
+        "partyCode": "D"
+      },
+      {
+        "candidate": "Donna Brandenburg",
+        "party": "U.S. Taxpayers",
+        "partyCode": "O"
+      },
+      {
+        "candidate": "Douglas Campbell",
+        "party": "Green",
+        "partyCode": "O"
+      },
+      {
+        "candidate": "Anthony Hudson",
+        "party": "Libertarian",
+        "partyCode": "O"
+      },
+      {
+        "candidate": "John James",
+        "party": "Republican",
+        "partyCode": "R"
+      }
+    ],
+    "MN": [
+      {
+        "candidate": "Lisa Demuth",
+        "party": "Republican",
+        "partyCode": "R"
+      },
+      {
+        "candidate": "Amy Klobuchar",
+        "party": "DFL",
+        "partyCode": "D"
+      },
+      {
+        "candidate": "Steven Young",
+        "party": "Green",
+        "partyCode": "O"
+      }
+    ],
+    "NE": [
+      {
+        "candidate": "Rick Beard",
+        "party": "Legal Marijuana Now",
+        "partyCode": "O"
+      },
+      {
+        "candidate": "Brett Lindstrom",
+        "party": "America First",
+        "partyCode": "O"
+      },
+      {
+        "candidate": "Jim Pillen",
+        "party": "Republican",
+        "partyCode": "R"
+      },
+      {
+        "candidate": "Lynne Walz",
+        "party": "Democratic",
+        "partyCode": "D"
+      }
+    ],
+    "NV": [
+      {
+        "candidate": "Aaron Ford",
+        "party": "Democratic",
+        "partyCode": "D"
+      },
+      {
+        "candidate": "Danielle Ford",
+        "party": "Independent",
+        "partyCode": "O"
+      },
+      {
+        "candidate": "Joe Lombardo",
+        "party": "Republican",
+        "partyCode": "R"
+      }
+    ],
+    "NH": [
+      {
+        "candidate": "Kelly Ayotte",
+        "party": "Republican",
+        "partyCode": "R"
+      },
+      {
+        "candidate": "Jon Kiper",
+        "party": "Community First",
+        "partyCode": "O"
+      },
+      {
+        "candidate": "Cinde Warmington",
+        "party": "Democratic",
+        "partyCode": "D"
+      }
+    ],
+    "NM": [
+      {
+        "candidate": "Deb Haaland",
+        "party": "Democratic",
+        "partyCode": "D"
+      },
+      {
+        "candidate": "Gregg Hull",
+        "party": "Republican",
+        "partyCode": "R"
+      }
+    ],
+    "NY": [
+      {
+        "candidate": "Bruce Blakeman",
+        "party": "Republican",
+        "partyCode": "R"
+      },
+      {
+        "candidate": "Kathy Hochul",
+        "party": "Democratic",
+        "partyCode": "D"
+      }
+    ],
+    "OH": [
+      {
+        "candidate": "Amy Acton",
+        "party": "Democratic",
+        "partyCode": "D"
+      },
+      {
+        "candidate": "Donald Kissick",
+        "party": "Libertarian",
+        "partyCode": "O"
+      },
+      {
+        "candidate": "Vivek Ramaswamy",
+        "party": "Republican",
+        "partyCode": "R"
+      }
+    ],
+    "OK": [
+      {
+        "candidate": "Robert Brooks Sr.",
+        "party": "Independent",
+        "partyCode": "O"
+      },
+      {
+        "candidate": "Orlando Bush",
+        "party": "Independent",
+        "partyCode": "O"
+      },
+      {
+        "candidate": "Jerry Griffin",
+        "party": "Independent",
+        "partyCode": "O"
+      },
+      {
+        "candidate": "Mike Mazzei",
+        "party": "Republican",
+        "partyCode": "R"
+      },
+      {
+        "candidate": "Cyndi Munson",
+        "party": "Democratic",
+        "partyCode": "D"
+      }
+    ],
+    "OR": [
+      {
+        "candidate": "Christine Drazan",
+        "party": "Republican",
+        "partyCode": "R"
+      },
+      {
+        "candidate": "Tina Kotek",
+        "party": "Democratic",
+        "partyCode": "D"
+      },
+      {
+        "candidate": "Brett Smith",
+        "party": "Pacific Green",
+        "partyCode": "O"
+      }
+    ],
+    "PA": [
+      {
+        "candidate": "Stacy Garrity",
+        "party": "Republican",
+        "partyCode": "R"
+      },
+      {
+        "candidate": "Ken Krawchuk",
+        "party": "Libertarian",
+        "partyCode": "O"
+      },
+      {
+        "candidate": "Josh Shapiro",
+        "party": "Democratic",
+        "partyCode": "D"
+      }
+    ],
+    "RI": [
+      {
+        "candidate": "Ken Block",
+        "party": "Independent",
+        "partyCode": "O"
+      },
+      {
+        "candidate": "Helena Foulkes",
+        "party": "Democratic",
+        "partyCode": "D"
+      },
+      {
+        "candidate": "Jasjit Gotra",
+        "party": "Independent",
+        "partyCode": "O"
+      },
+      {
+        "candidate": "Aaron Guckian",
+        "party": "Republican",
+        "partyCode": "R"
+      },
+      {
+        "candidate": "CD Reynolds",
+        "party": "Independent",
+        "partyCode": "O"
+      }
+    ],
+    "SC": [
+      {
+        "candidate": "Michael Addison",
+        "party": "United Citizens",
+        "partyCode": "O"
+      },
+      {
+        "candidate": "Walid Hakim",
+        "party": "Green",
+        "partyCode": "O"
+      },
+      {
+        "candidate": "Jermaine Johnson",
+        "party": "Democratic",
+        "partyCode": "D"
+      },
+      {
+        "candidate": "Alan Wilson",
+        "party": "Republican",
+        "partyCode": "R"
+      }
+    ],
+    "SD": [
+      {
+        "candidate": "Dan Ahlers",
+        "party": "Democratic",
+        "partyCode": "D"
+      },
+      {
+        "candidate": "Larry Rhoden",
+        "party": "Republican",
+        "partyCode": "R"
+      }
+    ],
+    "TN": [
+      {
+        "candidate": "Misam Abidi",
+        "party": "Independent",
+        "partyCode": "O"
+      },
+      {
+        "candidate": "Santiago Asconape",
+        "party": "Independent",
+        "partyCode": "O"
+      },
+      {
+        "candidate": "Marsha Blackburn",
+        "party": "Republican",
+        "partyCode": "R"
+      },
+      {
+        "candidate": "Dean Brewer",
+        "party": "Independent",
+        "partyCode": "O"
+      },
+      {
+        "candidate": "Ray Brown",
+        "party": "Independent",
+        "partyCode": "O"
+      },
+      {
+        "candidate": "Jerri Green",
+        "party": "Democratic",
+        "partyCode": "D"
+      },
+      {
+        "candidate": "Taylor Hafley",
+        "party": "Independent",
+        "partyCode": "O"
+      },
+      {
+        "candidate": "David Hatley",
+        "party": "Independent",
+        "partyCode": "O"
+      },
+      {
+        "candidate": "Wendell Jackson",
+        "party": "Independent",
+        "partyCode": "O"
+      },
+      {
+        "candidate": "Charles Van Morgan",
+        "party": "Independent",
+        "partyCode": "O"
+      },
+      {
+        "candidate": "Eddie Lee Murphy",
+        "party": "Independent",
+        "partyCode": "O"
+      },
+      {
+        "candidate": "Lauren Pinkston",
+        "party": "Independent",
+        "partyCode": "O"
+      },
+      {
+        "candidate": "Karl Smithson",
+        "party": "Independent",
+        "partyCode": "O"
+      },
+      {
+        "candidate": "L. Webb Taylor",
+        "party": "Independent",
+        "partyCode": "O"
+      },
+      {
+        "candidate": "Robert Vick",
+        "party": "Independent",
+        "partyCode": "O"
+      }
+    ],
+    "TX": [
+      {
+        "candidate": "Greg Abbott",
+        "party": "Republican",
+        "partyCode": "R"
+      },
+      {
+        "candidate": "Pat Dixon",
+        "party": "Libertarian",
+        "partyCode": "O"
+      },
+      {
+        "candidate": "Gina Hinojosa",
+        "party": "Democratic",
+        "partyCode": "D"
+      }
+    ],
+    "VT": [
+      {
+        "candidate": "June Goodband",
+        "party": "Green Mountain",
+        "partyCode": "O"
+      },
+      {
+        "candidate": "Amanda Janoo",
+        "party": "Democratic",
+        "partyCode": "D"
+      },
+      {
+        "candidate": "Brian Judd",
+        "party": "Independent",
+        "partyCode": "O"
+      },
+      {
+        "candidate": "Phil Scott",
+        "party": "Republican",
+        "partyCode": "R"
+      },
+      {
+        "candidate": "Dean Roy",
+        "party": "Freedom and Unity",
+        "partyCode": "O"
+      }
+    ],
+    "WI": [
+      {
+        "candidate": "David Crowley",
+        "party": "Democratic",
+        "partyCode": "D"
+      },
+      {
+        "candidate": "Tom Tiffany",
+        "party": "Republican",
+        "partyCode": "R"
+      }
+    ],
+    "WY": [
+      {
+        "candidate": "Eric Barlow",
+        "party": "Republican",
+        "partyCode": "R"
+      },
+      {
+        "candidate": "Kenneth Casner",
+        "party": "Democratic",
+        "partyCode": "D"
+      },
+      {
+        "candidate": "Joseph Kibler",
+        "party": "Constitution",
+        "partyCode": "O"
+      }
+    ]
+  },
+  "metadata": {
+    "houseSource": "https://en.wikipedia.org/wiki/2026_United_States_House_of_Representatives_elections",
+    "senateSource": "https://en.wikipedia.org/wiki/2026_United_States_Senate_elections",
+    "governorSource": "https://en.wikipedia.org/wiki/2026_United_States_gubernatorial_elections",
+    "sourceLicense": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "candidateDefinition": "Candidates listed for the general election on the cited Wikipedia overview pages on the as-of date. This is a cited community-maintained roster, not an official certification."
+  }
+}

@@ -1,0 +1,69 @@
+{
+  "schemaVersion": 4,
+  "schedule": {
+    "timeZone": "America/New_York",
+    "firstPollClose": "2026-11-03T18:00:00-05:00",
+    "sourceUrl": "https://www.270towin.com/poll-closing-times/",
+    "pollCloseMinutesByState": {
+      "AL": 120, "AK": 420, "AZ": 180, "AR": 150, "CA": 300, "CO": 180, "CT": 120,
+      "DE": 120, "DC": 120, "FL": 120, "GA": 60, "HI": 420, "ID": 300, "IL": 120,
+      "IN": 60, "IA": 180, "KS": 180, "KY": 60, "LA": 180, "ME": 120, "MD": 120,
+      "MA": 120, "MI": 180, "MN": 180, "MS": 120, "MO": 120, "MT": 240, "NE": 180,
+      "NV": 240, "NH": 120, "NJ": 120, "NM": 180, "NY": 180, "NC": 90, "ND": 180,
+      "OH": 90, "OK": 120, "OR": 300, "PA": 120, "RI": 120, "SC": 60, "SD": 180,
+      "TN": 120, "TX": 180, "UT": 240, "VT": 60, "VA": 60, "WA": 300, "WV": 90,
+      "WI": 180, "WY": 180
+    },
+    "houseDistrictDefaultMinutesByState": {
+      "IN": 0, "KY": 0, "FL": 60, "KS": 120, "MI": 120, "TX": 120, "ID": 240
+    },
+    "houseDistrictCloseMinutes": {
+      "IN-01": 60, "IN-08": 60, "KY-01": 60, "KY-02": 60,
+      "FL-01": 120, "FL-02": 120, "KS-01": 180, "MI-01": 180,
+      "TX-16": 180, "TX-23": 180, "ID-01": 300, "ID-02": 240
+    }
+  },
+  "callModel": {
+    "minimumWinProbability": 0.995,
+    "independentWinnerShare": 0.03,
+    "unreportedUncertaintyPoints": 7,
+    "finalUncertaintyFloorPoints": 0.35
+  },
+  "stages": [
+    { "label": "First polling places close · early IN/KY districts", "minutesAfterFirstClose": 0 },
+    { "label": "First county batches begin", "minutesAfterFirstClose": 15 },
+    { "label": "Early regional returns", "minutesAfterFirstClose": 30 },
+    { "label": "More counties check in", "minutesAfterFirstClose": 45 },
+    { "label": "Eastern closing wave", "minutesAfterFirstClose": 60 },
+    { "label": "Early eastern returns", "minutesAfterFirstClose": 75 },
+    { "label": "Additional states close", "minutesAfterFirstClose": 90 },
+    { "label": "First urban batches arrive", "minutesAfterFirstClose": 105 },
+    { "label": "Central closing wave", "minutesAfterFirstClose": 120 },
+    { "label": "Late county batches", "minutesAfterFirstClose": 135 },
+    { "label": "Arkansas and split-zone returns", "minutesAfterFirstClose": 150 },
+    { "label": "Results spread through the Midwest", "minutesAfterFirstClose": 165 },
+    { "label": "Mountain closing wave", "minutesAfterFirstClose": 180 },
+    { "label": "More urban and absentee batches", "minutesAfterFirstClose": 195 },
+    { "label": "County leads continue to settle", "minutesAfterFirstClose": 210 },
+    { "label": "Later Mountain polls close", "minutesAfterFirstClose": 225 },
+    { "label": "Mountain returns build", "minutesAfterFirstClose": 240 },
+    { "label": "Additional western counties report", "minutesAfterFirstClose": 255 },
+    { "label": "Large counties add vote batches", "minutesAfterFirstClose": 270 },
+    { "label": "Pacific closing wave", "minutesAfterFirstClose": 285 },
+    { "label": "Pacific counties begin reporting", "minutesAfterFirstClose": 300 },
+    { "label": "Late urban and mail batches", "minutesAfterFirstClose": 315 },
+    { "label": "More Pacific returns", "minutesAfterFirstClose": 330 },
+    { "label": "County reporting continues", "minutesAfterFirstClose": 345 },
+    { "label": "Alaska mainland polls close", "minutesAfterFirstClose": 360 },
+    { "label": "Late Pacific counties report", "minutesAfterFirstClose": 375 },
+    { "label": "Late western county batches", "minutesAfterFirstClose": 390 },
+    { "label": "Large counties continue reporting", "minutesAfterFirstClose": 405 },
+    { "label": "All poll-closing waves are complete", "minutesAfterFirstClose": 420 },
+    { "label": "Late-arriving county batches", "minutesAfterFirstClose": 435 },
+    { "label": "Nearly all expected ballots are in", "minutesAfterFirstClose": 450 },
+    { "label": "Final county updates", "minutesAfterFirstClose": 480 },
+    { "label": "Outstanding county batches", "minutesAfterFirstClose": 510 },
+    { "label": "Final synthetic results settle", "minutesAfterFirstClose": 540 },
+    { "label": "Final update · reporting complete", "minutesAfterFirstClose": 570 }
+  ]
+}
