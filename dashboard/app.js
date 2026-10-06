@@ -2186,7 +2186,7 @@
         : raceResults(stateResults(code));
     const candidateRows = candidateRowsForArea(code, location);
     const summary = make("div", "state-summary");
-    summary.append(make("span", "pill", `${candidateRows.length} listed candidate${candidateRows.length === 1 ? "" : "s"}`));
+    summary.append(make("span", "pill candidate-count-pill", `${candidateRows.length} listed candidate${candidateRows.length === 1 ? "" : "s"}`));
     summary.append(make("span", "pill", `${rows.length} reported result row${rows.length === 1 ? "" : "s"}`));
     if (!selectedCounty && isPartyFlip(locationLeader(rows), code, selectedDistrict, rows)) {
       summary.append(make("span", "pill party-flip-pill", "Opposite party leading · not a race call"));
