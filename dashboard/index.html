@@ -5,11 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="theme-color" content="#10141d">
     <title>Election Night Magic Wall</title>
-    <link rel="stylesheet" href="styles.css?v=election-watchlist-1">
+    <link rel="stylesheet" href="styles.css?v=race-result-groups-1">
     <script src="vendor/d3-array.min.js" defer></script>
     <script src="vendor/d3-geo.min.js" defer></script>
     <script src="vendor/topojson-client.min.js" defer></script>
-    <script src="app.js?v=election-watchlist-1" defer></script>
+    <script src="app.js?v=race-result-groups-1" defer></script>
   </head>
   <body>
     <header class="topbar">
@@ -361,11 +361,11 @@
         </div>
         <div class="table-wrap">
           <table>
-            <thead><tr><th scope="col">State</th><th scope="col">County / District</th><th scope="col">Contest</th><th scope="col">Candidate</th><th scope="col">Party</th><th scope="col" class="numeric">Votes / share</th><th scope="col">Reporting</th><th scope="col">Source</th></tr></thead>
-            <tbody id="results-body"><tr><td colspan="8" class="table-empty">Waiting for results data.</td></tr></tbody>
+            <thead><tr><th scope="col">State</th><th scope="col">District</th><th scope="col">Candidate</th><th scope="col">Party</th><th scope="col" class="numeric">Votes / share</th><th scope="col">Reporting</th><th scope="col">Source</th></tr></thead>
+            <tbody id="results-body"><tr><td colspan="7" class="table-empty">Waiting for results data.</td></tr></tbody>
           </table>
         </div>
-        <p class="table-note" id="table-note">State-page rows are marked for verification. Totals from different contests are not combined.</p>
+        <p class="table-note" id="table-note">Candidates are grouped by race; race-wide totals are preferred over county returns.</p>
       </section>
 
       <section class="panel sources-panel">

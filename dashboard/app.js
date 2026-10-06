@@ -735,26 +735,6 @@
     return row.historical || row.candidatePct != null ? "of vote" : "of reported votes";
   }
 
-  function tableContestPeers(row, rows) {
-    const location = [
-      row.state || "",
-      houseDistrict(row) || "",
-      row.countyFips || normalizeCountyName(row.county || ""),
-      row.office || "",
-      row.race || "",
-      row.seatClass || row.class || "",
-    ];
-    const key = JSON.stringify(location);
-    return rows.filter((candidate) => JSON.stringify([
-      candidate.state || "",
-      houseDistrict(candidate) || "",
-      candidate.countyFips || normalizeCountyName(candidate.county || ""),
-      candidate.office || "",
-      candidate.race || "",
-      candidate.seatClass || candidate.class || "",
-    ]) === key);
-  }
-
   function candidateRowsForArea(state, { district = null, countyFips = null, countyName = null } = {}) {
     const isCounty = countyFips != null;
     if (historicalMode()) return isCounty ? [] : historicalRowsForRace(state, district);
@@ -2444,6 +2424,177 @@
     return raceType(row) === filter;
   }
 
+  function resultRaceGroupKey(row) {
+    const type = raceType(row) || "State";
+    const state = String(row.state || "").toUpperCase();
+    const district = type === "House" ? houseDistrict(row) : null;
+    const seatClass = type === "Senate" ? String(row.seatClass || row.class || "").trim() : "";
+    const fallbackRace = normalizeCountyName(String(row.race || row.office || "Unspecified contest"));
+    const contest = type === "House"
+      ? district || fallbackRace
+      : type === "Senate"
+        ? seatClass ? `class:${seatClass.toLowerCase()}` : "senate"
+        : type === "Governor" ? "governor" : fallbackRace;
+    return JSON.stringify([type, state, contest]);
+  }
+
+  function countyResultAreaKey(row) {
+    const rawFips = row.countyFips == null ? "" : String(row.countyFips).trim();
+    const fips = /^\d{1,5}$/.test(rawFips) ? rawFips.padStart(5, "0") : "";
+    if (fips) return `county:fips:${fips}`;
+    const county = normalizeCountyName(row.county || "");
+    return county ? `county:name:${county}` : "county:unknown";
+  }
+
+  function isCountyResult(row) {
+    return Boolean(row.county || row.countyFips || row.reportingUnitType === "county");
+  }
+
+  function resultVoteValue(row) {
+    if (row.votes == null || row.votes === "") return null;
+    const votes = Number(String(row.votes).replace(/,/g, ""));
+    return Number.isFinite(votes) && votes >= 0 ? votes : null;
+  }
+
+  function resultCandidateId(row) {
+    const name = candidateKey(row.candidate || row.candidateId || "");
+    return name || JSON.stringify([row.candidate || "", row.partyCode || partyCode(row.party) || ""]);
+  }
+
+  function resultObservationTime(row) {
+    return String(row.sourceAsOf || row.capturedAt || "");
+  }
+
+  function preferResultObservation(current, candidate) {
+    if (!current) return candidate;
+    const currentVotes = resultVoteValue(current);
+    const candidateVotes = resultVoteValue(candidate);
+    if (candidateVotes != null && (currentVotes == null || candidateVotes > currentVotes)) return candidate;
+    if (candidateVotes === currentVotes
+      && (candidate.winnerDeclared === true && current.winnerDeclared !== true
+        || resultObservationTime(candidate) > resultObservationTime(current))) return candidate;
+    return current;
+  }
+
+  function aggregateResultReportingPct(rows, countyOnly) {
+    if (!countyOnly) {
+      const reportingRows = rows
+        .filter((row) => row.precinctsReportingPct != null && row.precinctsReportingPct !== ""
+          && Number.isFinite(Number(row.precinctsReportingPct))
+          && Number(row.precinctsReportingPct) >= 0 && Number(row.precinctsReportingPct) <= 100)
+        .sort((left, right) => resultObservationTime(right).localeCompare(resultObservationTime(left)));
+      return reportingRows.length ? Number(reportingRows[0].precinctsReportingPct) : null;
+    }
+
+    const reportingUnits = new Map();
+    for (const row of rows) {
+      if (row.precinctsReported == null || row.precinctsReported === ""
+        || row.precinctsTotal == null || row.precinctsTotal === "") continue;
+      const reported = Number(row.precinctsReported);
+      const total = Number(row.precinctsTotal);
+      if (!Number.isFinite(reported) || !Number.isFinite(total)
+        || reported < 0 || total <= 0 || reported > total) continue;
+      const key = countyResultAreaKey(row);
+      const current = reportingUnits.get(key);
+      if (!current || resultObservationTime(row) > resultObservationTime(current)) {
+        reportingUnits.set(key, row);
+      }
+    }
+    if (!reportingUnits.size || reportingUnits.size !== new Set(rows.map(countyResultAreaKey)).size) return null;
+    const reportedTotal = [...reportingUnits.values()]
+      .reduce((sum, row) => sum + Number(row.precinctsReported), 0);
+    const precinctTotal = [...reportingUnits.values()]
+      .reduce((sum, row) => sum + Number(row.precinctsTotal), 0);
+    return precinctTotal > 0 ? reportedTotal / precinctTotal * 100 : null;
+  }
+
+  function aggregateRaceResults(rows) {
+    const groups = new Map();
+    for (const row of rows) {
+      const key = resultRaceGroupKey(row);
+      let group = groups.get(key);
+      if (!group) {
+        group = { key, rows: [] };
+        groups.set(key, group);
+      }
+      group.rows.push(row);
+    }
+
+    return [...groups.values()].map((group) => {
+      const raceWideRows = group.rows.filter((row) => !isCountyResult(row));
+      const countyOnly = raceWideRows.length === 0;
+      const sourceRows = countyOnly ? group.rows.filter(isCountyResult) : raceWideRows;
+      const candidatesByArea = new Map();
+      for (const row of sourceRows) {
+        const area = countyOnly ? countyResultAreaKey(row) : "race";
+        let areaCandidates = candidatesByArea.get(area);
+        if (!areaCandidates) {
+          areaCandidates = new Map();
+          candidatesByArea.set(area, areaCandidates);
+        }
+        const id = resultCandidateId(row);
+        areaCandidates.set(id, preferResultObservation(areaCandidates.get(id), row));
+      }
+
+      const candidates = new Map();
+      for (const areaCandidates of candidatesByArea.values()) {
+        for (const [id, row] of areaCandidates) {
+          const candidate = candidates.get(id) || { id, row, votes: 0, hasVotes: false };
+          const votes = resultVoteValue(row);
+          if (votes != null) {
+            candidate.votes += votes;
+            candidate.hasVotes = true;
+          }
+          candidate.row = preferResultObservation(candidate.row, row);
+          candidates.set(id, candidate);
+        }
+      }
+
+      const reportingPct = aggregateResultReportingPct(sourceRows, countyOnly);
+      const representative = sourceRows[0] || group.rows[0];
+      const candidateRows = [...candidates.values()].map((candidate) => ({
+        ...candidate.row,
+        votes: candidate.hasVotes ? candidate.votes : null,
+        candidatePct: null,
+        precinctsReportingPct: reportingPct,
+        county: "",
+        countyFips: "",
+        reportingUnitType: "",
+        aggregatedFromCounties: countyOnly,
+        source: countyOnly ? "Aggregated county returns" : candidate.row.source,
+      })).sort((left, right) => {
+        const leftVotes = resultVoteValue(left);
+        const rightVotes = resultVoteValue(right);
+        if (leftVotes == null && rightVotes != null) return 1;
+        if (leftVotes != null && rightVotes == null) return -1;
+        return (rightVotes ?? 0) - (leftVotes ?? 0)
+          || String(left.candidate || "").localeCompare(String(right.candidate || ""));
+      });
+      return {
+        key: group.key,
+        row: representative,
+        rows: candidateRows,
+        countyOnly,
+        reportingPct,
+      };
+    }).filter((group) => group.rows.length > 0).sort((left, right) =>
+      String(left.row.state || "").localeCompare(String(right.row.state || ""))
+      || resultsRaceLabel(left.row).localeCompare(resultsRaceLabel(right.row)));
+  }
+
+  function resultsRaceLabel(row) {
+    const type = raceType(row);
+    const state = String(row.state || "").toUpperCase();
+    const stateName = STATES.find((entry) => entry.code === state)?.name || state || "Unspecified state";
+    if (type === "House") return `${stateName} · ${houseDistrict(row) || row.race || row.office || "House"}`;
+    if (type === "Senate") {
+      const seatClass = row.seatClass || row.class;
+      return `${stateName} · Senate${seatClass ? ` · Class ${seatClass}` : ""}`;
+    }
+    if (type === "Governor") return `${stateName} · Governor`;
+    return `${stateName} · ${row.race || row.office || "State-page contest"}`;
+  }
+
   function renderResults() {
     const body = elements["results-body"];
     body.replaceChildren();
@@ -2456,18 +2607,13 @@
     const rows = availableRows.filter((row) => {
       if (!passesOfficeFilter(row, filter)) return false;
       if (watchedOnly && !watchedRaceKeys.has(raceWatchKey(row))) return false;
-      if (selectedState && row.state !== selectedState) return false;
-      if (selectedCounty) {
-        const selectedRows = countyResults(selectedState, { id: selectedCounty.fips, properties: { name: selectedCounty.name } });
-        return selectedRows.includes(row);
-      }
-      if (selectedDistrict) return houseDistrict(row) === selectedDistrict;
-      if (DEMO_MODE && !selectedState && (row.county || row.countyFips)) return false;
+      if (selectedState && String(row.state || "").toUpperCase() !== selectedState) return false;
+      if (selectedDistrict && houseDistrict(row) !== selectedDistrict) return false;
       return true;
     });
     elements["table-note"].textContent = historicalMode()
-      ? `Historical totals are from each contest's most recent completed election, including runoffs. House district boundaries may have changed; no historical county subtotals are inferred.${historicalResultsError ? ` Data error: ${historicalResultsError}` : ""}`
-      : "State-page rows are marked for verification. Totals from different contests are not combined; 2026 roster candidates without reported results appear as zero-vote placeholders in map hover and details.";
+      ? `Historical totals are from each contest's most recent completed election, including runoffs. House district boundaries may have changed; county-level reporting is displayed only when precinct counts support a weighted calculation.${historicalResultsError ? ` Data error: ${historicalResultsError}` : ""}`
+      : "Candidates are grouped by race. Race-wide totals are preferred; county returns are summed only when a race-wide total is unavailable. County-only reporting is shown as a percentage only when precinct counts support a weighted total.";
     if (!rows.length) {
       const tr = make("tr");
       let emptyMessage;
@@ -2478,66 +2624,72 @@
       else if (historicalMode()) emptyMessage = "No historical candidate results match this view.";
       else emptyMessage = snapshot ? "No matching results are available. This is not a zero-vote result." : "Waiting for results data.";
       const cell = make("td", "table-empty", emptyMessage);
-      cell.colSpan = 8;
+      cell.colSpan = 7;
       tr.append(cell);
       body.append(tr);
       return;
     }
-    const renderedWatchKeys = new Set();
-    const sortedRows = rows.map((row) => ({ row, watchKey: raceWatchKey(row) }))
-      .sort((left, right) =>
-        (left.row.state || "").localeCompare(right.row.state || "")
-        || (left.watchKey || "").localeCompare(right.watchKey || "")
-        || (left.row.county || "").localeCompare(right.row.county || "")
-        || (right.row.votes ?? -1) - (left.row.votes ?? -1));
-    for (const { row, watchKey } of sortedRows) {
-      const tr = document.createElement("tr");
-      const stateCell = make("td");
-      const stateButton = make("button", "text-button state-code", row.state || "—");
-      stateButton.type = "button";
-      stateButton.addEventListener("click", () => {
-        const type = raceType(row);
-        if (!row.state) return;
-        if (type && selectedRace() !== type) {
-          elements["race-view"].value = type;
-          elements["race-view"].dispatchEvent(new Event("change"));
+    for (const group of aggregateRaceResults(rows)) {
+      const groupRow = make("tr", "result-race-group-row");
+      const groupCell = make("td", "result-race-group-cell");
+      groupCell.colSpan = 7;
+      const heading = make("div", "result-race-group-heading");
+      const title = make("span", "result-race-group-title", resultsRaceLabel(group.row));
+      title.setAttribute("role", "heading");
+      title.setAttribute("aria-level", "3");
+      heading.append(title);
+      if (group.countyOnly) heading.append(make("span", "result-race-group-meta", "County rollup"));
+      const watchButton = !historicalMode() && createWatchButton(group.row, "watch-button-table");
+      if (watchButton) heading.append(watchButton);
+      groupCell.append(heading);
+      groupRow.append(groupCell);
+      body.append(groupRow);
+
+      for (const row of group.rows) {
+        const tr = make("tr", "result-candidate-row");
+        const stateCell = make("td");
+        const stateButton = make("button", "text-button state-code", row.state || "—");
+        stateButton.type = "button";
+        stateButton.addEventListener("click", () => {
+          const type = raceType(row);
+          if (!row.state) return;
+          if (type && selectedRace() !== type) {
+            elements["race-view"].value = type;
+            elements["race-view"].dispatchEvent(new Event("change"));
+          }
+          if (type === "House" && houseDistrict(row)) selectDistrict(row.state, houseDistrict(row));
+          else selectState(row.state);
+        });
+        stateCell.append(stateButton);
+        tr.append(stateCell);
+        tr.append(make("td", "", houseDistrict(row) || "—"));
+        const candidate = make("td", "candidate-result-cell");
+        appendCandidatePhoto(candidate, row.candidate, "compact");
+        appendCandidateName(candidate, row.candidate || "—", row.party, row.partyCode, "table-candidate-name");
+        tr.append(candidate);
+        tr.append(make("td", "party", row.party || "—"));
+        const votes = make("td", "numeric");
+        const voteBlock = make("span", "table-vote-block");
+        voteBlock.append(make("span", "", formatNumber(row.votes)));
+        const share = percentValue(row, group.rows);
+        voteBlock.append(make("span", "table-vote-share", share == null ? "Vote share —" : `${formatResultsPercent(share)} ${percentCaption(row)}`));
+        votes.append(voteBlock);
+        tr.append(votes);
+        const reporting = make("td", "", row.aggregatedFromCounties && row.precinctsReportingPct == null
+          ? "County rollup"
+          : formatResultsPercent(row.precinctsReportingPct));
+        if (row.aggregatedFromCounties && row.precinctsReportingPct != null) {
+          reporting.title = "Weighted from county precinct counts.";
         }
-        if (type === "House" && houseDistrict(row)) selectDistrict(row.state, houseDistrict(row));
-        else selectState(row.state);
-      });
-      stateCell.append(stateButton);
-      tr.append(stateCell);
-      tr.append(make("td", "", row.county || houseDistrict(row) || "—"));
-      const contest = make("td", "result-contest-cell");
-      contest.append(make("span", "result-contest-name", row.race || row.office || "Unspecified"));
-      if (!historicalMode() && watchKey && !renderedWatchKeys.has(watchKey)) {
-        const watchButton = createWatchButton(row, "watch-button-table");
-        if (watchButton) {
-          renderedWatchKeys.add(watchKey);
-          contest.append(watchButton);
-        }
+        tr.append(reporting);
+        const source = make("td");
+        if (row.verificationRequired) source.append(make("span", "verification", "Verify"));
+        else if (row.source) source.textContent = row.source;
+        else if (!row.sourceUrl) source.textContent = "—";
+        appendExternalLink(source, row.verificationRequired ? "Official link ↗" : "Source ↗", row.sourceUrl);
+        tr.append(source);
+        body.append(tr);
       }
-      tr.append(contest);
-      const candidate = make("td", "candidate-result-cell");
-      appendCandidatePhoto(candidate, row.candidate, "compact");
-      appendCandidateName(candidate, row.candidate || "—", row.party, row.partyCode, "table-candidate-name");
-      tr.append(candidate);
-      tr.append(make("td", "party", row.party || "—"));
-      const votes = make("td", "numeric");
-      const voteBlock = make("span", "table-vote-block");
-      voteBlock.append(make("span", "", formatNumber(row.votes)));
-      const share = percentValue(row, tableContestPeers(row, rows));
-      voteBlock.append(make("span", "table-vote-share", share == null ? "Vote share —" : `${formatResultsPercent(share)} ${percentCaption(row)}`));
-      votes.append(voteBlock);
-      tr.append(votes);
-      tr.append(make("td", "", formatResultsPercent(row.precinctsReportingPct)));
-      const source = make("td");
-      if (row.verificationRequired) source.append(make("span", "verification", "Verify"));
-      else if (row.source) source.textContent = row.source;
-      else if (!row.sourceUrl) source.textContent = "—";
-      appendExternalLink(source, row.verificationRequired ? "Official link ↗" : "Source ↗", row.sourceUrl);
-      tr.append(source);
-      body.append(tr);
     }
   }
 
