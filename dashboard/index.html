@@ -5,11 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="theme-color" content="#10141d">
     <title>Election Night Magic Wall</title>
-    <link rel="stylesheet" href="styles.css?v=election-night-contrast-1">
+    <link rel="stylesheet" href="styles.css?v=election-watchlist-1">
     <script src="vendor/d3-array.min.js" defer></script>
     <script src="vendor/d3-geo.min.js" defer></script>
     <script src="vendor/topojson-client.min.js" defer></script>
-    <script src="app.js?v=election-night-contrast-1" defer></script>
+    <script src="app.js?v=election-watchlist-1" defer></script>
   </head>
   <body>
     <header class="topbar">
@@ -265,7 +265,7 @@
               <label class="filter-label" for="state-filter">Show
                 <select id="state-filter">
                   <option value="all">All states</option>
-                  <option value="priority">Priority races</option>
+                  <option value="priority">Competitive races</option>
                   <option value="reporting">States with results</option>
                 </select>
               </label>
@@ -337,15 +337,27 @@
             <p class="eyebrow">CANDIDATE TOTALS</p>
             <h2 id="results-title">Reported results</h2>
           </div>
-          <label class="filter-label" for="office-filter">Contest type
-            <select id="office-filter">
-              <option value="all">All available</option>
-              <option value="Senate">Senate</option>
-              <option value="Governor">Governor</option>
-              <option value="House">House</option>
-              <option value="state">State-page contests</option>
-            </select>
-          </label>
+          <div class="results-filters">
+            <label class="filter-label" for="results-state-filter">State
+              <select id="results-state-filter">
+                <option value="all">All states</option>
+              </select>
+            </label>
+            <label class="filter-label" for="office-filter">Race type
+              <select id="office-filter">
+                <option value="all">All race types</option>
+                <option value="Senate">Senate</option>
+                <option value="Governor">Governor</option>
+                <option value="House">House</option>
+                <option value="state">State-page contests</option>
+              </select>
+            </label>
+            <label class="watch-filter" for="watched-only-toggle">
+              <input id="watched-only-toggle" type="checkbox" aria-controls="results-body">
+              <span>Watched only</span>
+            </label>
+            <span class="watchlist-count" id="watchlist-count" aria-live="polite">0 watched</span>
+          </div>
         </div>
         <div class="table-wrap">
           <table>
@@ -375,5 +387,14 @@
       <p>For informational use only. Results may be incomplete or unofficial; consult the linked election office before relying on any total. The collector does not call races.</p>
       <span>Data refreshes automatically · <a href="https://openamerica.io/elections/api/" target="_blank" rel="noopener noreferrer">Open America API details</a></span>
     </footer>
+
+    <div class="majority-alert-overlay" id="majority-alert-overlay" hidden>
+      <section class="majority-alert-card" role="alertdialog" aria-modal="true" aria-labelledby="majority-alert-title" aria-describedby="majority-alert-details">
+        <p class="majority-alert-kicker">DALTON PROJECTS · MAJORITY SECURED</p>
+        <h2 id="majority-alert-title"></h2>
+        <p class="majority-alert-details" id="majority-alert-details"></p>
+        <button class="majority-alert-dismiss" id="majority-alert-dismiss" type="button">Continue</button>
+      </section>
+    </div>
   </body>
 </html>

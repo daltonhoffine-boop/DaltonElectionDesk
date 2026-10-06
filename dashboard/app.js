@@ -36,7 +36,7 @@
     "results-count", "sources-count", "sources-caption", "verify-count", "election-map",
     "anchor-insight-bubble", "anchor-insight-speaker", "anchor-insight-message",
     "zoom-in", "zoom-out", "zoom-reset", "zoom-level",
-    "map-mode", "race-view", "state-filter", "office-filter", "map-title", "map-hint", "map-back", "map-legend", "priority-attribution",
+    "map-mode", "race-view", "state-filter", "results-state-filter", "office-filter", "watched-only-toggle", "watchlist-count", "map-title", "map-hint", "map-back", "map-legend", "priority-attribution",
     "swing-summary", "swing-national", "swing-state", "swing-county",
     "theme-select", "call-alert-toggle", "call-alert-status",
     "detail-eyebrow", "detail-title", "state-detail", "clear-state", "results-body",
@@ -44,6 +44,7 @@
     "projection-announcements", "projection-list",
     "projection-summary",
     "seat-tally-note",
+    "majority-alert-overlay", "majority-alert-title", "majority-alert-details", "majority-alert-dismiss",
     "demo-controls", "demo-stage-label", "demo-call-rule", "demo-county-progress", "demo-county-progress-fill",
     "demo-county-progress-label", "demo-county-progress-note",
     "demo-next", "demo-auto", "demo-reset", "demo-results-view", "demo-control-view",
@@ -91,6 +92,11 @@
   let projectionRenderSignature = "";
   let projectionCacheSnapshot = null;
   let projectionCache = new Map();
+  let watchedRaceKeys = new Set();
+  const announcedMajorityOffices = new Set();
+  const pendingMajorityAlerts = [];
+  let majorityAlertReturnFocus = null;
+  let activeMajorityAlert = null;
   let demoData = null;
   let demoCountyBaselines = null;
   let demoStageIndex = 0;
@@ -426,6 +432,119 @@
     return elements["race-view"].value;
   }
 
+  function raceWatchKey(row) {
+    if (!row?.state) return null;
+    const type = raceType(row);
+    if (type === "House") {
+      const district = houseDistrict(row);
+      return district ? JSON.stringify(["House", district]) : null;
+    }
+    if (type === "Senate" || type === "Governor") return JSON.stringify([type, row.state]);
+    const office = String(row.office || "").trim().toLowerCase();
+    const race = String(row.race || "").trim().toLowerCase();
+    return office || race ? JSON.stringify(["Other", row.state, office, race]) : null;
+  }
+
+  function raceWatchLabel(row) {
+    const type = raceType(row);
+    if (type === "House") return houseDistrict(row) || `${row.state} House`;
+    if (type) return `${row.state} ${type}`;
+    return [row.state, row.race || row.office || "race"].filter(Boolean).join(" ");
+  }
+
+  function updateWatchlistCount() {
+    elements["watchlist-count"].textContent =
+      `${formatNumber(watchedRaceKeys.size)} watched`;
+  }
+
+  function loadWatchedRaces() {
+    try {
+      const stored = window.localStorage.getItem("dalton-election-watched-races");
+      if (stored == null) return;
+      const parsed = JSON.parse(stored);
+      if (!Array.isArray(parsed) || !parsed.every((key) => typeof key === "string" && key.length > 0)) {
+        throw new Error("Saved race watchlist must be an array of non-empty race keys.");
+      }
+      watchedRaceKeys = new Set(parsed);
+    } catch (error) {
+      console.error("Watched races could not be loaded.", error);
+    }
+    updateWatchlistCount();
+  }
+
+  function persistWatchedRaces() {
+    try {
+      window.localStorage.setItem("dalton-election-watched-races", JSON.stringify([...watchedRaceKeys]));
+    } catch (error) {
+      console.error("Watched races could not be saved.", error);
+    }
+  }
+
+  function createWatchButton(row, modifier = "") {
+    const key = raceWatchKey(row);
+    if (!key) return null;
+    const watched = watchedRaceKeys.has(key);
+    const label = raceWatchLabel(row);
+    const button = make("button",
+      ["watch-button", modifier, watched ? "is-watched" : ""].filter(Boolean).join(" "),
+      watched ? "WATCHING" : "WATCH");
+    button.type = "button";
+    button.dataset.raceWatchKey = key;
+    button.setAttribute("aria-pressed", String(watched));
+    button.setAttribute("aria-label", `${watched ? "Stop watching" : "Watch"} ${label}`);
+    button.addEventListener("click", (event) => {
+      event.preventDefault();
+      event.stopPropagation();
+      toggleWatchedRace(key);
+    });
+    return button;
+  }
+
+  function toggleWatchedRace(key) {
+    const restoreFocus = document.activeElement?.classList.contains("watch-button");
+    if (watchedRaceKeys.has(key)) watchedRaceKeys.delete(key);
+    else watchedRaceKeys.add(key);
+    persistWatchedRaces();
+    updateWatchlistCount();
+    renderResults();
+    renderStateDetail();
+    renderProjectionAnnouncements();
+    if (restoreFocus) {
+      const matchingButton = [...document.querySelectorAll(".watch-button")]
+        .find((button) => button.dataset.raceWatchKey === key);
+      (matchingButton || elements["watched-only-toggle"]).focus();
+    }
+  }
+
+  function selectedRaceWatchRow() {
+    if (!selectedState || historicalMode() || currentControlMode()) return null;
+    if (selectedRace() === "House") {
+      if (!selectedDistrict || !candidateRoster?.house?.[selectedDistrict]) return null;
+      return { state: selectedState, office: "House", district: selectedDistrict, race: selectedDistrict };
+    }
+    if (selectedRace() === "Senate" && candidateRoster?.senate?.[selectedState]) {
+      return { state: selectedState, office: "Senate", race: "Senate" };
+    }
+    if (selectedRace() === "Governor" && candidateRoster?.governor?.[selectedState]) {
+      return { state: selectedState, office: "Governor", race: "Governor" };
+    }
+    return null;
+  }
+
+  function populateResultsStateFilter() {
+    const filter = elements["results-state-filter"];
+    for (const { code, name } of STATES) {
+      const option = document.createElement("option");
+      option.value = code;
+      option.textContent = name;
+      filter.append(option);
+    }
+  }
+
+  function syncResultsStateFilter() {
+    elements["results-state-filter"].value = selectedState || "all";
+  }
+
   function currentControlMode() {
     return elements["map-mode"].value === "control";
   }
@@ -607,6 +726,11 @@
     return Number.isFinite(number) ? `${number.toFixed(1)}%` : "—";
   }
 
+  function formatResultsPercent(value) {
+    const number = Number(value);
+    return value != null && value !== "" && Number.isFinite(number) ? `${number.toFixed(2)}%` : "—";
+  }
+
   function percentCaption(row) {
     return row.historical || row.candidatePct != null ? "of vote" : "of reported votes";
   }
@@ -734,6 +858,82 @@
     return projection ? projection.winner.partyCode : null;
   }
 
+  function majorityParty(tally, threshold) {
+    if (tally.dem >= threshold) return "D";
+    if (tally.rep >= threshold) return "R";
+    return null;
+  }
+
+  function showNextMajorityAlert() {
+    if (activeMajorityAlert || !pendingMajorityAlerts.length) return;
+    activeMajorityAlert = pendingMajorityAlerts.shift();
+    if (!majorityAlertReturnFocus) majorityAlertReturnFocus = document.activeElement;
+    const overlay = elements["majority-alert-overlay"];
+    overlay.classList.remove("majority-alert-dem", "majority-alert-rep");
+    overlay.classList.add(`majority-alert-${activeMajorityAlert.party === "D" ? "dem" : "rep"}`);
+    elements["majority-alert-title"].textContent = activeMajorityAlert.title;
+    elements["majority-alert-details"].textContent = activeMajorityAlert.details;
+    overlay.hidden = false;
+    document.body.classList.add("majority-alert-open");
+    elements["majority-alert-dismiss"].focus();
+  }
+
+  function dismissMajorityAlert() {
+    if (!activeMajorityAlert) return;
+    activeMajorityAlert = null;
+    elements["majority-alert-overlay"].hidden = true;
+    if (pendingMajorityAlerts.length) {
+      showNextMajorityAlert();
+      return;
+    }
+    elements["majority-alert-overlay"].classList.remove("majority-alert-dem", "majority-alert-rep");
+    document.body.classList.remove("majority-alert-open");
+    const returnFocus = majorityAlertReturnFocus;
+    majorityAlertReturnFocus = null;
+    if (returnFocus?.isConnected) returnFocus.focus();
+  }
+
+  function resetMajorityAlerts() {
+    announcedMajorityOffices.clear();
+    pendingMajorityAlerts.length = 0;
+    activeMajorityAlert = null;
+    elements["majority-alert-overlay"].hidden = true;
+    elements["majority-alert-overlay"].classList.remove("majority-alert-dem", "majority-alert-rep");
+    document.body.classList.remove("majority-alert-open");
+    const returnFocus = majorityAlertReturnFocus;
+    majorityAlertReturnFocus = null;
+    if (returnFocus?.isConnected) returnFocus.focus();
+  }
+
+  function queueMajorityAlerts(tallies, fixedTallies, incumbentTallies, totals) {
+    const offices = ["house", "senate", "governor"];
+    const names = { house: "House", senate: "Senate", governor: "governorships" };
+    for (const office of offices) {
+      const threshold = Math.floor(totals[office] / 2) + 1;
+      const party = majorityParty(tallies[office], threshold);
+      if (!party || announcedMajorityOffices.has(office)) continue;
+      const partyKey = party === "D" ? "dem" : "rep";
+      if (fixedTallies[office][partyKey] >= threshold || tallies[office][partyKey] <= fixedTallies[office][partyKey]) continue;
+      announcedMajorityOffices.add(office);
+      const holdsMajority = majorityParty(incumbentTallies[office], threshold) === party;
+      const partyLabel = party === "D" ? "Democrats" : "Republicans";
+      const partyName = partyLabel.toUpperCase();
+      const outcome = office === "governor"
+        ? holdsMajority ? "HOLD A MAJORITY OF GOVERNORSHIPS" : "WIN A MAJORITY OF GOVERNORSHIPS"
+        : holdsMajority
+          ? `HOLD THE ${names[office].toUpperCase()}`
+          : `WIN THE ${names[office].toUpperCase()} MAJORITY`;
+      const seatName = office === "governor" ? "governorships" : `${names[office]} seats`;
+      pendingMajorityAlerts.push({
+        office,
+        party,
+        title: `DALTON PROJECTS: ${partyName} ${outcome}`,
+        details: `Race calls give ${partyLabel} ${tallies[office][partyKey]} of ${totals[office]} ${seatName}, securing a majority.`,
+      });
+    }
+    showNextMajorityAlert();
+  }
+
   function renderSeatTallies() {
     const totals = { house: 435, senate: 100, governor: 50 };
     if (!currentControl || !candidateRoster) {
@@ -756,6 +956,16 @@
       senate: { dem: 0, rep: 0, ind: 0, open: 0 },
       governor: { dem: 0, rep: 0, ind: 0, open: 0 },
     };
+    const fixedTallies = {
+      house: { dem: 0, rep: 0, ind: 0, open: 0 },
+      senate: { dem: 0, rep: 0, ind: 0, open: 0 },
+      governor: { dem: 0, rep: 0, ind: 0, open: 0 },
+    };
+    const incumbentTallies = {
+      house: { dem: 0, rep: 0, ind: 0, open: 0 },
+      senate: { dem: 0, rep: 0, ind: 0, open: 0 },
+      governor: { dem: 0, rep: 0, ind: 0, open: 0 },
+    };
     const houseProjections = daltonProjections("House");
     const senateProjections = daltonProjections("Senate");
     const governorProjections = daltonProjections("Governor");
@@ -765,27 +975,36 @@
         && (seatClass == null || projection.seatClass == null || String(projection.seatClass) === String(seatClass)));
 
     for (const [district, member] of Object.entries(currentControl.house)) {
+      addSeatToTally(incumbentTallies.house, member.party);
       if (candidateRoster.house[district]) {
         addSeatToTally(tallies.house, projectedParty(findProjection(houseProjections, district.slice(0, 2), district)));
+        addSeatToTally(fixedTallies.house, null);
       } else {
         addSeatToTally(tallies.house, member.party);
+        addSeatToTally(fixedTallies.house, member.party);
       }
     }
     for (const [state, senators] of Object.entries(currentControl.senate)) {
       const race = candidateRoster.senate[state];
       for (const senator of senators) {
+        addSeatToTally(incumbentTallies.senate, senator.party);
         if (race && race.class === senator.class) {
           addSeatToTally(tallies.senate, projectedParty(findProjection(senateProjections, state, null, race.class)));
+          addSeatToTally(fixedTallies.senate, null);
         } else {
           addSeatToTally(tallies.senate, senator.party);
+          addSeatToTally(fixedTallies.senate, senator.party);
         }
       }
     }
     for (const [state, governor] of Object.entries(currentControl.governor)) {
+      addSeatToTally(incumbentTallies.governor, governor.party);
       if (candidateRoster.governor[state]) {
         addSeatToTally(tallies.governor, projectedParty(findProjection(governorProjections, state)));
+        addSeatToTally(fixedTallies.governor, null);
       } else {
         addSeatToTally(tallies.governor, governor.party);
+        addSeatToTally(fixedTallies.governor, governor.party);
       }
     }
 
@@ -802,6 +1021,7 @@
       }
     }
     elements["seat-tally-note"].textContent = "Seats in 2026 races stay Up for Grabs until Dalton projects a winner. Independent and third-party wins are grouped as Ind.";
+    queueMajorityAlerts(tallies, fixedTallies, incumbentTallies, totals);
   }
 
   function summarizeRace(rows) {
@@ -1440,15 +1660,6 @@
     return { kind: "active", label: `${race} race active · results source reachable` };
   }
 
-  function isPriorityResult(row) {
-    const office = String(row.office || "").toLowerCase();
-    const statewideOffices = statewidePriorityOffices(row.state);
-    if (office.includes("senate") && statewideOffices.includes("Senate")) return true;
-    if ((office.includes("governor") || office.includes("governorship")) && statewideOffices.includes("Governor")) return true;
-    const district = String(row.race || "").match(/\b[A-Z]{2}-(?:\d{2}|AL)\b/)?.[0];
-    return district ? housePriorityRaces(row.state).some((race) => race.district === district) : false;
-  }
-
   function visibleStates() {
     const filter = elements["state-filter"].value;
     return STATES.filter((state) => {
@@ -1844,6 +2055,7 @@
     selectedState = code;
     selectedCounty = null;
     selectedDistrict = null;
+    syncResultsStateFilter();
     renderMap();
     renderStateDetail();
     renderResults();
@@ -1853,6 +2065,7 @@
     acknowledgeResultArea("counties", selectedRace(), selectedState, `fips:${String(fips).padStart(5, "0")}`);
     acknowledgeResultArea("counties", selectedRace(), selectedState, `name:${normalizeCountyName(name)}`);
     selectedCounty = { fips, name };
+    syncResultsStateFilter();
     renderMap();
     renderStateDetail();
     renderResults();
@@ -1863,6 +2076,7 @@
     selectedState = state;
     selectedDistrict = district;
     selectedCounty = null;
+    syncResultsStateFilter();
     renderMap();
     renderStateDetail();
     renderResults();
@@ -2148,7 +2362,7 @@
     if (!state) {
       elements["detail-eyebrow"].textContent = "STATE DETAILS";
       elements["detail-title"].textContent = "Select a state";
-      elements["state-detail"].append(make("p", "empty-state", "Choose a state on the map to inspect its results, priority races, and official source links."));
+      elements["state-detail"].append(make("p", "empty-state", "Choose a state on the map to inspect its results and official source links."));
       return;
     }
 
@@ -2198,15 +2412,15 @@
       const raceStatus = stateRaceStatus(code);
       if (raceStatus) summary.append(make("span", `pill state-status-pill ${raceStatus.kind}`, raceStatus.label));
     }
-    const statewideOffices = statewidePriorityOffices(code);
-    if (statewideOffices.length) summary.append(make("span", "pill priority-pill", `Priority Race · ${statewideOffices.join(" / ")}`));
-    const houseRaces = housePriorityRaces(code);
-    if (houseRaces.length) summary.append(make("span", "pill priority-pill", `Cook House priority · ${houseRaces.map((race) => race.district).join(", ")}`));
     elements["state-detail"].append(summary);
 
-    elements["state-detail"].append(make("p", "detail-section-title", selectedCounty
+    const candidateHeading = make("div", "detail-section-heading");
+    candidateHeading.append(make("p", "detail-section-title", selectedCounty
       ? "County candidate totals · zero means no votes reported yet"
       : "2026 general-election candidate totals"));
+    const watchButton = createWatchButton(selectedRaceWatchRow(), "watch-button-detail");
+    if (watchButton) candidateHeading.append(watchButton);
+    elements["state-detail"].append(candidateHeading);
     if (raceDataError) elements["state-detail"].append(make("p", "empty-state", `2026 candidate roster unavailable: ${raceDataError}`));
     else if (!candidateRows.length) elements["state-detail"].append(make("p", "empty-state", "No general-election candidates are listed for this location in the bundled roster."));
     for (const row of candidateRows) appendCandidateCard(elements["state-detail"], row, candidateRows);
@@ -2227,18 +2441,21 @@
   function passesOfficeFilter(row, filter) {
     if (filter === "all") return true;
     if (filter === "state") return row.verificationRequired === true;
-    return String(row.office || "").toLowerCase().includes(filter.toLowerCase());
+    return raceType(row) === filter;
   }
 
   function renderResults() {
     const body = elements["results-body"];
     body.replaceChildren();
-    elements["results-title"].textContent = historicalMode() ? "Past candidate results" : "Reported results";
+    const watchedOnly = elements["watched-only-toggle"].checked;
+    const resultTitle = historicalMode() ? "Past candidate results" : "Reported results";
+    elements["results-title"].textContent = watchedOnly ? `${resultTitle} · Watched races` : resultTitle;
+    updateWatchlistCount();
     const filter = elements["office-filter"].value;
     const availableRows = historicalMode() ? allHistoricalRows() : results();
     const rows = availableRows.filter((row) => {
-      if (raceType(row) !== selectedRace()) return false;
       if (!passesOfficeFilter(row, filter)) return false;
+      if (watchedOnly && !watchedRaceKeys.has(raceWatchKey(row))) return false;
       if (selectedState && row.state !== selectedState) return false;
       if (selectedCounty) {
         const selectedRows = countyResults(selectedState, { id: selectedCounty.fips, properties: { name: selectedCounty.name } });
@@ -2253,41 +2470,67 @@
       : "State-page rows are marked for verification. Totals from different contests are not combined; 2026 roster candidates without reported results appear as zero-vote placeholders in map hover and details.";
     if (!rows.length) {
       const tr = make("tr");
-      const cell = make("td", "table-empty", historicalMode()
-        ? historicalResultsError ? `Historical results unavailable: ${historicalResultsError}` : "No historical candidate results match this view."
-        : snapshot ? "No matching results are available. This is not a zero-vote result." : "Waiting for results data.");
+      let emptyMessage;
+      if (historicalMode() && historicalResultsError) emptyMessage = `Historical results unavailable: ${historicalResultsError}`;
+      else if (watchedOnly && watchedRaceKeys.size === 0) {
+        emptyMessage = "Your watchlist is empty. Use a WATCH button on a race to add it.";
+      } else if (watchedOnly) emptyMessage = "No results match your watched races and current filters.";
+      else if (historicalMode()) emptyMessage = "No historical candidate results match this view.";
+      else emptyMessage = snapshot ? "No matching results are available. This is not a zero-vote result." : "Waiting for results data.";
+      const cell = make("td", "table-empty", emptyMessage);
       cell.colSpan = 8;
       tr.append(cell);
       body.append(tr);
       return;
     }
-    for (const row of rows.slice().sort((a, b) => (a.state || "").localeCompare(b.state || "") || (a.office || "").localeCompare(b.office || "") || (b.votes ?? -1) - (a.votes ?? -1))) {
+    const renderedWatchKeys = new Set();
+    const sortedRows = rows.map((row) => ({ row, watchKey: raceWatchKey(row) }))
+      .sort((left, right) =>
+        (left.row.state || "").localeCompare(right.row.state || "")
+        || (left.watchKey || "").localeCompare(right.watchKey || "")
+        || (left.row.county || "").localeCompare(right.row.county || "")
+        || (right.row.votes ?? -1) - (left.row.votes ?? -1));
+    for (const { row, watchKey } of sortedRows) {
       const tr = document.createElement("tr");
       const stateCell = make("td");
       const stateButton = make("button", "text-button state-code", row.state || "—");
       stateButton.type = "button";
       stateButton.addEventListener("click", () => {
-        if (selectedRace() === "House" && houseDistrict(row)) selectDistrict(row.state, houseDistrict(row));
+        const type = raceType(row);
+        if (!row.state) return;
+        if (type && selectedRace() !== type) {
+          elements["race-view"].value = type;
+          elements["race-view"].dispatchEvent(new Event("change"));
+        }
+        if (type === "House" && houseDistrict(row)) selectDistrict(row.state, houseDistrict(row));
         else selectState(row.state);
       });
       stateCell.append(stateButton);
       tr.append(stateCell);
       tr.append(make("td", "", row.county || houseDistrict(row) || "—"));
-      tr.append(make("td", "", row.race || row.office || "Unspecified"));
+      const contest = make("td", "result-contest-cell");
+      contest.append(make("span", "result-contest-name", row.race || row.office || "Unspecified"));
+      if (!historicalMode() && watchKey && !renderedWatchKeys.has(watchKey)) {
+        const watchButton = createWatchButton(row, "watch-button-table");
+        if (watchButton) {
+          renderedWatchKeys.add(watchKey);
+          contest.append(watchButton);
+        }
+      }
+      tr.append(contest);
       const candidate = make("td", "candidate-result-cell");
       appendCandidatePhoto(candidate, row.candidate, "compact");
       appendCandidateName(candidate, row.candidate || "—", row.party, row.partyCode, "table-candidate-name");
-      if (isPriorityResult(row)) candidate.append(make("span", "verification priority-result", "Priority Race"));
       tr.append(candidate);
       tr.append(make("td", "party", row.party || "—"));
       const votes = make("td", "numeric");
       const voteBlock = make("span", "table-vote-block");
       voteBlock.append(make("span", "", formatNumber(row.votes)));
       const share = percentValue(row, tableContestPeers(row, rows));
-      voteBlock.append(make("span", "table-vote-share", share == null ? "Vote share —" : `${formatPercent(share)} ${percentCaption(row)}`));
+      voteBlock.append(make("span", "table-vote-share", share == null ? "Vote share —" : `${formatResultsPercent(share)} ${percentCaption(row)}`));
       votes.append(voteBlock);
       tr.append(votes);
-      tr.append(make("td", "", row.precinctsReportingPct == null ? "—" : `${row.precinctsReportingPct}%`));
+      tr.append(make("td", "", formatResultsPercent(row.precinctsReportingPct)));
       const source = make("td");
       if (row.verificationRequired) source.append(make("span", "verification", "Verify"));
       else if (row.source) source.textContent = row.source;
@@ -2330,7 +2573,7 @@
       const card = make("article", "source-card");
       const head = make("div", "source-card-head");
       head.append(make("span", "source-name", [source.state, source.source, source.office].filter(Boolean).join(" · ")));
-      head.append(make("span", `source-status${isError ? " error" : ""}`, isError ? "ERROR" : source.priority ? "PRIORITY · " + statusLabel : statusLabel));
+      head.append(make("span", `source-status${isError ? " error" : ""}`, statusLabel));
       card.append(head);
       const meta = [];
       if (source.httpStatus) meta.push(`HTTP ${source.httpStatus}`);
@@ -2338,7 +2581,6 @@
       if (source.raceCount != null) meta.push(`${source.raceCount} races`);
       if (source.stale === true) meta.push("Feed marked stale");
       if (source.asOf) meta.push(`Feed as of ${displayDate(source.asOf)}`);
-      if (source.priorityReasons?.length) meta.push(`Priority Race: ${source.priorityReasons.join(", ")}`);
       if (source.capturedAt) meta.push(`Captured ${displayDate(source.capturedAt)}`);
       if (source.sourceNote) meta.push(source.sourceNote);
       card.append(make("div", "source-meta", meta.join(" · ") || "No additional status details"));
@@ -2416,6 +2658,7 @@
         projection.demoCall?.calledAt || "",
         projection.demoCall?.probability || null,
         projectionOutcomeTag(projection),
+        watchedRaceKeys.has(raceWatchKey(projection)),
         projection.candidates.map((candidate) => [candidate.candidate, candidate.votes, candidate.candidatePct]),
       ]),
     ]);
@@ -2464,6 +2707,8 @@
         } else if (projection.sourceAsOf) {
           copy.append(make("p", "projection-source", `Official feed marked final · observed ${displayDate(projection.capturedAt || projection.sourceAsOf)}`));
         }
+        const watchButton = createWatchButton(projection, "watch-button-projection");
+        if (watchButton) copy.append(watchButton);
         card.append(copy);
         cards.append(card);
       }
@@ -3539,11 +3784,27 @@
 
   elements["state-filter"].addEventListener("change", renderMap);
   elements["office-filter"].addEventListener("change", renderResults);
+  elements["watched-only-toggle"].addEventListener("change", renderResults);
+  elements["results-state-filter"].addEventListener("change", () => {
+    const state = elements["results-state-filter"].value;
+    if (state !== "all") {
+      selectState(state);
+      return;
+    }
+    selectedState = null;
+    selectedCounty = null;
+    selectedDistrict = null;
+    elements["state-filter"].value = "all";
+    renderMap();
+    renderStateDetail();
+    renderResults();
+  });
   elements["map-mode"].addEventListener("change", () => {
     selectedState = null;
     selectedCounty = null;
     selectedDistrict = null;
     elements["state-filter"].value = "all";
+    syncResultsStateFilter();
     renderProjectionAnnouncements();
     renderMap();
     renderStateDetail();
@@ -3555,6 +3816,7 @@
   });
   elements["demo-reset"].addEventListener("click", () => {
     stopDemoAutoPlay();
+    resetMajorityAlerts();
     demoCallDecisions.clear();
     knownProjectionIds.clear();
     knownCallKeys.clear();
@@ -3572,6 +3834,7 @@
     selectedState = null;
     selectedCounty = null;
     selectedDistrict = null;
+    syncResultsStateFilter();
     renderProjectionAnnouncements();
     renderMap();
     renderStateDetail();
@@ -3582,6 +3845,7 @@
     selectedState = null;
     selectedCounty = null;
     selectedDistrict = null;
+    syncResultsStateFilter();
     renderProjectionAnnouncements();
     renderMap();
     renderStateDetail();
@@ -3636,6 +3900,17 @@
   }
   applyTheme(savedTheme);
   elements["theme-select"].addEventListener("change", () => applyTheme(elements["theme-select"].value, true));
+  elements["majority-alert-dismiss"].addEventListener("click", dismissMajorityAlert);
+  window.addEventListener("keydown", (event) => {
+    if (!activeMajorityAlert) return;
+    if (event.key === "Escape") {
+      event.preventDefault();
+      dismissMajorityAlert();
+    } else if (event.key === "Tab") {
+      event.preventDefault();
+      elements["majority-alert-dismiss"].focus();
+    }
+  });
   elements["call-alert-toggle"].addEventListener("click", toggleCallAlerts);
   updateCallAlertControl();
   elements["zoom-in"].addEventListener("click", () => zoomAtCenter(1.25));
@@ -3692,6 +3967,7 @@
     selectedCounty = null;
     selectedDistrict = null;
     elements["state-filter"].value = "all";
+    syncResultsStateFilter();
     renderProjectionAnnouncements();
     renderMap();
     renderStateDetail();
@@ -3701,6 +3977,7 @@
     selectedState = null;
     selectedCounty = null;
     selectedDistrict = null;
+    syncResultsStateFilter();
     renderMap();
     renderStateDetail();
     renderResults();
@@ -3711,11 +3988,14 @@
       selectedState = null;
     } else if (selectedCounty) selectedCounty = null;
     else selectedState = null;
+    syncResultsStateFilter();
     renderMap();
     renderStateDetail();
     renderResults();
   });
 
+  loadWatchedRaces();
+  populateResultsStateFilter();
   renderResults();
   renderStateDetail();
   updateZoom();
