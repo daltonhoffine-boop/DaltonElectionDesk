@@ -42,7 +42,7 @@
     "theme-select", "call-alert-toggle", "call-alert-status",
     "detail-eyebrow", "detail-title", "state-detail", "clear-state", "results-body",
     "table-note", "results-title", "source-total", "source-list", "notices", "map-tooltip",
-    "national-polling", "national-polling-status",
+    "national-polling-panel", "national-polling", "national-polling-status",
     "projection-announcements", "projection-list",
     "projection-summary",
     "seat-tally-note",
@@ -2238,6 +2238,7 @@
 
   function renderNationalPolling() {
     const parent = elements["national-polling"];
+    elements["national-polling-panel"].hidden = selectedRace() !== "House";
     parent.replaceChildren();
     const feed = nationalPollingFeed();
     if (!feed) {
@@ -4253,6 +4254,7 @@
     renderMap();
     renderStateDetail();
     renderResults();
+    renderNationalPolling();
   });
   elements["clear-state"].addEventListener("click", () => {
     selectedState = null;

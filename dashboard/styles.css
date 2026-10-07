@@ -285,7 +285,7 @@ select { border: 1px solid var(--border); border-radius: 7px; background: var(--
 .media-warning { color: var(--amber); }
 .media-attribution { margin-top: 8px; }
 .media-card { min-width: 0; margin: 8px 0; padding: 10px; border: 1px solid var(--border); border-radius: 8px; background: #111722aa; }
-.national-polling-panel { margin: 18px 0; }
+.national-polling-panel { margin: 18px 0 0; padding-top: 14px; border-top: 1px solid var(--border); }
 .national-poll-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 8px; }
 .national-poll-grid .media-card { height: 100%; margin: 0; }
 .media-card-heading { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: 5px 12px; }

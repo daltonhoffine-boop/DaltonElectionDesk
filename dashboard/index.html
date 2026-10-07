@@ -5,11 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="theme-color" content="#10141d">
     <title>Election Night Magic Wall</title>
-    <link rel="stylesheet" href="styles.css?v=state-polling-toggle-1">
+    <link rel="stylesheet" href="styles.css?v=house-polling-map-panel-1">
     <script src="vendor/d3-array.min.js" defer></script>
     <script src="vendor/d3-geo.min.js" defer></script>
     <script src="vendor/topojson-client.min.js" defer></script>
-    <script src="app.js?v=state-polling-toggle-1" defer></script>
+    <script src="app.js?v=house-polling-map-panel-1" defer></script>
   </head>
   <body>
     <header class="topbar">
@@ -238,20 +238,6 @@
         <article class="stat-card"><span>Needs verification</span><strong id="verify-count">—</strong><small>heuristic state-page rows</small></article>
       </section>
 
-      <section class="panel national-polling-panel" aria-labelledby="national-polling-title">
-        <div class="panel-heading">
-          <div>
-            <p class="eyebrow">NATIONAL POLLING</p>
-            <h2 id="national-polling-title">House generic ballot</h2>
-          </div>
-          <p class="media-meta" id="national-polling-status" aria-live="polite">Loading latest polls…</p>
-        </div>
-        <p class="media-window-note">Recent national polls, shown individually—not a forecast or dashboard-created average. Real polling is separate from synthetic demo results.</p>
-        <div class="national-poll-grid" id="national-polling" aria-live="polite">
-          <p class="empty-state">Loading national generic-ballot polls…</p>
-        </div>
-      </section>
-
       <section class="content-grid">
         <article class="panel map-panel">
           <div class="panel-heading">
@@ -329,6 +315,19 @@
             <span><i class="legend-swatch state-race-unavailable"></i>Active race · source unavailable</span>
           </div>
           <p class="map-footnote" id="priority-attribution">Shade intensity indicates the reported vote margin. A lead is not a projection or race call.</p>
+          <section class="national-polling-panel" id="national-polling-panel" aria-labelledby="national-polling-title" hidden>
+            <div class="panel-heading">
+              <div>
+                <p class="eyebrow">NATIONAL POLLING</p>
+                <h2 id="national-polling-title">House generic ballot</h2>
+              </div>
+              <p class="media-meta" id="national-polling-status" aria-live="polite">Loading latest polls…</p>
+            </div>
+            <p class="media-window-note">Recent national polls, shown individually—not a forecast or dashboard-created average. Real polling is separate from synthetic demo results.</p>
+            <div class="national-poll-grid" id="national-polling" aria-live="polite">
+              <p class="empty-state">Loading national generic-ballot polls…</p>
+            </div>
+          </section>
         </article>
 
         <article class="panel detail-panel" aria-live="polite">
