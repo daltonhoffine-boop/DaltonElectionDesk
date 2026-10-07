@@ -1,8 +1,10 @@
+import io
 import json
 import tempfile
 import unittest
 from pathlib import Path
 from urllib.parse import parse_qs, urlparse
+from unittest.mock import patch
 
 from election_watch.media import (
     google_news_rss_url,
@@ -11,6 +13,7 @@ from election_watch.media import (
     parse_google_news_rss,
 )
 from election_watch.runner import Watcher
+from scripts.build_national_polls import build_snapshot
 
 
 STATES = [
@@ -170,6 +173,47 @@ class MediaTests(unittest.TestCase):
         self.assertEqual(national_status["rowCount"], 1)
         self.assertEqual(media["news"]["feeds"]["OH"]["items"][0]["publisher"], "Example News")
         self.assertIn("Ohio", media["news"]["feeds"]["OH"]["feedUrl"])
+
+    def test_static_poll_feed_includes_state_races_and_national_generic_ballot(self):
+        with tempfile.TemporaryDirectory() as directory:
+            config_path = Path(directory) / "sources.json"
+            config_path.write_text(json.dumps({
+                "election": {"year": 2026},
+                "state_pages": [{"state": "OH", "name": "Ohio"}],
+                "media": {"votehub_api_url": "https://api.votehub.com/polls"},
+            }), encoding="utf-8")
+            records = {
+                "generic-ballot": [{
+                    "poll_type": "generic-ballot",
+                    "subject": "2026",
+                    "pollster": "National Polling",
+                    "end_date": "2026-09-20",
+                    "answers": [{"choice": "Dem", "pct": 50}],
+                }],
+                "governor": [{
+                    "poll_type": "governor",
+                    "subject": "2026 Ohio",
+                    "pollster": "Ohio Polling",
+                    "end_date": "2026-09-21",
+                    "answers": [{"choice": "Candidate A", "pct": 51}],
+                }],
+                "senate": [],
+                "house": [],
+            }
+
+            def fake_urlopen(request, timeout):
+                poll_type = parse_qs(urlparse(request.full_url).query)["poll_type"][0]
+                return io.BytesIO(json.dumps(records[poll_type]).encode())
+
+            with patch("scripts.build_national_polls.urlopen", side_effect=fake_urlopen):
+                feed = build_snapshot(config_path)
+
+        self.assertEqual(feed["status"], "reachable")
+        self.assertEqual(feed["polls"][0]["pollType"], "generic-ballot")
+        self.assertEqual(feed["stateStatus"], "reachable")
+        self.assertEqual(feed["statePolls"][0]["state"], "OH")
+        self.assertEqual(feed["stateSources"][1]["office"], "Governor")
+        self.assertEqual(feed["stateSources"][1]["rowCount"], 1)
 
 
 if __name__ == "__main__":

@@ -73,6 +73,7 @@
   let selectedState = null;
   let selectedCounty = null;
   let selectedDistrict = null;
+  let statePollingExpanded = true;
   let mapLayer = null;
   let mapScale = 1;
   let mapTranslateX = 0;
@@ -2159,13 +2160,37 @@
     parent.append(attribution);
   }
 
+  function statePollingFeed() {
+    const livePolling = snapshot?.media?.polling;
+    if (livePolling?.sources?.some((source) =>
+      ["senate", "governor", "house"].includes(source.office?.toLowerCase()))) return livePolling;
+    if (nationalPollingSnapshot?.stateSources?.length) {
+      return {
+        provider: nationalPollingSnapshot.provider,
+        sourceUrl: nationalPollingSnapshot.sourceUrl,
+        status: nationalPollingSnapshot.stateStatus,
+        polls: nationalPollingSnapshot.statePolls || [],
+        sources: nationalPollingSnapshot.stateSources,
+        attribution: "Source: VoteHub Polls API, CC BY 4.0. Poll records are displayed individually; no averages are calculated.",
+      };
+    }
+    return livePolling || null;
+  }
+
   function appendPollingDetails(parent, stateCode, district) {
-    const polling = snapshot?.media?.polling;
+    const polling = statePollingFeed();
     const office = selectedRace().toLowerCase();
     const officeLabel = selectedRace() === "House" && district ? `House · ${district}` : selectedRace();
-    parent.append(make("p", "detail-section-title", `Latest polls · ${officeLabel}`));
+    const disclosure = make("details", "state-polling-disclosure");
+    disclosure.open = statePollingExpanded;
+    disclosure.addEventListener("toggle", () => {
+      statePollingExpanded = disclosure.open;
+    });
+    disclosure.append(make("summary", "detail-section-title", `State-specific polling · ${officeLabel}`));
+    parent.append(disclosure);
     if (!polling) {
-      parent.append(make("p", "empty-state", "Polling data is not available in this snapshot."));
+      disclosure.append(make("p", "empty-state",
+        `State polling data is unavailable: ${nationalPollingError || "no polling feed is available in this snapshot."}`));
       return;
     }
 
@@ -2178,20 +2203,20 @@
         .slice(0, 8);
     const officeStatus = (polling.sources || []).find((source) => source.office?.toLowerCase() === office);
     if (officeStatus?.fetchedAt) {
-      parent.append(make("div", "media-meta", `VoteHub feed refreshed · ${displayDate(officeStatus.fetchedAt)}`));
+      disclosure.append(make("div", "media-meta", `VoteHub feed refreshed · ${displayDate(officeStatus.fetchedAt)}`));
     }
     if (officeStatus?.status === "error") {
-      parent.append(make("p", "empty-state", `VoteHub polling data unavailable: ${officeStatus.error || "the provider request failed."}`));
+      disclosure.append(make("p", "empty-state", `VoteHub polling data unavailable: ${officeStatus.error || "the provider request failed."}`));
     } else if (officeStatus?.status === "stale") {
-      parent.append(make("p", "media-warning", `Showing the last successful VoteHub feed from ${displayDate(officeStatus.fetchedAt)}; refresh failed: ${officeStatus.error || "unknown error"}`));
+      disclosure.append(make("p", "media-warning", `Showing the last successful VoteHub feed from ${displayDate(officeStatus.fetchedAt)}; refresh failed: ${officeStatus.error || "unknown error"}`));
     } else if (selectedRace() === "House" && !district) {
-      parent.append(make("p", "empty-state", "Select a congressional district to see polls for that House race."));
+      disclosure.append(make("p", "empty-state", "Select a congressional district to see polls for that House race."));
     } else if (!matches.length) {
-      parent.append(make("p", "empty-state", `No 2026 ${officeLabel} polls are currently listed for this race by VoteHub.`));
+      disclosure.append(make("p", "empty-state", `No 2026 ${officeLabel} polls are currently listed for this race by VoteHub.`));
     }
 
-    for (const poll of matches) appendPollCard(parent, poll);
-    appendVoteHubAttribution(parent, polling);
+    for (const poll of matches) appendPollCard(disclosure, poll);
+    appendVoteHubAttribution(disclosure, polling);
   }
 
   function nationalPollingFromSnapshot() {
@@ -2280,6 +2305,7 @@
       console.error(nationalPollingError);
     }
     renderNationalPolling();
+    if (selectedState) renderStateDetail();
   }
 
   function appendNewsDetails(parent, stateCode) {
@@ -2328,7 +2354,6 @@
   }
 
   function appendPollingAndNews(parent, stateCode, district) {
-    if (!snapshot?.media) return;
     const schedule = pollCloseSchedule(stateCode, district);
     if (schedule && Date.now() >= schedule.cutoffUtc) {
       parent.append(make("p", "media-cutoff-note",
@@ -2341,8 +2366,8 @@
         `Polling and news shown until three hours before polls close · latest close ${schedule.closeLabel}.`));
     }
     appendPollingDetails(parent, stateCode, district);
-    appendNewsDetails(parent, stateCode);
-    if (snapshot.media.polling?.status === "partial") {
+    if (snapshot?.media?.news) appendNewsDetails(parent, stateCode);
+    if (snapshot?.media?.polling?.status === "partial") {
       parent.append(make("p", "media-warning", "Some polling feeds could not be refreshed; source status is shown with the affected office."));
     }
     if (schedule) appendExternalLink(parent, "Poll-closing times source ↗", schedule.sourceUrl);

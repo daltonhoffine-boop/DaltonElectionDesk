@@ -278,6 +278,8 @@ select { border: 1px solid var(--border); border-radius: 7px; background: var(--
 .pill { display: inline-flex; align-items: center; border: 1px solid var(--border); border-radius: 999px; padding: 5px 9px; color: var(--muted); font-size: 0.5625rem; }
 .pill.candidate-count-pill { border-color: var(--brand-border); background: var(--brand-bg); color: var(--brand-color); font-weight: 800; }
 .detail-section-title { margin: 17px 0 8px; color: var(--muted); font-size: 0.5625rem; font-weight: 800; letter-spacing: .12em; text-transform: uppercase; }
+.state-polling-disclosure > summary { cursor: pointer; user-select: none; }
+.state-polling-disclosure > summary::marker { color: var(--blue); }
 .media-window-note, .media-cutoff-note, .media-warning, .media-attribution { margin: 7px 0; color: var(--quiet); font-size: 0.5625rem; line-height: 1.5; }
 .media-cutoff-note { padding: 9px 10px; border: 1px solid var(--border); border-radius: 7px; background: #111722aa; }
 .media-warning { color: var(--amber); }
