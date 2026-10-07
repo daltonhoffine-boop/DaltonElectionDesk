@@ -3,7 +3,11 @@
 
   const REFRESH_MS = 30_000;
   const NATIONAL_POLL_REFRESH_MS = 30 * 60_000;
-  const DEMO_MODE = new URLSearchParams(window.location.search).get("demo") === "trickle";
+  const dashboardQuery = new URLSearchParams(window.location.search);
+  const PUBLIC_STATIC_HOST = window.location.hostname.toLowerCase().endsWith(".github.io");
+  const DEMO_REQUESTED = dashboardQuery.get("demo") === "trickle";
+  const STATIC_DEMO_FALLBACK = PUBLIC_STATIC_HOST && !DEMO_REQUESTED && dashboardQuery.get("live") !== "1";
+  const DEMO_MODE = DEMO_REQUESTED || STATIC_DEMO_FALLBACK;
   const DEMO_STEP_MS = 6_000;
   const DEMO_MIDTERM_TURNOUT_SHARE = 0.62;
   const ANCHOR_INSIGHT_MINIMUM_MS = 60_000;
@@ -48,7 +52,8 @@
     "seat-tally-note",
     "change-timeline", "change-timeline-status", "majority-path-list",
     "replay-load", "replay-live", "replay-range", "replay-current", "replay-status",
-    "race-comparisons", "comparison-status", "producer-mode-toggle",
+    "race-comparisons", "comparison-status", "producer-mode-toggle", "demo-launch-link",
+    "demo-exit-link", "demo-mode-kicker", "intro-copy",
     "majority-alert-overlay", "majority-alert-title", "majority-alert-details", "majority-alert-dismiss",
     "demo-controls", "demo-stage-label", "demo-call-rule", "demo-county-progress", "demo-county-progress-fill",
     "demo-county-progress-label", "demo-county-progress-note",
@@ -57,6 +62,16 @@
       ["dem", "rep", "ind", "open", "bar-dem", "bar-rep", "bar-ind", "bar-open"]
         .map((party) => `seat-${office}-${party}`)),
   ].map((id) => [id, document.getElementById(id)]));
+
+  elements["demo-launch-link"].hidden = DEMO_MODE;
+  if (DEMO_MODE && PUBLIC_STATIC_HOST) {
+    elements["intro-copy"].textContent = "This public static preview uses clearly labeled synthetic election-night results so the map and desk features are interactive. No live results feed is connected here.";
+    elements["demo-mode-kicker"].textContent = "STATIC PREVIEW · SYNTHETIC RESULTS · NO LIVE FEED";
+    elements["demo-exit-link"].href = "?live=1";
+    elements["demo-exit-link"].textContent = "Try live view";
+  } else if (DEMO_MODE) {
+    elements["intro-copy"].textContent = "Explore the map and election-desk tools with a clearly labeled synthetic election-night simulation.";
+  }
 
   let snapshot = null;
   let latestLiveSnapshot = null;
@@ -3492,7 +3507,8 @@
     elements["verify-count"].textContent = formatNumber(allResults.filter((row) => row.verificationRequired).length);
     elements["refresh-note"].textContent = isReplaying
       ? "Historical playback · live updates continue in the background"
-      : `Auto-refreshes every ${REFRESH_MS / 1000} seconds`;
+      : DEMO_MODE ? "Synthetic stages · scrub with Replay"
+        : `Auto-refreshes every ${REFRESH_MS / 1000} seconds`;
     elements["connection-status"].classList.remove("error");
     elements["connection-status"].classList.add("connected");
     elements["connection-label"].textContent = DEMO_MODE

@@ -9,7 +9,7 @@
     <script src="vendor/d3-array.min.js" defer></script>
     <script src="vendor/d3-geo.min.js" defer></script>
     <script src="vendor/topojson-client.min.js" defer></script>
-    <script src="app.js?v=desk-tools-1" defer></script>
+    <script src="app.js?v=static-preview-parity-1" defer></script>
   </head>
   <body>
     <header class="topbar">
@@ -19,7 +19,7 @@
       </a>
       <div class="topbar-actions">
         <button class="producer-mode-toggle" id="producer-mode-toggle" type="button" aria-pressed="false">Producer mode</button>
-        <a class="demo-button demo-primary" href="?demo=trickle">Launch trickle demo</a>
+        <a class="demo-button demo-primary" id="demo-launch-link" href="?demo=trickle">Launch trickle demo</a>
         <label class="theme-selector" for="theme-select">
           <span>Theme</span>
           <select id="theme-select" aria-label="Choose a dashboard color theme">
@@ -46,7 +46,7 @@
         <div class="desk-hero-copy">
           <p class="eyebrow">UNITED STATES · GENERAL ELECTION</p>
           <h1>Welcome to the <span>Dalton Election Desk</span></h1>
-          <p class="intro-copy">Election night, at a glance. Live reported results and source health; missing data is never treated as zero votes.</p>
+          <p class="intro-copy" id="intro-copy">Election night, at a glance. Live reported results and source health; missing data is never treated as zero votes.</p>
           <p class="mascot-roster">Meet Mika, Rory, and Sora—your Dalton Election Desk anchors.</p>
         </div>
         <figure class="desk-art">
@@ -147,7 +147,7 @@
 
       <section class="demo-controls" id="demo-controls" aria-label="Synthetic election-night demo" hidden>
         <div class="demo-copy">
-          <p class="eyebrow">LOCAL SIMULATION · NO LIVE RESULTS</p>
+          <p class="eyebrow" id="demo-mode-kicker">LOCAL SIMULATION · NO LIVE RESULTS</p>
           <h2>Election-night trickle test</h2>
           <p id="demo-stage-label" aria-live="polite">Starting demo…</p>
           <p id="demo-call-rule" class="demo-call-rule"></p>
@@ -168,7 +168,7 @@
           <button class="demo-button demo-primary" id="demo-next" type="button">Next update</button>
           <button class="demo-button" id="demo-auto" type="button" aria-pressed="false">Auto-play</button>
           <button class="demo-button" id="demo-reset" type="button">Restart</button>
-          <a class="demo-button" href="./">Exit demo</a>
+          <a class="demo-button" id="demo-exit-link" href="./">Exit demo</a>
         </div>
         <p class="demo-map-key">Use the Race selector to switch among Governor and Senate state/county maps and the House congressional-district map. House districts begin reporting after their own poll close; select a district to inspect its candidates. Smaller counties tend to report earlier, while high-turnout counties arrive later; candidate vote totals only increase. Blue, red, or beige fill = current counted leader.</p>
         <p class="demo-disclaimer">Candidate outcomes and vote counts are synthetic, not forecasts or election returns. County turnout weights and partisan patterns are based on 2024 presidential county results; unmatched map counties use a labeled state-average baseline. Demo calls use an illustrative model and are separate from live calls. Demo mode never modifies the collector snapshot.</p>
