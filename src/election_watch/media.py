@@ -72,7 +72,7 @@ def normalize_votehub_polls(
         if str(election_year) not in subject:
             continue
         state = _state_code(record, subject, states)
-        if not state:
+        if not state and poll_type != "generic-ballot":
             continue
 
         answers = []
@@ -110,6 +110,14 @@ def normalize_votehub_polls(
             "createdAt": record.get("created_at"),
         })
     return polls
+
+
+def latest_votehub_polls(polls: list[dict[str, Any]], limit: int = 8) -> list[dict[str, Any]]:
+    return sorted(
+        polls,
+        key=lambda poll: str(poll.get("endDate") or ""),
+        reverse=True,
+    )[:limit]
 
 
 def google_news_rss_url(state_name: str, election_year: int) -> str:

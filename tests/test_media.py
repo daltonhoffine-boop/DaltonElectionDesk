@@ -6,6 +6,7 @@ from urllib.parse import parse_qs, urlparse
 
 from election_watch.media import (
     google_news_rss_url,
+    latest_votehub_polls,
     normalize_votehub_polls,
     parse_google_news_rss,
 )
@@ -53,6 +54,36 @@ class MediaTests(unittest.TestCase):
         polls = normalize_votehub_polls(records, "house", STATES, 2026)
 
         self.assertEqual(polls[0]["district"], "CA-22")
+
+    def test_national_generic_ballot_polls_do_not_require_a_state(self):
+        records = [
+            {
+                "id": "generic-2026",
+                "poll_type": "generic-ballot",
+                "subject": "2026",
+                "pollster": "Example Polling",
+                "start_date": "2026-09-28",
+                "end_date": "2026-09-30",
+                "answers": [{"choice": "Dem", "pct": 51}, {"choice": "Rep", "pct": 46}],
+            },
+            {"id": "generic-old", "poll_type": "generic-ballot", "subject": "2024", "answers": []},
+        ]
+
+        polls = normalize_votehub_polls(records, "generic-ballot", STATES, 2026)
+
+        self.assertEqual(len(polls), 1)
+        self.assertEqual(polls[0]["pollType"], "generic-ballot")
+        self.assertIsNone(polls[0]["state"])
+        self.assertEqual(polls[0]["answers"][0], {"choice": "Dem", "pct": 51.0})
+
+    def test_latest_votehub_polls_are_sorted_and_limited(self):
+        polls = [{"endDate": f"2026-09-{day:02d}", "id": str(day)} for day in range(1, 11)]
+
+        latest = latest_votehub_polls(polls)
+
+        self.assertEqual(len(latest), 8)
+        self.assertEqual(latest[0]["id"], "10")
+        self.assertEqual(latest[-1]["id"], "3")
 
     def test_poll_closing_schedule_covers_states_and_district_overrides(self):
         project_root = Path(__file__).resolve().parents[1]
@@ -106,13 +137,23 @@ class MediaTests(unittest.TestCase):
                 "answers": [{"choice": "Candidate A", "pct": 51}],
                 "url": "https://example.com/poll",
             }
+            generic_poll = {
+                "id": "generic-1",
+                "poll_type": "generic-ballot",
+                "subject": "2026",
+                "pollster": "National Polling",
+                "start_date": "2026-05-10",
+                "end_date": "2026-05-12",
+                "answers": [{"choice": "Dem", "pct": 50}, {"choice": "Rep", "pct": 45}],
+                "url": "https://example.com/generic",
+            }
             rss = b"""<rss><channel><item><title>Ohio race story</title>
               <link>https://news.google.com/story/1</link><source>Example News</source></item></channel></rss>"""
 
             def fake_get(url):
                 if url.startswith("https://api.votehub.com/"):
                     poll_type = parse_qs(urlparse(url).query)["poll_type"][0]
-                    records = [governor_poll] if poll_type == "governor" else []
+                    records = {"governor": [governor_poll], "generic-ballot": [generic_poll]}.get(poll_type, [])
                     return json.dumps(records).encode(), {}, 200
                 return rss, {}, 200
 
@@ -122,6 +163,11 @@ class MediaTests(unittest.TestCase):
         self.assertEqual(media["polling"]["status"], "reachable")
         self.assertEqual(media["polling"]["polls"][0]["state"], "OH")
         self.assertEqual(media["polling"]["sources"][0]["rowCount"], 0)
+        national_poll = next(poll for poll in media["polling"]["polls"] if poll["pollType"] == "generic-ballot")
+        self.assertIsNone(national_poll["state"])
+        self.assertEqual(national_poll["answers"][0]["choice"], "Dem")
+        national_status = next(source for source in media["polling"]["sources"] if source["office"] == "Generic ballot")
+        self.assertEqual(national_status["rowCount"], 1)
         self.assertEqual(media["news"]["feeds"]["OH"]["items"][0]["publisher"], "Example News")
         self.assertIn("Ohio", media["news"]["feeds"]["OH"]["feedUrl"])
 

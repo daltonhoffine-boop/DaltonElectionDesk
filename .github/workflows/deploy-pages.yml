@@ -4,6 +4,8 @@ on:
   push:
     branches: [main, master]
   workflow_dispatch:
+  schedule:
+    - cron: "*/30 * * * *"
 
 permissions:
   contents: read
@@ -20,6 +22,10 @@ jobs:
     steps:
       - name: Check out repository
         uses: actions/checkout@v4
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.10"
       - name: Configure GitHub Pages
         uses: actions/configure-pages@v5
         with:
@@ -31,6 +37,7 @@ jobs:
           cp index.html _site/index.html
           cp -R dashboard _site/dashboard
           cp config/sources.json _site/config/sources.json
+          python scripts/build_national_polls.py --output _site/dashboard/national-polls.json
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3
         with:

@@ -17,6 +17,7 @@ from .media import (
     VOTEHUB_API_URL,
     VOTEHUB_DOCS_URL,
     google_news_rss_url,
+    latest_votehub_polls,
     normalize_votehub_polls,
     parse_google_news_rss,
 )
@@ -254,7 +255,7 @@ class Watcher:
         ]
         poll_records: list[dict[str, Any]] = []
         poll_statuses = []
-        for poll_type in ("senate", "governor", "house"):
+        for poll_type in ("senate", "governor", "house", "generic-ballot"):
             url = f"{settings.get('votehub_api_url', VOTEHUB_API_URL)}?{urlencode({'poll_type': poll_type, 'subject': str(election_year)})}"
             records, status = self._cached_media(
                 f"votehub-{poll_type}",
@@ -265,7 +266,10 @@ class Watcher:
                 ),
                 captured_at,
             )
-            status.update({"office": poll_type.title(), "source": "VoteHub Polls API", "rowCount": len(records)})
+            if poll_type == "generic-ballot":
+                records = latest_votehub_polls(records)
+            office = "Generic ballot" if poll_type == "generic-ballot" else poll_type.title()
+            status.update({"office": office, "source": "VoteHub Polls API", "rowCount": len(records)})
             poll_records.extend(records)
             poll_statuses.append(status)
 

@@ -2,6 +2,7 @@
   "use strict";
 
   const REFRESH_MS = 30_000;
+  const NATIONAL_POLL_REFRESH_MS = 30 * 60_000;
   const DEMO_MODE = new URLSearchParams(window.location.search).get("demo") === "trickle";
   const DEMO_STEP_MS = 6_000;
   const DEMO_MIDTERM_TURNOUT_SHARE = 0.62;
@@ -41,6 +42,7 @@
     "theme-select", "call-alert-toggle", "call-alert-status",
     "detail-eyebrow", "detail-title", "state-detail", "clear-state", "results-body",
     "table-note", "results-title", "source-total", "source-list", "notices", "map-tooltip",
+    "national-polling", "national-polling-status",
     "projection-announcements", "projection-list",
     "projection-summary",
     "seat-tally-note",
@@ -54,6 +56,9 @@
   ].map((id) => [id, document.getElementById(id)]));
 
   let snapshot = null;
+  let nationalPollingSnapshot = null;
+  let nationalPollingError = null;
+  let nationalPollingLastAttemptAt = 0;
   let priorityConfig = {};
   let currentControl = null;
   let currentControlError = null;
@@ -2117,6 +2122,43 @@
     };
   }
 
+  function appendPollCard(parent, poll) {
+    const card = make("article", "media-card poll-card");
+    const heading = make("div", "media-card-heading");
+    heading.append(make("strong", "", poll.pollster));
+    heading.append(make("span", "media-meta", `Field dates · ${poll.startDate || "?"}–${poll.endDate || "?"}`));
+    card.append(heading);
+    const details = [];
+    if (poll.sampleSize) details.push(`n=${formatNumber(poll.sampleSize)}`);
+    if (poll.population) details.push(String(poll.population).toUpperCase());
+    if (details.length) card.append(make("div", "media-meta", details.join(" · ")));
+    if (poll.answers?.length) {
+      const answers = make("div", "poll-answers");
+      for (const answer of poll.answers) {
+        answers.append(make("span", "poll-answer", `${answer.choice} · ${Number(answer.pct).toFixed(1)}%`));
+      }
+      card.append(answers);
+    }
+    appendExternalLink(card, "View original poll ↗", poll.sourceUrl);
+    parent.append(card);
+  }
+
+  function appendVoteHubAttribution(parent, polling) {
+    const attribution = make("p", "media-attribution");
+    attribution.append(document.createTextNode("Source: "));
+    const providerLink = make("a", "", "VoteHub Polls API");
+    providerLink.href = polling.sourceUrl;
+    providerLink.target = "_blank";
+    providerLink.rel = "noopener noreferrer";
+    const licenseLink = make("a", "", "CC BY 4.0");
+    licenseLink.href = "https://creativecommons.org/licenses/by/4.0/";
+    licenseLink.target = "_blank";
+    licenseLink.rel = "noopener noreferrer";
+    attribution.append(providerLink, document.createTextNode(" · "), licenseLink,
+      document.createTextNode(" · polls shown individually, no averages."));
+    parent.append(attribution);
+  }
+
   function appendPollingDetails(parent, stateCode, district) {
     const polling = snapshot?.media?.polling;
     const office = selectedRace().toLowerCase();
@@ -2148,38 +2190,96 @@
       parent.append(make("p", "empty-state", `No 2026 ${officeLabel} polls are currently listed for this race by VoteHub.`));
     }
 
-    for (const poll of matches) {
-      const card = make("article", "media-card poll-card");
-      const heading = make("div", "media-card-heading");
-      heading.append(make("strong", "", poll.pollster));
-      heading.append(make("span", "media-meta", `Field dates · ${poll.startDate || "?"}–${poll.endDate || "?"}`));
-      card.append(heading);
-      const details = [];
-      if (poll.sampleSize) details.push(`n=${formatNumber(poll.sampleSize)}`);
-      if (poll.population) details.push(String(poll.population).toUpperCase());
-      if (details.length) card.append(make("div", "media-meta", details.join(" · ")));
-      if (poll.answers?.length) {
-        const answers = make("div", "poll-answers");
-        for (const answer of poll.answers) {
-          answers.append(make("span", "poll-answer", `${answer.choice} · ${Number(answer.pct).toFixed(1)}%`));
-        }
-        card.append(answers);
-      }
-      appendExternalLink(card, "View original poll ↗", poll.sourceUrl);
-      parent.append(card);
+    for (const poll of matches) appendPollCard(parent, poll);
+    appendVoteHubAttribution(parent, polling);
+  }
+
+  function nationalPollingFromSnapshot() {
+    const polling = snapshot?.media?.polling;
+    if (!polling) return null;
+    const sourceStatus = (polling.sources || []).find((source) =>
+      source.office?.toLowerCase() === "generic ballot");
+    const polls = (polling.polls || []).filter((poll) =>
+      poll.pollType === "generic-ballot" && !poll.state);
+    return sourceStatus || polls.length ? { ...polling, sourceStatus, polls } : null;
+  }
+
+  function nationalPollingFeed() {
+    const snapshotFeed = nationalPollingFromSnapshot();
+    if (snapshotFeed && (snapshotFeed.polls.length
+      || ["reachable", "cached"].includes(snapshotFeed.sourceStatus?.status))) return snapshotFeed;
+    return nationalPollingSnapshot || snapshotFeed;
+  }
+
+  function renderNationalPolling() {
+    const parent = elements["national-polling"];
+    parent.replaceChildren();
+    const feed = nationalPollingFeed();
+    if (!feed) {
+      elements["national-polling-status"].textContent = "Feed unavailable";
+      parent.append(make("p", "empty-state",
+        `National polling data is unavailable: ${nationalPollingError || "the published polling snapshot has not loaded."}`));
+      return;
     }
-    const attribution = make("p", "media-attribution");
-    attribution.append(document.createTextNode("Source: "));
-    const providerLink = make("a", "", "VoteHub Polls API");
-    providerLink.href = polling.sourceUrl;
-    providerLink.target = "_blank";
-    providerLink.rel = "noopener noreferrer";
-    const licenseLink = make("a", "", "CC BY 4.0");
-    licenseLink.href = "https://creativecommons.org/licenses/by/4.0/";
-    licenseLink.target = "_blank";
-    licenseLink.rel = "noopener noreferrer";
-    attribution.append(providerLink, document.createTextNode(" · "), licenseLink, document.createTextNode(" · polls shown individually, no averages."));
-    parent.append(attribution);
+
+    const status = feed.sourceStatus?.status || feed.status;
+    const error = feed.sourceStatus?.error || feed.error;
+    const fetchedAt = feed.sourceStatus?.fetchedAt || feed.capturedAt;
+    elements["national-polling-status"].textContent = fetchedAt
+      ? `Updated ${displayDate(fetchedAt)}`
+      : "VoteHub polling feed";
+    if (status === "error") {
+      parent.append(make("p", "empty-state", `VoteHub national polls unavailable: ${error || "the provider request failed."}`));
+      appendVoteHubAttribution(parent, feed);
+      return;
+    }
+    if (status === "stale") {
+      parent.append(make("p", "media-warning",
+        `Showing the last successful VoteHub feed from ${displayDate(fetchedAt)}; refresh failed: ${error || "unknown error"}`));
+    }
+    if (nationalPollingError && feed === nationalPollingSnapshot) {
+      parent.append(make("p", "media-warning",
+        `Showing the last successful VoteHub feed from ${displayDate(fetchedAt)}; refresh failed: ${nationalPollingError}`));
+    }
+
+    const polls = (feed.polls || [])
+      .filter((poll) => poll.pollType === "generic-ballot" && !poll.state)
+      .sort((left, right) => String(right.endDate || "").localeCompare(String(left.endDate || "")))
+      .slice(0, 8);
+    if (!polls.length) {
+      parent.append(make("p", "empty-state", "No national 2026 generic-ballot polls are currently listed by VoteHub."));
+    }
+    for (const poll of polls) appendPollCard(parent, poll);
+    appendVoteHubAttribution(parent, feed);
+  }
+
+  async function loadNationalPolling(force = false) {
+    const snapshotFeed = nationalPollingFromSnapshot();
+    if (snapshotFeed && (snapshotFeed.polls.length
+      || ["reachable", "cached"].includes(snapshotFeed.sourceStatus?.status))) {
+      renderNationalPolling();
+      return;
+    }
+    if (!force && Date.now() - nationalPollingLastAttemptAt < NATIONAL_POLL_REFRESH_MS) {
+      renderNationalPolling();
+      return;
+    }
+    nationalPollingLastAttemptAt = Date.now();
+    try {
+      const response = await fetch(`./national-polls.json?t=${nationalPollingLastAttemptAt}`, { cache: "no-store" });
+      if (!response.ok) throw new Error(`National VoteHub feed request failed (HTTP ${response.status}).`);
+      const feed = await response.json();
+      if (!feed || feed.schemaVersion !== 1 || !Array.isArray(feed.polls)
+        || !["reachable", "error"].includes(feed.status)) {
+        throw new Error("National VoteHub feed is invalid.");
+      }
+      nationalPollingSnapshot = feed;
+      nationalPollingError = null;
+    } catch (error) {
+      nationalPollingError = error.message || "National polling data could not be loaded.";
+      console.error(nationalPollingError);
+    }
+    renderNationalPolling();
   }
 
   function appendNewsDetails(parent, stateCode) {
@@ -2883,6 +2983,7 @@
     renderSeatTallies();
     renderProjectionAnnouncements();
     renderMap();
+    renderNationalPolling();
     renderStateDetail();
     renderResults();
     renderSources();
@@ -3898,6 +3999,7 @@
   async function refresh() {
     if (DEMO_MODE) {
       if (!demoData) await loadDemoData();
+      await loadNationalPolling();
       return;
     }
     try {
@@ -3917,6 +4019,7 @@
       }
       trackNewResultAreas(nextSnapshot);
       snapshot = nextSnapshot;
+      await loadNationalPolling();
       renderSnapshot();
     } catch (error) {
       elements["connection-status"].classList.remove("connected");
@@ -3931,6 +4034,7 @@
         renderResults();
         renderSources();
       }
+      await loadNationalPolling();
     }
   }
 
@@ -4155,7 +4259,7 @@
   loadHistoricalResults();
   loadCandidatePhotoIndex();
   if (DEMO_MODE) {
-    Promise.all([loadCurrentControl(), loadCandidateRoster()]).then(loadDemoData);
+    Promise.all([loadCurrentControl(), loadCandidateRoster(), loadNationalPolling()]).then(loadDemoData);
   } else {
     loadCurrentControl();
     loadCandidateRoster();
