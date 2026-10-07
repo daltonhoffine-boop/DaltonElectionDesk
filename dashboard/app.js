@@ -46,6 +46,9 @@
     "projection-announcements", "projection-list",
     "projection-summary",
     "seat-tally-note",
+    "change-timeline", "change-timeline-status", "majority-path-list",
+    "replay-load", "replay-live", "replay-range", "replay-current", "replay-status",
+    "race-comparisons", "comparison-status", "producer-mode-toggle",
     "majority-alert-overlay", "majority-alert-title", "majority-alert-details", "majority-alert-dismiss",
     "demo-controls", "demo-stage-label", "demo-call-rule", "demo-county-progress", "demo-county-progress-fill",
     "demo-county-progress-label", "demo-county-progress-note",
@@ -56,6 +59,17 @@
   ].map((id) => [id, document.getElementById(id)]));
 
   let snapshot = null;
+  let latestLiveSnapshot = null;
+  let isReplaying = false;
+  let replaySnapshots = [];
+  let replayLoadPromise = null;
+  let replayLoadError = "";
+  let replayIndex = -1;
+  let recentChangeEvents = [];
+  let compareRaceKeys = new Set();
+  let comparisonStorageError = "";
+  let latestMajorityData = null;
+  let producerModeEnabled = false;
   let nationalPollingSnapshot = null;
   let nationalPollingError = null;
   let nationalPollingLastAttemptAt = 0;
@@ -522,6 +536,86 @@
     }
   }
 
+  function createCompareButton(row) {
+    const key = raceWatchKey(row);
+    if (!key) return null;
+    const pinned = compareRaceKeys.has(key);
+    const button = make("button", `watch-button compare-button${pinned ? " is-watched" : ""}`,
+      pinned ? "IN COMPARISON" : "COMPARE RACE");
+    button.type = "button";
+    button.dataset.compareKey = key;
+    button.setAttribute("aria-pressed", String(pinned));
+    button.setAttribute("aria-label", `${pinned ? "Remove" : "Add"} ${raceWatchLabel(row)} ${pinned ? "from" : "to"} race comparison`);
+    button.addEventListener("click", (event) => {
+      event.preventDefault();
+      event.stopPropagation();
+      toggleComparedRace(key);
+    });
+    return button;
+  }
+
+  function validComparisonKey(key) {
+    if (typeof key !== "string") return false;
+    try {
+      const parsed = JSON.parse(key);
+      if (!Array.isArray(parsed)) return false;
+      if (parsed[0] === "House") return /^[A-Z]{2}-(?:\d{2}|AL)$/.test(parsed[1]);
+      return ["Senate", "Governor"].includes(parsed[0])
+        && STATES.some((state) => state.code === parsed[1]);
+    } catch (error) {
+      return false;
+    }
+  }
+
+  function loadComparedRaces() {
+    try {
+      const stored = window.localStorage.getItem("dalton-election-compared-races");
+      if (stored == null) return;
+      const parsed = JSON.parse(stored);
+      if (!Array.isArray(parsed) || parsed.some((key) => !validComparisonKey(key))) {
+        throw new Error("Saved race comparison must contain valid race keys.");
+      }
+      compareRaceKeys = new Set(parsed.slice(0, 4));
+    } catch (error) {
+      console.error("Race comparison could not be loaded.", error);
+      comparisonStorageError = "Saved comparison could not be loaded";
+    }
+  }
+
+  function persistComparedRaces() {
+    try {
+      window.localStorage.setItem("dalton-election-compared-races", JSON.stringify([...compareRaceKeys]));
+      comparisonStorageError = "";
+      return true;
+    } catch (error) {
+      console.error("Race comparison could not be saved.", error);
+      comparisonStorageError = "Comparison is temporary; browser storage is unavailable";
+      return false;
+    }
+  }
+
+  function toggleComparedRace(key) {
+    const restoreFocus = document.activeElement?.dataset.compareKey === key
+      || document.activeElement?.dataset.removeCompareKey === key;
+    if (compareRaceKeys.has(key)) {
+      compareRaceKeys.delete(key);
+    } else if (compareRaceKeys.size >= 4) {
+      elements["comparison-status"].textContent = "Comparison is full · remove a race before adding another";
+      return;
+    } else {
+      compareRaceKeys.add(key);
+    }
+    const persisted = persistComparedRaces();
+    renderStateDetail();
+    renderRaceComparisons();
+    if (!persisted) elements["comparison-status"].textContent = comparisonStorageError;
+    if (restoreFocus) {
+      const matchingButton = [...document.querySelectorAll("[data-compare-key], [data-remove-compare-key]")]
+        .find((button) => button.dataset.compareKey === key || button.dataset.removeCompareKey === key);
+      if (matchingButton) matchingButton.focus();
+    }
+  }
+
   function selectedRaceWatchRow() {
     if (!selectedState || historicalMode() || currentControlMode()) return null;
     if (selectedRace() === "House") {
@@ -923,6 +1017,7 @@
   function renderSeatTallies() {
     const totals = { house: 435, senate: 100, governor: 50 };
     if (!currentControl || !candidateRoster) {
+      latestMajorityData = null;
       elements["seat-tally-note"].textContent = currentControlError || raceDataError
         ? `Seat tally unavailable: ${currentControlError || raceDataError}`
         : "Loading current officeholders and 2026 race roster…";
@@ -998,6 +1093,7 @@
     for (const [office, tally] of Object.entries(tallies)) {
       const total = Object.values(tally).reduce((sum, count) => sum + count, 0);
       if (total !== expectedTotals[office]) {
+        latestMajorityData = null;
         elements["seat-tally-note"].textContent = `Seat tally unavailable: ${office} totals ${total}, expected ${expectedTotals[office]}.`;
         return;
       }
@@ -1006,8 +1102,127 @@
         elements[`seat-${office}-bar-${party}`].style.width = `${(tally[party] / total) * 100}%`;
       }
     }
+    latestMajorityData = {
+      tallies,
+      fixedTallies,
+      incumbentTallies,
+      totals,
+      thresholds: { house: 218, senate: 51, governor: 26 },
+    };
     elements["seat-tally-note"].textContent = "Seats in 2026 races stay Up for Grabs until Dalton projects a winner. Independent and third-party wins are grouped as Ind.";
-    queueMajorityAlerts(tallies, fixedTallies, incumbentTallies, totals);
+    if (!isReplaying) queueMajorityAlerts(tallies, fixedTallies, incumbentTallies, totals);
+  }
+
+  function majorityRaceGroups(office) {
+    if (!snapshot || !candidateRoster) return [];
+    const calledIds = new Set(daltonProjections(office).map((projection) => projection.id));
+    return aggregateRaceResults(results()).filter((group) => {
+      const row = group.row;
+      if (raceType(row) !== office || !row.state) return false;
+      if (office === "House") {
+        const district = houseDistrict(row);
+        return Boolean(district && candidateRoster.house?.[district]
+          && !calledIds.has(projectionIdentity(row, office)));
+      }
+      if (office === "Senate") {
+        const race = candidateRoster.senate?.[row.state];
+        if (!race) return false;
+        const resultClass = String(row.seatClass || row.class || "");
+        if (resultClass && String(race.class) !== resultClass) return false;
+        return !calledIds.has(projectionIdentity(row, office));
+      }
+      return Boolean(candidateRoster.governor?.[row.state]
+        && !calledIds.has(projectionIdentity(row, office)));
+    }).sort((left, right) => {
+      const margin = (group) => {
+        const votes = group.rows.map(resultVoteValue).filter((value) => value != null).sort((a, b) => b - a);
+        return votes.length > 1 ? votes[0] - votes[1] : Number.POSITIVE_INFINITY;
+      };
+      return margin(left) - margin(right) || resultsRaceLabel(left.row).localeCompare(resultsRaceLabel(right.row));
+    });
+  }
+
+  function navigateToRace(row) {
+    const office = raceType(row);
+    if (!office || !row.state) return;
+    if (elements["map-mode"].value !== "results") {
+      elements["map-mode"].value = "results";
+      elements["map-mode"].dispatchEvent(new Event("change"));
+    }
+    if (selectedRace() !== office) {
+      elements["race-view"].value = office;
+      elements["race-view"].dispatchEvent(new Event("change"));
+    }
+    if (office === "House" && houseDistrict(row)) selectDistrict(row.state, houseDistrict(row));
+    else selectState(row.state);
+  }
+
+  function renderMajorityPaths() {
+    const list = elements["majority-path-list"];
+    list.replaceChildren();
+    if (!latestMajorityData) {
+      list.append(make("p", "empty-state", currentControlError || raceDataError
+        ? `Majority paths unavailable: ${currentControlError || raceDataError}`
+        : "Majority paths will appear when current control and the race roster load."));
+      return;
+    }
+    const officeNames = { house: "House", senate: "Senate", governor: "Governorships" };
+    const offices = [
+      ["house", "House", "Democratic", "Republican"],
+      ["senate", "Senate", "Democratic", "Republican"],
+      ["governor", "Governorships", "Democratic", "Republican"],
+    ];
+    for (const [key, office, democraticLabel, republicanLabel] of offices) {
+      const threshold = latestMajorityData.thresholds[key];
+      const tally = latestMajorityData.tallies[key];
+      const open = tally.open;
+      const card = make("article", "majority-path-office");
+      const title = make("div", "majority-path-office-heading");
+      title.append(make("h3", "", office));
+      title.append(make("span", "", `${threshold} needed for a majority`));
+      card.append(title);
+      const paths = make("div", "majority-party-paths");
+      for (const [party, partyKey, label, modifier] of [
+        ["D", "dem", democraticLabel, "dem"],
+        ["R", "rep", republicanLabel, "rep"],
+      ]) {
+        const seats = tally[partyKey];
+        const calledSeats = Math.max(0, seats - latestMajorityData.fixedTallies[key][partyKey]);
+        const needed = Math.max(0, threshold - seats);
+        const available = needed <= open;
+        const path = make("div", `majority-party-path majority-path-${modifier}`);
+        path.append(make("span", "majority-path-party", label));
+        path.append(make("strong", "majority-path-count", needed === 0 ? "Majority secured" : `${formatNumber(needed)} calls needed`));
+        path.append(make("small", "", needed === 0
+          ? `${formatNumber(seats)} seats counted · ${formatNumber(calledSeats)} race calls`
+          : `${formatNumber(seats)} seats counted · ${formatNumber(calledSeats)} race calls · ${formatNumber(open)} uncalled · ${available ? "path remains open" : "not reachable from remaining calls"}`));
+        paths.append(path);
+      }
+      card.append(paths);
+      const closest = majorityRaceGroups(officeNames[key]).slice(0, 3);
+      if (closest.length) {
+        const races = make("div", "majority-path-races");
+        races.append(make("p", "majority-path-races-title", "Closest uncalled races · leads are not calls"));
+        for (const group of closest) {
+          const button = make("button", "majority-path-race", resultsRaceLabel(group.row));
+          const candidates = group.rows.filter((row) => resultVoteValue(row) != null);
+          const first = candidates[0];
+          const second = candidates[1];
+          const difference = first && second ? resultVoteValue(first) - resultVoteValue(second) : null;
+          const reporting = group.reportingPct == null ? "reporting unavailable" : `${formatResultsPercent(group.reportingPct)} reporting`;
+          const leaderSummary = first && second
+            ? difference === 0 ? `Tied at ${formatNumber(resultVoteValue(first))} votes`
+              : `${first.candidate} leads by ${formatNumber(Math.abs(difference))} votes`
+            : first ? `${first.candidate} has reported votes` : "No reported leader";
+          button.append(make("small", "", `${leaderSummary} · ${reporting}`));
+          button.type = "button";
+          button.addEventListener("click", () => navigateToRace(group.row));
+          races.append(button);
+        }
+        card.append(races);
+      }
+      list.append(card);
+    }
   }
 
   function summarizeRace(rows) {
@@ -2526,6 +2741,10 @@
       : "2026 general-election candidate totals"));
     const watchButton = createWatchButton(selectedRaceWatchRow(), "watch-button-detail");
     if (watchButton) candidateHeading.append(watchButton);
+    const compareButton = !historicalMode() && !currentControlMode()
+      ? createCompareButton(selectedRaceWatchRow())
+      : null;
+    if (compareButton) candidateHeading.append(compareButton);
     elements["state-detail"].append(candidateHeading);
     if (raceDataError) elements["state-detail"].append(make("p", "empty-state", `2026 candidate roster unavailable: ${raceDataError}`));
     else if (!candidateRows.length) elements["state-detail"].append(make("p", "empty-state", "No general-election candidates are listed for this location in the bundled roster."));
@@ -2577,7 +2796,7 @@
   }
 
   function resultVoteValue(row) {
-    if (row.votes == null || row.votes === "") return null;
+    if (!row || row.votes == null || row.votes === "") return null;
     const votes = Number(String(row.votes).replace(/,/g, ""));
     return Number.isFinite(votes) && votes >= 0 ? votes : null;
   }
@@ -2719,6 +2938,132 @@
     }
     if (type === "Governor") return `${stateName} · Governor`;
     return `${stateName} · ${row.race || row.office || "State-page contest"}`;
+  }
+
+  function comparisonData(key) {
+    let parsed;
+    try {
+      parsed = JSON.parse(key);
+    } catch (error) {
+      return null;
+    }
+    if (!Array.isArray(parsed)) return null;
+    if (!candidateRoster) return { loading: true };
+    const [office, identity] = parsed;
+    const district = office === "House" ? identity : null;
+    const state = office === "House" ? identity.slice(0, 2) : identity;
+    const raceRoster = office === "House" ? candidateRoster.house?.[district]
+      : office === "Senate" ? candidateRoster.senate?.[state]
+        : candidateRoster.governor?.[state];
+    if (!raceRoster) return { office, state, district, candidates: [], group: null, projection: null };
+    const staticCandidates = office === "House" ? raceRoster
+      : office === "Senate" ? raceRoster.candidates || []
+        : raceRoster;
+    const group = aggregateRaceResults(results()).find((item) => {
+      if (raceType(item.row) !== office || item.row.state !== state) return false;
+      if (office === "House") return houseDistrict(item.row) === district;
+      if (office === "Senate") {
+        const classValue = String(item.row.seatClass || item.row.class || "");
+        return !classValue || classValue === String(raceRoster.class);
+      }
+      return true;
+    }) || null;
+    const liveCandidates = group?.rows || [];
+    const matched = new Set();
+    const candidates = staticCandidates.map((candidate) => {
+      const candidateId = candidateKey(candidate.candidate);
+      const index = liveCandidates.findIndex((row, liveIndex) =>
+        !matched.has(liveIndex) && candidateKey(row.candidate) === candidateId);
+      if (index >= 0) {
+        matched.add(index);
+        return liveCandidates[index];
+      }
+      return {
+        candidate: candidate.candidate,
+        party: candidate.party,
+        partyCode: candidate.partyCode,
+        votes: null,
+        placeholder: true,
+      };
+    });
+    liveCandidates.forEach((row, index) => {
+      if (!matched.has(index)) candidates.push(row);
+    });
+    const projection = daltonProjections(office).find((item) =>
+      item.state === state && (office !== "House" || item.district === district)
+      && (office !== "Senate" || !item.seatClass || String(item.seatClass) === String(raceRoster.class))) || null;
+    return { office, state, district, raceRoster, candidates, group, projection };
+  }
+
+  function renderRaceComparisons() {
+    const container = elements["race-comparisons"];
+    container.replaceChildren();
+    if (!compareRaceKeys.size) {
+      container.append(make("p", "empty-state", "Select a race on the map, then choose Compare race in its details."));
+      elements["comparison-status"].textContent = comparisonStorageError || "Pin a race from its state details";
+      return;
+    }
+    elements["comparison-status"].textContent = comparisonStorageError || `${compareRaceKeys.size} of 4 races pinned`;
+    for (const key of compareRaceKeys) {
+      const data = comparisonData(key);
+      const card = make("article", "race-comparison-card");
+      if (data?.loading) {
+        card.append(make("p", "empty-state", raceDataError
+          ? `Comparison unavailable: ${raceDataError}`
+          : "Loading the candidate roster for this pinned race…"));
+        container.append(card);
+        continue;
+      }
+      if (!data) {
+        card.append(make("p", "empty-state", "This saved race could not be read."));
+        container.append(card);
+        continue;
+      }
+      const raceLabel = data.candidates[0]
+        ? resultsRaceLabel({ state: data.state, office: data.office, district: data.district,
+          race: data.office, seatClass: data.raceRoster?.class })
+        : `${data.state}${data.district ? ` · ${data.district}` : ""} · ${data.office}`;
+      const heading = make("div", "race-comparison-heading");
+      heading.append(make("h3", "", raceLabel));
+      const remove = make("button", "text-button comparison-remove", "Remove");
+      remove.type = "button";
+      remove.dataset.removeCompareKey = key;
+      remove.addEventListener("click", () => toggleComparedRace(key));
+      heading.append(remove);
+      card.append(heading);
+      const meta = make("div", "race-comparison-meta");
+      meta.append(make("span", "", data.group?.reportingPct == null
+        ? "Reporting unavailable"
+        : `${formatResultsPercent(data.group.reportingPct)} reporting`));
+      if (data.projection) {
+        meta.append(make("strong", "comparison-call", `DALTON PROJECTS · ${data.projection.winner.candidate}`));
+      } else {
+        meta.append(make("strong", "comparison-no-call", "No Dalton call · leads are not calls"));
+      }
+      card.append(meta);
+      const sortedCandidates = [...data.candidates].sort((left, right) =>
+        (resultVoteValue(right) ?? -1) - (resultVoteValue(left) ?? -1));
+      if (!sortedCandidates.length) {
+        card.append(make("p", "empty-state", "No candidate roster or reported totals are available for this race."));
+      }
+      for (const candidate of sortedCandidates) {
+        const line = make("div", "comparison-candidate");
+        appendCandidateName(line, candidate.candidate, candidate.party, candidate.partyCode, "comparison-candidate-name");
+        const votes = resultVoteValue(candidate);
+        line.append(make("strong", "comparison-votes", votes == null ? "Awaiting results" : formatNumber(votes)));
+        const share = percentValue(candidate, data.candidates);
+        line.append(make("span", "comparison-share", share == null ? "Vote share —" : `${formatResultsPercent(share)} of reported votes`));
+        card.append(line);
+      }
+      const reportedCandidates = sortedCandidates.filter((candidate) => resultVoteValue(candidate) != null);
+      const firstVotes = resultVoteValue(reportedCandidates[0]);
+      const secondVotes = resultVoteValue(reportedCandidates[1]);
+      const lead = reportedCandidates.length > 1 && firstVotes != null && secondVotes != null
+        ? `${reportedCandidates[0].candidate} leads by ${formatNumber(firstVotes - secondVotes)} votes · reported lead only`
+        : reportedCandidates.length === 1 ? "One candidate has reported totals" : "No reported vote lead";
+      card.append(make("p", "comparison-lead", lead));
+      container.append(card);
+    }
   }
 
   function renderResults() {
@@ -2899,16 +3244,18 @@
         .localeCompare(left.demoCall?.calledAt || left.capturedAt || left.sourceAsOf))]));
     const allProjections = raceOrder.flatMap((race) => groupedProjections.get(race));
     const knownBeforeRender = new Set(knownProjectionIds);
-    for (const projection of allProjections) {
-      const alertKey = projectionAlertKey(projection);
-      if (projectionBaselineEstablished && !knownCallKeys.has(alertKey)) {
-        notifyRaceCall(projection);
-        animateWinningMascot(projection.winner.partyCode);
+    if (!isReplaying) {
+      for (const projection of allProjections) {
+        const alertKey = projectionAlertKey(projection);
+        if (projectionBaselineEstablished && !knownCallKeys.has(alertKey)) {
+          notifyRaceCall(projection);
+          animateWinningMascot(projection.winner.partyCode);
+        }
+        knownCallKeys.add(alertKey);
+        knownProjectionIds.add(projection.id);
       }
-      knownCallKeys.add(alertKey);
-      knownProjectionIds.add(projection.id);
+      projectionBaselineEstablished = true;
     }
-    projectionBaselineEstablished = true;
     if (historicalMode() || currentControlMode()) {
       section.hidden = true;
       return;
@@ -2995,6 +3342,147 @@
     }
   }
 
+  function projectionSnapshotCalls(candidateSnapshot) {
+    if (!candidateSnapshot) return [];
+    const previousSnapshot = snapshot;
+    const previousCacheSnapshot = projectionCacheSnapshot;
+    const previousCache = projectionCache;
+    try {
+      snapshot = candidateSnapshot;
+      projectionCacheSnapshot = null;
+      projectionCache = new Map();
+      return ["Governor", "Senate", "House"].flatMap((office) => daltonProjections(office));
+    } finally {
+      snapshot = previousSnapshot;
+      projectionCacheSnapshot = previousCacheSnapshot;
+      projectionCache = previousCache;
+    }
+  }
+
+  function snapshotSourceHealth(source) {
+    if (source.status === "error" || source.error != null) return "error";
+    return source.stale === true ? "stale" : "ok";
+  }
+
+  function snapshotSourceKey(source) {
+    return JSON.stringify([source.source || "", source.state || "", source.office || ""]);
+  }
+
+  function addChangeEvent(events, type, title, detail, row, capturedAt) {
+    events.push({
+      id: `${capturedAt}:${type}:${title}`,
+      type,
+      title,
+      detail,
+      row: row || null,
+      capturedAt: capturedAt || new Date().toISOString(),
+    });
+  }
+
+  function recordSnapshotEvents(previousSnapshot, nextSnapshot) {
+    if (!nextSnapshot) return;
+    const events = [];
+    const capturedAt = nextSnapshot.capturedAt || new Date().toISOString();
+    if (previousSnapshot) {
+      const previousGroups = new Map(aggregateRaceResults(previousSnapshot.results || []).map((group) => [group.key, group]));
+      for (const group of aggregateRaceResults(nextSnapshot.results || [])) {
+        const previousGroup = previousGroups.get(group.key);
+        const oldCandidates = new Map((previousGroup?.rows || []).map((row) => [resultCandidateId(row), row]));
+        const voteChanges = group.rows.map((row) => {
+          const oldVotes = resultVoteValue(oldCandidates.get(resultCandidateId(row)));
+          const newVotes = resultVoteValue(row);
+          return oldVotes == null || newVotes == null || oldVotes === newVotes
+            ? null
+            : { row, delta: newVotes - oldVotes };
+        }).filter(Boolean).sort((left, right) => Math.abs(right.delta) - Math.abs(left.delta));
+        const hasReportedVotes = group.rows.some((row) => {
+          const votes = resultVoteValue(row);
+          return votes != null && votes > 0;
+        });
+        const reportingChanged = previousGroup?.reportingPct !== group.reportingPct;
+        if (!previousGroup && !hasReportedVotes) continue;
+        if (!previousGroup || voteChanges.length || reportingChanged && group.reportingPct != null) {
+          const title = `${previousGroup ? "Results updated" : "First results reported"} · ${resultsRaceLabel(group.row)}`;
+          const primaryChange = voteChanges[0];
+          const deltaText = primaryChange
+            ? `${primaryChange.row.candidate || "Candidate"} ${primaryChange.delta > 0 ? "+" : "−"}${formatNumber(Math.abs(primaryChange.delta))} votes`
+            : group.reportingPct != null ? "Reporting progress updated" : "Candidate totals are now available";
+          const reportingText = group.reportingPct == null ? "" : ` · ${formatResultsPercent(group.reportingPct)} reporting`;
+          addChangeEvent(events, "results", title, `${deltaText}${reportingText}`, group.row, capturedAt);
+        }
+      }
+
+      const previousSources = new Map((previousSnapshot.sources || []).map((source) => [snapshotSourceKey(source), source]));
+      for (const source of nextSnapshot.sources || []) {
+        const oldSource = previousSources.get(snapshotSourceKey(source));
+        const health = snapshotSourceHealth(source);
+        const oldHealth = oldSource ? snapshotSourceHealth(oldSource) : "ok";
+        if (health === oldHealth || health === "ok" && oldHealth === "ok") continue;
+        const identity = [source.state, source.source, source.office].filter(Boolean).join(" · ") || "Election feed";
+        const title = health === "ok" ? `Source restored · ${identity}` : `Source ${health === "stale" ? "stale" : "outage"} · ${identity}`;
+        const detail = health === "ok"
+          ? "The latest snapshot reports this source as reachable."
+          : source.error || (health === "stale" ? "The source is marked stale." : "The source reported an error.");
+        const row = source.state && ["House", "Senate", "Governor"].includes(source.office)
+          ? { state: source.state, office: source.office, district: source.district, race: source.race }
+          : null;
+        addChangeEvent(events, "source", title, detail, row, capturedAt);
+      }
+    } else {
+      for (const source of nextSnapshot.sources || []) {
+        const health = snapshotSourceHealth(source);
+        if (health === "ok") continue;
+        const identity = [source.state, source.source, source.office].filter(Boolean).join(" · ") || "Election feed";
+        addChangeEvent(events, "source", `Source ${health === "stale" ? "stale" : "outage"} · ${identity}`,
+          source.error || (health === "stale" ? "The source is marked stale." : "The source reported an error."),
+          null, capturedAt);
+      }
+    }
+
+    if (previousSnapshot) {
+      const priorCalls = new Map(projectionSnapshotCalls(previousSnapshot).map((projection) => [projection.id, projection]));
+      for (const projection of projectionSnapshotCalls(nextSnapshot)) {
+        const previous = priorCalls.get(projection.id);
+        if (previous && candidateKeyForProjection(previous.winner.candidate) === candidateKeyForProjection(projection.winner.candidate)) continue;
+        addChangeEvent(events, "call",
+          `DALTON PROJECTS · ${anchorInsightContestLabel(projection.office, projection.state, projection.district, projection.seatClass)}`,
+          `${projection.winner.candidate} (${projection.winner.partyCode || "other"}) projected from race calls; this is not official certification.`,
+          projection, capturedAt);
+      }
+    }
+
+    recentChangeEvents = [...events.reverse(), ...recentChangeEvents].slice(0, 12);
+    renderChangeTimeline();
+  }
+
+  function renderChangeTimeline() {
+    const list = elements["change-timeline"];
+    list.replaceChildren();
+    if (!recentChangeEvents.length) {
+      list.append(make("li", "empty-state", "No changes have been recorded yet. Changes appear as new snapshots arrive."));
+      elements["change-timeline-status"].textContent = "No changes yet";
+      return;
+    }
+    elements["change-timeline-status"].textContent = `${recentChangeEvents.length} recent update${recentChangeEvents.length === 1 ? "" : "s"}`;
+    for (const item of recentChangeEvents) {
+      const entry = make("li", `change-event change-event-${item.type}`);
+      const time = make("time", "change-event-time", displayDate(item.capturedAt));
+      time.dateTime = item.capturedAt;
+      entry.append(time);
+      const content = make("div", "change-event-copy");
+      content.append(make("strong", "", item.title), make("span", "", item.detail));
+      entry.append(content);
+      if (item.row) {
+        const button = make("button", "change-event-link", item.row.district || item.row.state);
+        button.type = "button";
+        button.setAttribute("aria-label", `Open ${resultsRaceLabel(item.row)}`);
+        button.addEventListener("click", () => navigateToRace(item.row));
+        entry.append(button);
+      }
+      list.append(entry);
+    }
+  }
+
   function renderSnapshot() {
     const allResults = results();
     const statesWithResults = new Set(allResults.map((row) => row.state).filter(Boolean));
@@ -3002,11 +3490,16 @@
     elements["states-count"].textContent = String(statesWithResults.size);
     elements["results-count"].textContent = formatNumber(allResults.length);
     elements["verify-count"].textContent = formatNumber(allResults.filter((row) => row.verificationRequired).length);
-    elements["refresh-note"].textContent = `Auto-refreshes every ${REFRESH_MS / 1000} seconds`;
+    elements["refresh-note"].textContent = isReplaying
+      ? "Historical playback · live updates continue in the background"
+      : `Auto-refreshes every ${REFRESH_MS / 1000} seconds`;
     elements["connection-status"].classList.remove("error");
     elements["connection-status"].classList.add("connected");
-    elements["connection-label"].textContent = DEMO_MODE ? "Demo · synthetic results" : "Connected · snapshot loaded";
+    elements["connection-label"].textContent = DEMO_MODE
+      ? "Demo · synthetic results"
+      : isReplaying ? "Replay · live feed connected" : "Connected · snapshot loaded";
     renderSeatTallies();
+    renderMajorityPaths();
     renderProjectionAnnouncements();
     renderMap();
     renderNationalPolling();
@@ -3014,7 +3507,149 @@
     renderResults();
     renderSources();
     renderNotices();
+    renderRaceComparisons();
+    updateReplayControls();
     updateAnchorInsights(snapshot);
+  }
+
+  function updateReplayControls() {
+    const range = elements["replay-range"];
+    const loadButton = elements["replay-load"];
+    if (DEMO_MODE) {
+      loadButton.hidden = true;
+      elements["replay-live"].hidden = true;
+      range.disabled = !demoData?.stages?.length;
+      range.min = "0";
+      range.max = String(Math.max(0, (demoData?.stages?.length || 1) - 1));
+      range.value = String(demoStageIndex);
+      elements["replay-current"].textContent = demoData
+        ? `Synthetic update ${demoStageIndex + 1} of ${demoData.stages.length}`
+        : "Loading synthetic stages";
+      elements["replay-status"].textContent = "Scrub the bundled synthetic stages. These are illustrative demo results, not actual election returns.";
+      return;
+    }
+    loadButton.hidden = false;
+    loadButton.textContent = replaySnapshots.length ? "Reload local history" : "Load local history";
+    loadButton.disabled = replayLoadPromise != null;
+    elements["replay-live"].hidden = !isReplaying;
+    range.disabled = replaySnapshots.length === 0;
+    range.min = "0";
+    range.max = String(Math.max(0, replaySnapshots.length - 1));
+    range.value = String(replayIndex >= 0 ? replayIndex : Math.max(0, replaySnapshots.length - 1));
+    if (isReplaying && replayIndex >= 0 && replaySnapshots[replayIndex]) {
+      elements["replay-current"].textContent = `Snapshot ${replayIndex + 1} of ${replaySnapshots.length} · ${displayDate(replaySnapshots[replayIndex].capturedAt)}`;
+    } else if (latestLiveSnapshot) {
+      elements["replay-current"].textContent = `Live · ${displayDate(latestLiveSnapshot.capturedAt)}`;
+    } else if (replaySnapshots.length) {
+      elements["replay-current"].textContent = "Live snapshot unavailable · history retained";
+    } else {
+      elements["replay-current"].textContent = "No history loaded";
+    }
+    const replaySummary = replaySnapshots.length
+      ? `Loaded ${formatNumber(replaySnapshots.length)} local snapshots${replaySnapshots.length >= 1200 ? " · showing the newest 1,200" : ""}${isReplaying ? " · live refresh continues in the background" : ""}.`
+      : "Local collector history loads on request. The static site includes bundled synthetic demo stages, not live history.";
+    elements["replay-status"].textContent = replayLoadError
+      ? `${replayLoadError}${replaySnapshots.length ? " Previously loaded snapshots remain available." : ""}`
+      : replaySummary;
+  }
+
+  function displayHistorySnapshot(index) {
+    if (!Number.isInteger(index) || index < 0 || index >= replaySnapshots.length) return;
+    isReplaying = true;
+    replayIndex = index;
+    snapshot = replaySnapshots[index];
+    renderSnapshot();
+  }
+
+  function appendLiveHistorySnapshot(nextSnapshot) {
+    if (!replaySnapshots.length || replaySnapshots[replaySnapshots.length - 1].capturedAt !== nextSnapshot.capturedAt) {
+      replaySnapshots.push(nextSnapshot);
+      if (replaySnapshots.length > 1200) {
+        replaySnapshots.shift();
+        if (replayIndex >= 0) replayIndex = Math.max(0, replayIndex - 1);
+      }
+    }
+    updateReplayControls();
+  }
+
+  async function loadLocalHistory() {
+    if (replayLoadPromise) return replayLoadPromise;
+    replayLoadError = "";
+    replayLoadPromise = (async () => {
+      updateReplayControls();
+      elements["replay-status"].textContent = "Loading local collector history…";
+      elements["replay-load"].disabled = true;
+      try {
+        const response = await fetch(`../data/history.jsonl?t=${Date.now()}`, { cache: "no-store" });
+        if (!response.ok) {
+          throw new Error(response.status === 404
+            ? "Local history is unavailable. Run the collector to create data/history.jsonl; the static production site does not publish this file."
+            : `History request failed (HTTP ${response.status}).`);
+        }
+        const contentLength = Number(response.headers.get("content-length"));
+        if (Number.isFinite(contentLength) && contentLength > 50 * 1024 * 1024) {
+          throw new Error("History file is larger than the 50 MiB playback limit.");
+        }
+        const text = await response.text();
+        if (text.length > 25 * 1024 * 1024) throw new Error("History file exceeds the 25 Mi-character playback limit.");
+        const parsedSnapshots = [];
+        for (const [index, line] of text.split(/\r?\n/).entries()) {
+          if (!line.trim()) continue;
+          let item;
+          try {
+            item = JSON.parse(line);
+          } catch (error) {
+            throw new Error(`History line ${index + 1} is not valid JSON.`);
+          }
+          if (!item || !Array.isArray(item.results) || !Array.isArray(item.sources)
+            || typeof item.capturedAt !== "string" || !Number.isFinite(Date.parse(item.capturedAt))) {
+            throw new Error(`History line ${index + 1} is missing a valid timestamp, results, or sources array.`);
+          }
+          parsedSnapshots.push(item);
+        }
+        if (!parsedSnapshots.length) throw new Error("History file contains no valid election snapshots.");
+        replaySnapshots = parsedSnapshots.slice(-1200);
+        if (latestLiveSnapshot
+          && replaySnapshots[replaySnapshots.length - 1].capturedAt !== latestLiveSnapshot.capturedAt) {
+          replaySnapshots.push(latestLiveSnapshot);
+          if (replaySnapshots.length > 1200) replaySnapshots.shift();
+        }
+        displayHistorySnapshot(replaySnapshots.length - 1);
+        updateReplayControls();
+      } catch (error) {
+        replayLoadError = error.message || "Local history could not be loaded.";
+        elements["replay-status"].textContent = replayLoadError;
+        console.error("Local snapshot history could not be loaded.", error);
+      } finally {
+        replayLoadPromise = null;
+        updateReplayControls();
+      }
+    })();
+    return replayLoadPromise;
+  }
+
+  function returnToLive() {
+    isReplaying = false;
+    replayIndex = -1;
+    if (latestLiveSnapshot) {
+      snapshot = latestLiveSnapshot;
+      renderSnapshot();
+    } else {
+      snapshot = null;
+      elements["captured-at"].textContent = "No live snapshot available";
+      elements["connection-status"].classList.remove("connected");
+      elements["connection-status"].classList.add("error");
+      elements["connection-label"].textContent = "Live snapshot unavailable";
+      renderSeatTallies();
+      renderMajorityPaths();
+      renderProjectionAnnouncements();
+      renderMap();
+      renderStateDetail();
+      renderResults();
+      renderSources();
+      renderNotices();
+      updateReplayControls();
+    }
   }
 
   function anchorInsightContestLabel(office, state, district, seatClass) {
@@ -3366,6 +4001,7 @@
       currentControlError = error.message || "Current-control roster could not be loaded.";
     }
     renderSeatTallies();
+    renderMajorityPaths();
     renderMap();
     renderStateDetail();
     projectionRenderSignature = "";
@@ -3406,9 +4042,11 @@
       raceDataError = error.message || "2026 candidate roster could not be loaded.";
     }
     renderSeatTallies();
+    renderMajorityPaths();
     renderMap();
     renderStateDetail();
     renderResults();
+    renderRaceComparisons();
   }
 
   async function loadHistoricalResults() {
@@ -3445,6 +4083,8 @@
 
   function renderDemoStage(index) {
     if (!demoData) return;
+    const previousSnapshot = snapshot;
+    const previousStageIndex = demoStageIndex;
     demoStageIndex = Math.max(0, Math.min(index, demoData.stages.length - 1));
     const stageDefinition = demoData.stages[demoStageIndex];
     const capturedAt = new Date(Date.parse(demoData.schedule.firstPollClose)
@@ -3530,6 +4170,12 @@
       racePriorities: priorityConfig,
       notices: ["DEMO ONLY: candidate totals, feed statuses, and Dalton calls are synthetic test data."],
     };
+    if (previousSnapshot && demoStageIndex > previousStageIndex) {
+      recordSnapshotEvents(previousSnapshot, snapshot);
+    } else if (previousSnapshot && demoStageIndex < previousStageIndex) {
+      recentChangeEvents = [];
+      renderChangeTimeline();
+    }
     trackNewResultAreas(snapshot);
     elements["demo-stage-label"].textContent = `Update ${demoStageIndex + 1} of ${demoData.stages.length} · ${formatDemoClock(stageDefinition.minutesAfterFirstClose)} ET · ${stage.label}`;
     const threshold = formatPercent(demoData.callModel.minimumWinProbability * 100);
@@ -4044,9 +4690,19 @@
         throw new Error("Snapshot format is invalid: expected results and sources arrays.");
       }
       trackNewResultAreas(nextSnapshot);
-      snapshot = nextSnapshot;
+      const previousSnapshot = latestLiveSnapshot;
+      latestLiveSnapshot = nextSnapshot;
+      recordSnapshotEvents(previousSnapshot, nextSnapshot);
+      if (replaySnapshots.length) appendLiveHistorySnapshot(nextSnapshot);
+      if (!isReplaying) snapshot = nextSnapshot;
       await loadNationalPolling();
-      renderSnapshot();
+      if (!isReplaying) renderSnapshot();
+      else {
+        elements["connection-status"].classList.remove("error");
+        elements["connection-status"].classList.add("connected");
+        elements["connection-label"].textContent = "Replay · live feed connected";
+        updateReplayControls();
+      }
     } catch (error) {
       elements["connection-status"].classList.remove("connected");
       elements["connection-status"].classList.add("error");
@@ -4149,6 +4805,45 @@
       if (demoStageIndex === demoData.stages.length - 1) stopDemoAutoPlay();
     }, DEMO_STEP_MS);
   });
+  elements["replay-load"].addEventListener("click", loadLocalHistory);
+  elements["replay-live"].addEventListener("click", returnToLive);
+  elements["replay-range"].addEventListener("input", () => {
+    if (DEMO_MODE || !replaySnapshots.length) return;
+    const index = Number(elements["replay-range"].value);
+    const item = replaySnapshots[index];
+    if (item) elements["replay-current"].textContent =
+      `Snapshot ${index + 1} of ${replaySnapshots.length} · ${displayDate(item.capturedAt)}`;
+  });
+  elements["replay-range"].addEventListener("change", () => {
+    const index = Number(elements["replay-range"].value);
+    if (DEMO_MODE) {
+      stopDemoAutoPlay();
+      advanceDemoStage(index);
+    } else {
+      displayHistorySnapshot(index);
+    }
+  });
+  function setProducerMode(enabled, persist = false) {
+    producerModeEnabled = Boolean(enabled);
+    document.body.classList.toggle("producer-mode", producerModeEnabled);
+    elements["producer-mode-toggle"].setAttribute("aria-pressed", String(producerModeEnabled));
+    elements["producer-mode-toggle"].textContent = producerModeEnabled ? "Exit producer mode" : "Producer mode";
+    if (persist) {
+      try {
+        window.localStorage.setItem("dalton-election-producer-mode", String(producerModeEnabled));
+      } catch (error) {
+        console.error("Producer mode preference could not be saved.", error);
+      }
+    }
+  }
+  let savedProducerMode = false;
+  try {
+    savedProducerMode = window.localStorage.getItem("dalton-election-producer-mode") === "true";
+  } catch (error) {
+    console.error("Producer mode preference could not be loaded.", error);
+  }
+  setProducerMode(savedProducerMode);
+  elements["producer-mode-toggle"].addEventListener("click", () => setProducerMode(!producerModeEnabled, true));
   const themes = {
     classic: { className: "", color: "#10141d" },
     sakura: { className: "sakura-theme", color: "#1a111d" },
@@ -4184,11 +4879,15 @@
   elements["theme-select"].addEventListener("change", () => applyTheme(elements["theme-select"].value, true));
   elements["majority-alert-dismiss"].addEventListener("click", dismissMajorityAlert);
   window.addEventListener("keydown", (event) => {
-    if (!activeMajorityAlert) return;
     if (event.key === "Escape") {
+      if (!activeMajorityAlert && producerModeEnabled) {
+        setProducerMode(false, true);
+        return;
+      }
+      if (!activeMajorityAlert) return;
       event.preventDefault();
       dismissMajorityAlert();
-    } else if (event.key === "Tab") {
+    } else if (event.key === "Tab" && activeMajorityAlert) {
       event.preventDefault();
       elements["majority-alert-dismiss"].focus();
     }
@@ -4278,9 +4977,12 @@
   });
 
   loadWatchedRaces();
+  loadComparedRaces();
   populateResultsStateFilter();
   renderResults();
   renderStateDetail();
+  renderRaceComparisons();
+  updateReplayControls();
   updateZoom();
   loadGeography();
   loadHistoricalResults();

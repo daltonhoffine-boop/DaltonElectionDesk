@@ -5,11 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="theme-color" content="#10141d">
     <title>Election Night Magic Wall</title>
-    <link rel="stylesheet" href="styles.css?v=house-polling-map-panel-1">
+    <link rel="stylesheet" href="styles.css?v=desk-tools-1">
     <script src="vendor/d3-array.min.js" defer></script>
     <script src="vendor/d3-geo.min.js" defer></script>
     <script src="vendor/topojson-client.min.js" defer></script>
-    <script src="app.js?v=house-polling-map-panel-1" defer></script>
+    <script src="app.js?v=desk-tools-1" defer></script>
   </head>
   <body>
     <header class="topbar">
@@ -18,6 +18,7 @@
         <span>Election Night <strong>Magic Wall</strong></span>
       </a>
       <div class="topbar-actions">
+        <button class="producer-mode-toggle" id="producer-mode-toggle" type="button" aria-pressed="false">Producer mode</button>
         <a class="demo-button demo-primary" href="?demo=trickle">Launch trickle demo</a>
         <label class="theme-selector" for="theme-select">
           <span>Theme</span>
@@ -342,6 +343,64 @@
             <p class="empty-state">Choose an area on the map to see available results, official source links, and source health.</p>
           </div>
         </article>
+      </section>
+
+      <section class="desk-tools-grid" aria-label="Election desk tools">
+        <article class="panel change-timeline-panel" aria-labelledby="change-timeline-title">
+          <div class="panel-heading">
+            <div>
+              <p class="eyebrow">LIVE DESK</p>
+              <h2 id="change-timeline-title">What changed?</h2>
+            </div>
+            <span class="tool-status" id="change-timeline-status" aria-live="polite">Waiting for the next update</span>
+          </div>
+          <ol class="change-timeline" id="change-timeline" aria-live="polite">
+            <li class="empty-state">New results, source outages, and Dalton race calls will appear here.</li>
+          </ol>
+        </article>
+        <article class="panel majority-path-panel" aria-labelledby="majority-path-title">
+          <div class="panel-heading">
+            <div>
+              <p class="eyebrow">CALLS NEEDED · LEADS DO NOT COUNT</p>
+              <h2 id="majority-path-title">Path to a majority</h2>
+            </div>
+          </div>
+          <div class="majority-path-list" id="majority-path-list">
+            <p class="empty-state">Majority paths will appear when current control and the race roster load.</p>
+          </div>
+          <p class="majority-path-note">Only Dalton-projected seats count toward a majority. Remaining uncalled seats show possible routes, not a forecast.</p>
+        </article>
+      </section>
+
+      <section class="panel replay-panel" aria-labelledby="replay-title">
+        <div class="panel-heading">
+          <div>
+            <p class="eyebrow">SNAPSHOT PLAYBACK</p>
+            <h2 id="replay-title">Replay the count</h2>
+          </div>
+          <div class="replay-actions">
+            <button class="text-button" id="replay-load" type="button">Load local history</button>
+            <button class="text-button" id="replay-live" type="button" hidden>Return to live</button>
+          </div>
+        </div>
+        <label class="replay-range-label" for="replay-range">
+          <span id="replay-current">No history loaded</span>
+          <input id="replay-range" type="range" min="0" max="0" value="0" step="1" disabled>
+        </label>
+        <p class="replay-status" id="replay-status" role="status" aria-live="polite">Local collector history is loaded on request. The static site includes synthetic demo stages only.</p>
+      </section>
+
+      <section class="panel comparison-panel" aria-labelledby="comparison-title">
+        <div class="panel-heading">
+          <div>
+            <p class="eyebrow">PINNED RACES</p>
+            <h2 id="comparison-title">Race comparison <span class="subheading">· up to 4 races</span></h2>
+          </div>
+          <span class="tool-status" id="comparison-status" aria-live="polite">Pin a race from its state details</span>
+        </div>
+        <div class="race-comparisons" id="race-comparisons">
+          <p class="empty-state">Select a race on the map, then choose Compare race in its details.</p>
+        </div>
       </section>
 
       <section class="panel results-panel">
