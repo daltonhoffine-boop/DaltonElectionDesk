@@ -23,6 +23,7 @@
   --wallpaper-edge: #10141dc9;
   --wallpaper-mid: #10141d70;
   --wallpaper-base: #10141d88;
+  --wallpaper-image: url("wallpaper-classic.svg");
   --topbar-bg: #141923;
   --brand-border: #387a6c;
   --brand-bg: #18372f;
@@ -49,7 +50,7 @@
 
 * { box-sizing: border-box; }
 body { position: relative; isolation: isolate; margin: 0; min-width: 320px; background: var(--bg); }
-body::before { position: fixed; z-index: -1; inset: 0; background: linear-gradient(90deg, var(--wallpaper-edge) 0%, var(--wallpaper-mid) 48%, var(--wallpaper-edge) 100%), linear-gradient(0deg, var(--wallpaper-base) 0%, transparent 34%, var(--wallpaper-edge) 100%), url("american-flag-wallpaper.svg") center / cover no-repeat; content: ""; pointer-events: none; }
+body::before { position: fixed; z-index: -1; inset: 0; background: linear-gradient(90deg, var(--wallpaper-edge) 0%, var(--wallpaper-mid) 48%, var(--wallpaper-edge) 100%), linear-gradient(0deg, var(--wallpaper-base) 0%, transparent 34%, var(--wallpaper-edge) 100%), var(--wallpaper-image) center / cover no-repeat; content: ""; pointer-events: none; }
 a { color: var(--blue); }
 button, select { font: inherit; }
 .topbar {
@@ -591,6 +592,7 @@ body.sakura-theme {
   --wallpaper-edge: #17111ccb;
   --wallpaper-mid: #17111c73;
   --wallpaper-base: #17111c8c;
+  --wallpaper-image: url("wallpaper-sakura.svg");
   --topbar-bg: #1c1523ef;
   --brand-border: #aa6691;
   --brand-bg: #49253f;
@@ -630,6 +632,7 @@ body.orchid-theme {
   --wallpaper-edge: #171023d1;
   --wallpaper-mid: #17102378;
   --wallpaper-base: #1710238f;
+  --wallpaper-image: url("wallpaper-orchid.svg");
   --topbar-bg: #1b1427ef;
   --brand-border: #8562a7;
   --brand-bg: #352347;
@@ -669,6 +672,7 @@ body.america-theme {
   --wallpaper-edge: #101b2dc4;
   --wallpaper-mid: #101b2d65;
   --wallpaper-base: #101b2d82;
+  --wallpaper-image: url("american-flag-wallpaper.svg");
   --topbar-bg: #132139ef;
   --brand-border: #5278ac;
   --brand-bg: #1e3b60;
@@ -708,6 +712,7 @@ body.mizu-theme {
   --wallpaper-edge: #0d1e22c7;
   --wallpaper-mid: #0d1e226b;
   --wallpaper-base: #0d1e2287;
+  --wallpaper-image: url("wallpaper-mizu.svg");
   --topbar-bg: #112429ef;
   --brand-border: #438f85;
   --brand-bg: #173b38;

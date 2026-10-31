@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" preserveAspectRatio="xMidYMid slice">
+  <defs>
+    <radialGradient id="glow" cx="20%" cy="85%" r="85%">
+      <stop offset="0" stop-color="#5b3a96" stop-opacity=".55"/>
+      <stop offset="1" stop-color="#171023" stop-opacity="0"/>
+    </radialGradient>
+    <g id="orchid">
+      <g fill="#c8a8ea">
+        <ellipse cx="0" cy="-46" rx="22" ry="40"/>
+        <ellipse cx="-44" cy="-14" rx="40" ry="22" transform="rotate(-12 -44 -14)"/>
+        <ellipse cx="44" cy="-14" rx="40" ry="22" transform="rotate(12 44 -14)"/>
+      </g>
+      <path d="M0 0C-26 8-34 42 0 62C34 42 26 8 0 0Z" fill="#a273d6"/>
+      <path d="M0 6C-10 20-8 40 0 50C8 40 10 20 0 6Z" fill="#6a3fa5"/>
+      <circle cy="-6" r="6" fill="#efe2ff"/>
+    </g>
+  </defs>
+  <rect width="1600" height="900" fill="#171023"/>
+  <rect width="1600" height="900" fill="url(#glow)"/>
+  <g fill="none" stroke="#3a2a60" stroke-width="7" stroke-linecap="round" stroke-opacity=".9">
+    <path d="M-30 900C160 760 220 560 400 430S760 300 860 120"/>
+    <path d="M1640 880C1480 760 1420 600 1260 500S980 430 900 330"/>
+  </g>
+  <g opacity=".42">
+    <use href="#orchid" transform="translate(400 420) scale(1.1) rotate(-14)"/>
+    <use href="#orchid" transform="translate(230 610) scale(.8) rotate(-30)"/>
+    <use href="#orchid" transform="translate(640 330) scale(.7) rotate(10)"/>
+    <use href="#orchid" transform="translate(1260 490) scale(1.1) rotate(16)"/>
+    <use href="#orchid" transform="translate(1440 650) scale(.8) rotate(28)"/>
+    <use href="#orchid" transform="translate(1030 410) scale(.7) rotate(-8)"/>
+  </g>
+  <g fill="#b89be0" fill-opacity=".25">
+    <circle cx="120" cy="140" r="3"/><circle cx="1500" cy="150" r="3"/><circle cx="800" cy="760" r="3"/>
+    <circle cx="1100" cy="120" r="2"/><circle cx="520" cy="780" r="2"/>
+  </g>
+</svg>

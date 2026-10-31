@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" preserveAspectRatio="xMidYMid slice">
+  <defs>
+    <linearGradient id="sea" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#0d1e22"/>
+      <stop offset="1" stop-color="#0f3a45"/>
+    </linearGradient>
+    <g id="ripple" fill="none" stroke="#7fc9c9" stroke-opacity=".28" stroke-width="2">
+      <circle r="30"/><circle r="64"/><circle r="104"/><circle r="150"/>
+    </g>
+    <pattern id="waves" width="160" height="40" patternUnits="userSpaceOnUse">
+      <path d="M0 20Q40 0 80 20T160 20" fill="none" stroke="#7fc9c9" stroke-opacity=".12" stroke-width="2"/>
+    </pattern>
+  </defs>
+  <rect width="1600" height="900" fill="url(#sea)"/>
+  <rect y="360" width="1600" height="540" fill="url(#waves)"/>
+  <use href="#ripple" transform="translate(300 260)"/>
+  <use href="#ripple" transform="translate(1240 180) scale(1.3)"/>
+  <use href="#ripple" transform="translate(900 640) scale(.9)"/>
+  <use href="#ripple" transform="translate(160 720) scale(.7)"/>
+  <circle cx="1320" cy="140" r="64" fill="#cfe9e4" fill-opacity=".12"/>
+  <path d="M0 790C260 740 480 830 780 780S1280 740 1600 800V900H0Z" fill="#0a2d36" fill-opacity=".6"/>
+  <path d="M0 850C320 810 560 890 900 850S1340 820 1600 860V900H0Z" fill="#0a2d36" fill-opacity=".7"/>
+</svg>

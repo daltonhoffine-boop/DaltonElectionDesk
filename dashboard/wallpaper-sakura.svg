@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" preserveAspectRatio="xMidYMid slice">
+  <defs>
+    <radialGradient id="glow" cx="85%" cy="10%" r="80%">
+      <stop offset="0" stop-color="#7a3a68" stop-opacity=".5"/>
+      <stop offset="1" stop-color="#17111c" stop-opacity="0"/>
+    </radialGradient>
+    <g id="blossom">
+      <g fill="#f4b6d6">
+        <ellipse cx="0" cy="-14" rx="9" ry="14"/>
+        <ellipse cx="0" cy="-14" rx="9" ry="14" transform="rotate(72)"/>
+        <ellipse cx="0" cy="-14" rx="9" ry="14" transform="rotate(144)"/>
+        <ellipse cx="0" cy="-14" rx="9" ry="14" transform="rotate(216)"/>
+        <ellipse cx="0" cy="-14" rx="9" ry="14" transform="rotate(288)"/>
+      </g>
+      <circle r="4" fill="#ffe4f2"/>
+    </g>
+  </defs>
+  <rect width="1600" height="900" fill="#17111c"/>
+  <rect width="1600" height="900" fill="url(#glow)"/>
+  <g fill="none" stroke="#4a2f45" stroke-width="10" stroke-linecap="round" stroke-opacity=".85">
+    <path d="M1650 60C1450 90 1330 170 1220 260S1010 380 900 420"/>
+    <path d="M1360 170C1330 250 1290 310 1220 350"/>
+    <path d="M1130 300C1090 360 1040 390 980 400"/>
+    <path d="M-40 760C120 720 240 650 330 560S470 430 560 400"/>
+    <path d="M250 640C290 700 340 730 400 740"/>
+  </g>
+  <g opacity=".55">
+    <use href="#blossom" transform="translate(1240 250) scale(1.4)"/>
+    <use href="#blossom" transform="translate(1350 180) scale(1)"/>
+    <use href="#blossom" transform="translate(1120 310) scale(1.1)"/>
+    <use href="#blossom" transform="translate(990 395) scale(.9)"/>
+    <use href="#blossom" transform="translate(1480 110) scale(1.2)"/>
+    <use href="#blossom" transform="translate(330 560) scale(1.3)"/>
+    <use href="#blossom" transform="translate(220 650) scale(.9)"/>
+    <use href="#blossom" transform="translate(420 735) scale(1)"/>
+    <use href="#blossom" transform="translate(560 405) scale(.8)"/>
+  </g>
+  <g fill="#f4b6d6" fill-opacity=".35">
+    <ellipse cx="700" cy="200" rx="7" ry="4" transform="rotate(30 700 200)"/>
+    <ellipse cx="820" cy="560" rx="7" ry="4" transform="rotate(-20 820 560)"/>
+    <ellipse cx="1000" cy="700" rx="7" ry="4" transform="rotate(50 1000 700)"/>
+    <ellipse cx="560" cy="160" rx="6" ry="3.5" transform="rotate(10 560 160)"/>
+    <ellipse cx="1280" cy="620" rx="7" ry="4" transform="rotate(-40 1280 620)"/>
+    <ellipse cx="150" cy="300" rx="6" ry="3.5" transform="rotate(60 150 300)"/>
+  </g>
+</svg>
