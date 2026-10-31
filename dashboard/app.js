@@ -6,7 +6,7 @@
   const dashboardQuery = new URLSearchParams(window.location.search);
   const PUBLIC_STATIC_HOST = window.location.hostname.toLowerCase().endsWith(".github.io");
   const DEMO_REQUESTED = dashboardQuery.get("demo") === "trickle";
-  const STATIC_DEMO_FALLBACK = PUBLIC_STATIC_HOST && !DEMO_REQUESTED && dashboardQuery.get("live") !== "1";
+  const STATIC_DEMO_FALLBACK = false;
   const DEMO_MODE = DEMO_REQUESTED || STATIC_DEMO_FALLBACK;
   const DEMO_STEP_MS = 6_000;
   const DEMO_MIDTERM_TURNOUT_SHARE = 0.62;
