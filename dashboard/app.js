@@ -758,7 +758,8 @@
   function appendCandidatePhoto(parent, candidateName, size = "standard") {
     const photo = make("div", `candidate-photo${size === "compact" ? " candidate-photo-compact" : ""}`);
     const key = candidateKey(candidateName);
-    const candidatePhoto = candidatePhotoIndex[key];
+    const indexed = candidatePhotoIndex[key];
+    const candidatePhoto = indexed && indexed.verified ? indexed : null;
     const placeholder = make("span", "candidate-photo-placeholder", "No Image");
     placeholder.setAttribute("role", "img");
     placeholder.setAttribute("aria-label", `${candidateName}: No verified free-use photo is bundled.`);

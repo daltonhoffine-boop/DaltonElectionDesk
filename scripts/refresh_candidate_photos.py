@@ -296,7 +296,9 @@ def main() -> int:
     args = parser.parse_args()
     if args.limit is not None and args.limit < 1:
         parser.error("--limit must be a positive integer")
-    return refresh(args.limit, args.all)
+    # Name-in-filename search is unsafe (it matched unrelated people); always verify identity.
+    from scripts.verify_candidate_photos import run
+    return run(apply=True, all_candidates=args.all, limit=args.limit)
 
 
 if __name__ == "__main__":

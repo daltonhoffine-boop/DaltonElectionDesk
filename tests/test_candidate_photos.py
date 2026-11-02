@@ -90,6 +90,7 @@ class CandidatePhotoTests(unittest.TestCase):
         for key, photo in manifest["photos"].items():
             self.assertRegex(key, re.compile(r"^[a-z0-9]+$"))
             self.assertIn(key, roster_keys)
+            self.assertTrue(photo.get("verified"), f"{key} has an unverified photo")
             self.assertRegex(photo["path"], re.compile(r"^\./candidate-photos/[a-f0-9]{16}\.(jpg|png|webp)$"))
             image_path = DASHBOARD / photo["path"].removeprefix("./")
             self.assertTrue(image_path.is_file())
